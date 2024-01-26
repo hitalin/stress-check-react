@@ -1,19 +1,7 @@
 export type Employee = {
-  gender: Gender;
-  stressLevel: StressLevel;
+  gender: string;
+  stressLevel: string;
 };
-
-export enum Gender {
-  MALE = "MALE",
-  FEMALE = "FEMALE",
-  UNDEFINED = "UNDEFINED"
-}
-
-export enum StressLevel {
-  HIGH = "HIGH",
-  LOW = "LOW",
-  UNDEFINED = "UNDEFINED"
-}
 
 export type Section = {
   step: number;
@@ -29,5 +17,3 @@ export type Question = {
   score: number;
   reverse: boolean;
 };
-
-export type GenderSelection = Section; // GenderSelectionをSectionとして定義

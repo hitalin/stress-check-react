@@ -1,21 +1,36 @@
+// App.tsx
 import React, { useState } from 'react';
-import { Employee, Gender, StressLevel } from './AppTypes';
-import GenderSelection from './GenderSection';
+import StartSection from './StartSection';
+import ShowQuestion from './ShowQuestion';
 import ShowTitle from './ShowTitle';
+import { Employee } from './AppTypes';
 import './App.css';
 
 const App: React.FC = () => {
-  const [employee, setEmployee] = useState<Employee>({ gender: Gender.UNDEFINED, stressLevel: StressLevel.UNDEFINED });
+  const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
+  const [step, setStep] = useState(0);
 
-  const handleGenderSelection = (gender: Gender) => {
-    setEmployee({ gender, stressLevel: StressLevel.UNDEFINED });
+  const handleChoiceSelection = (choice: string) => {
+    if (step === 1) {
+      setEmployee({ ...employee, gender: choice });
+    } else if (step === 2) {
+      setEmployee({ ...employee, stressLevel: choice });
+    }
+  };
+
+  const handleNext = () => {
+    setStep(step + 1);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <ShowTitle />
-        <GenderSelection onGenderSelect={handleGenderSelection} />
+        {step === 0 ? (
+          <StartSection onNext={handleNext} />
+        ) : (
+          <ShowQuestion onChoiceSelect={handleChoiceSelection} />
+        )}
       </header>
     </div>
   );
