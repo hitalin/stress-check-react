@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Employee, Gender, StressLevel } from './AppTypes';
 import GenderSelection from './GenderSelection';
+import ShowTitle from './ShowTitle';
 import './App.css';
 
 const App: React.FC = () => {
@@ -13,7 +14,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>５分でできる職場のストレスセルフチェック</h1>
+        <ShowTitle />
         <GenderSelection onGenderSelect={handleGenderSelection} />
       </header>
     </div>
