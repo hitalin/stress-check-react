@@ -1,6 +1,6 @@
 import React from 'react';
 import { Gender } from './AppTypes';
-import { genderSection } from './LoadSections';
+import { sections } from './LoadSections';
 
 interface GenderSectionProps {
   onGenderSelect: (gender: Gender) => void;
@@ -14,11 +14,11 @@ const GenderSection: React.FC<GenderSectionProps> = ({ onGenderSelect }) => {
 
   return (
     <div>
-      <h2>{genderSection.name}</h2>
-      <p>{genderSection.description}</p>
-      <p>{genderSection.questions[0].text}</p>
+      <h2>{sections[0].name}</h2>
+      <p>{sections[0].description}</p>
+      <p>{sections[0].questions[0].text}</p>
       <div>
-        {genderSection.choices.map((choice: string) => (
+        {sections[0].choices.map((choice: string) => (
           <button key={choice} type="button" onClick={() => handleButtonClick(choice)}>
             {choice}
           </button>
