@@ -1,6 +1,4 @@
 export type Employee = {
-  name: string;
-  age: number;
   gender: Gender;
   stressLevel: StressLevel;
 };
