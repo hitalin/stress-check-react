@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Employee, Gender, StressLevel } from './AppTypes';
-import GenderSelection from './GenderSelection';
+import GenderSelection from './GenderSection';
 import ShowTitle from './ShowTitle';
 import './App.css';
 

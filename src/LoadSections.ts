@@ -1,7 +1,18 @@
 import { Section } from './AppTypes';
 
-const sectionA: Section = {
-  name: "A",
+export const genderSection: Section = {
+  step: 0,
+  name: "性別について",
+  description: "4つのSTEPによる簡単な質問から、あなたの職場におけるストレスレベルを測定します。質問は全部で57問です。（所要時間約5分間）",
+  questions: [
+    { id: 1, text: "はじめに性別を選んでください", score: 0, reverse: false },
+  ],
+  choices: ["男性", "女性"]
+};
+
+export const workSection: Section = {
+  step: 1,
+  name: "仕事について",
   description: "あなたの仕事についてうかがいます。最もあてはまる選択ボタンを選んでください。",
   questions: [
     { id: 1, text: "非常にたくさんの仕事をしなければならない", score: 0, reverse: true },
@@ -25,8 +36,9 @@ const sectionA: Section = {
   choices: ["そうだ", "まあそうだ", "ややちがう", "ちがう"]
 };
 
-const sectionB: Section = {
-  name: "B",
+export const recentSection: Section = {
+  step: 2,
+  name: "最近1か月の状態について",
   description: "最近 1 か月間のあなたの状態についてうかがいます。最もあてはまる選択ボタンを選んでください。",
   questions: [
     { id: 1, text: "活気がわいてくる", score: 0, reverse: true },
@@ -62,19 +74,31 @@ const sectionB: Section = {
   choices: ["ほとんどなかった", "ときどきあった", "しばしばあった", "ほとんどいつもあった"]
 };
 
-const sectionC: Section = {
-  name: "C",
+export const relationSection: Section = {
+  step: 3,
+  name: "周りの方々について",
   description: "あなたの周りの方々についてうかがいます。最もあてはまる選択ボタンを選んでください。",
   questions: [
-    { id: 1, text: "上司", score: 0, reverse: false },
-    { id: 2, text: "職場の同僚", score: 0, reverse: false },
-    { id: 3, text: "配偶者、家族、友人等", score: 0, reverse: false },
-    { id: 4, text: "上司", score: 0, reverse: false },
-    { id: 5, text: "職場の同僚", score: 0, reverse: false },
-    { id: 6, text: "配偶者、家族、友人等", score: 0, reverse: false },
-    { id: 7, text: "上司", score: 0, reverse: false },
-    { id: 8, text: "職場の同僚", score: 0, reverse: false},
-    { id: 9, text: "配偶者、家族、友人等", score: 0, reverse: false },
+    { id: 1, text: "次の人たちとはどのくらい気軽に話ができますか？上司", score: 0, reverse: false },
+    { id: 2, text: "次の人たちとはどのくらい気軽に話ができますか？職場の同僚", score: 0, reverse: false },
+    { id: 3, text: "次の人たちとはどのくらい気軽に話ができますか？配偶者、家族、友人等", score: 0, reverse: false },
+    { id: 4, text: "あなたが困った時、次の人たちはどのくらい頼りになりますか?上司", score: 0, reverse: false },
+    { id: 5, text: "あなたが困った時、次の人たちはどのくらい頼りになりますか?職場の同僚", score: 0, reverse: false },
+    { id: 6, text: "あなたが困った時、次の人たちはどのくらい頼りになりますか?配偶者、家族、友人等", score: 0, reverse: false },
+    { id: 7, text: "あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?上司", score: 0, reverse: false },
+    { id: 8, text: "あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?職場の同僚", score: 0, reverse: false},
+    { id: 9, text: "あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?配偶者、家族、友人等", score: 0, reverse: false },
   ],
   choices: ["非常に", "かなり", "多少", "全くない"]
 };
+
+export const satisfactionSection: Section = {
+  step: 4,
+  name: "満足度について",
+  description: "あなたの満足度についてうかがいます。4つの中から最もあてはまるものを選んでください。（全2問）",
+  questions: [
+    { id: 1, text: "仕事に満足だ", score: 0, reverse: false },
+    { id: 2, text: "家庭環境に満足だ", score: 0, reverse: false },
+  ],
+  choices: ["満足", "まあ満足", "やや不満足", "不満足"]
+}

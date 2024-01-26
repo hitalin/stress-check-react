@@ -16,6 +16,7 @@ export enum StressLevel {
 }
 
 export type Section = {
+  step: number;
   name: string;
   description: string;
   questions: Question[];
@@ -28,3 +29,5 @@ export type Question = {
   score: number;
   reverse: boolean;
 };
+
+export type GenderSelection = Section; // GenderSelectionをSectionとして定義
