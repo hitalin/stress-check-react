@@ -1,23 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Employee, Gender, StressLevel } from './AppTypes';
+import GenderSelection from './GenderSelection';
 import './App.css';
 
-function App() {
+const App: React.FC = () => {
+  const [employee, setEmployee] = useState<Employee>({ gender: Gender.UNDEFINED, stressLevel: StressLevel.UNDEFINED });
+
+  const handleGenderSelection = (gender: Gender) => {
+    setEmployee({ gender, stressLevel: StressLevel.UNDEFINED });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>５分でできる職場のストレスセルフチェック</h1>
+        <GenderSelection onGenderSelect={handleGenderSelection} />
       </header>
     </div>
   );

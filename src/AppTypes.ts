@@ -5,12 +5,14 @@ export type Employee = {
 
 export enum Gender {
   MALE = "MALE",
-  FEMALE = "FEMALE"
+  FEMALE = "FEMALE",
+  UNDEFINED = "UNDEFINED"
 }
 
 export enum StressLevel {
   HIGH = "HIGH",
-  LOW = "LOW"
+  LOW = "LOW",
+  UNDEFINED = "UNDEFINED"
 }
 
 export type Section = {
