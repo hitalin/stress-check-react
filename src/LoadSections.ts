@@ -6,7 +6,7 @@ export const sections: Section[] = [
     name: '性別について',
     description: '4つのSTEPによる簡単な質問から、あなたの職場におけるストレスレベルを測定します。質問は全部で57問です。（所要時間約5分間）',
     questions: [{ id: 1, text: 'はじめに性別を選んでください', score: 0, reverse: false }],
-    choices: ['男性', '女性'],
+    choices: ['男性', '女性', 'その他', '答えない'],
   },
   {
     step: 1,
