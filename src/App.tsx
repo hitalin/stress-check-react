@@ -1,6 +1,7 @@
 // App.tsx
 import React, { useState } from 'react';
 import ShowTitle from './ShowTitle';
+import ShowSectionTitle from './ShowSectionTitle';
 import StartSection from './StartSection';
 import ShowQuestion from './ShowQuestion';
 import BackButtons from './BackButtons';
@@ -50,7 +51,8 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <ShowTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
+        <ShowTitle />
+        {currentSection !== 0 && <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />}
         {showStartSection ? (
           <>
             <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
