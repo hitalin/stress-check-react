@@ -4,14 +4,14 @@ export const sections: Section[] = [
   {
     step: 0,
     name: '性別について',
-    description: '4つのSTEPによる簡単な質問から、あなたの職場におけるストレスレベルを測定します。質問は全部で57問です。（所要時間約5分間）',
+    description: '4つのSTEPによる簡単な質問から、あなたの職場におけるストレスレベルを測定します。\n質問は全部で57問です。（所要時間約5分間）',
     questions: [{ id: 1, text: 'はじめに性別を選んでください', score: 0, reverse: false }],
     choices: ['男性', '女性', 'その他', '答えない'],
   },
   {
     step: 1,
     name: '仕事について',
-    description: 'あなたの仕事についてうかがいます。最もあてはまる選択ボタンを選んでください。',
+    description: 'あなたの仕事についてうかがいます。\n最もあてはまる選択ボタンを選んでください。',
     questions: [
       { id: 1, text: '非常にたくさんの仕事をしなければならない', score: 0, reverse: true },
       { id: 2, text: '時間内に仕事が処理しきれない', score: 0, reverse: true },
@@ -36,7 +36,7 @@ export const sections: Section[] = [
   {
     step: 2,
     name: '最近1か月の状態について',
-    description: '最近 1 か月間のあなたの状態についてうかがいます。最もあてはまる選択ボタンを選んでください。',
+    description: '最近 1 か月間のあなたの状態についてうかがいます。\n最もあてはまる選択ボタンを選んでください。',
     questions: [
       { id: 1, text: '活気がわいてくる', score: 0, reverse: true },
       { id: 2, text: '元気がいっぱいだ', score: 0, reverse: true },
@@ -73,24 +73,24 @@ export const sections: Section[] = [
   {
     step: 3,
     name: '周りの方々について',
-    description: 'あなたの周りの方々についてうかがいます。最もあてはまる選択ボタンを選んでください。',
+    description: 'あなたの周りの方々についてうかがいます。\n最もあてはまる選択ボタンを選んでください。',
     questions: [
-      { id: 1, text: '次の人たちとはどのくらい気軽に話ができますか？上司', score: 0, reverse: false },
-      { id: 2, text: '次の人たちとはどのくらい気軽に話ができますか？職場の同僚', score: 0, reverse: false },
-      { id: 3, text: '次の人たちとはどのくらい気軽に話ができますか？配偶者、家族、友人等', score: 0, reverse: false },
-      { id: 4, text: 'あなたが困った時、次の人たちはどのくらい頼りになりますか?上司', score: 0, reverse: false },
-      { id: 5, text: 'あなたが困った時、次の人たちはどのくらい頼りになりますか?職場の同僚', score: 0, reverse: false },
-      { id: 6, text: 'あなたが困った時、次の人たちはどのくらい頼りになりますか?配偶者、家族、友人等', score: 0, reverse: false },
-      { id: 7, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?上司', score: 0, reverse: false },
-      { id: 8, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?職場の同僚', score: 0, reverse: false },
-      { id: 9, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?配偶者、家族、友人等', score: 0, reverse: false },
+      { id: 1, text: '次の人たちとはどのくらい気軽に話ができますか？\n上司', score: 0, reverse: false },
+      { id: 2, text: '次の人たちとはどのくらい気軽に話ができますか？\n職場の同僚', score: 0, reverse: false },
+      { id: 3, text: '次の人たちとはどのくらい気軽に話ができますか？\n配偶者、家族、友人等', score: 0, reverse: false },
+      { id: 4, text: 'あなたが困った時、次の人たちはどのくらい頼りになりますか?\n上司', score: 0, reverse: false },
+      { id: 5, text: 'あなたが困った時、次の人たちはどのくらい頼りになりますか?\n職場の同僚', score: 0, reverse: false },
+      { id: 6, text: 'あなたが困った時、次の人たちはどのくらい頼りになりますか?\n配偶者、家族、友人等', score: 0, reverse: false },
+      { id: 7, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?\n上司', score: 0, reverse: false },
+      { id: 8, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?\n職場の同僚', score: 0, reverse: false },
+      { id: 9, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?\n配偶者、家族、友人等', score: 0, reverse: false },
     ],
     choices: ['非常に', 'かなり', '多少', '全くない'],
   },
   {
     step: 4,
     name: '満足度について',
-    description: 'あなたの満足度についてうかがいます。4つの中から最もあてはまるものを選んでください。（全2問）',
+    description: 'あなたの満足度についてうかがいます。\n4つの中から最もあてはまるものを選んでください。（全2問）',
     questions: [
       { id: 1, text: '仕事に満足だ', score: 0, reverse: false },
       { id: 2, text: '家庭環境に満足だ', score: 0, reverse: false },
