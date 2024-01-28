@@ -11,7 +11,7 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
 
   useEffect(() => {
     const scoresWithDefaults = scores.map(score => score || 0); // Replace undefined or NaN with 0
-    const isHighStress = scoresWithDefaults[1] >= 77 || (scoresWithDefaults[0] + scoresWithDefaults[2] + scoresWithDefaults[3] === 76 && scoresWithDefaults[1] >= 63);
+    const isHighStress = scoresWithDefaults[2] >= 77 || (scoresWithDefaults[1] + scoresWithDefaults[3] === 76 && scoresWithDefaults[2] >= 63);
     setStressLevel(isHighStress ? 'high' : 'low');
   }, [scores]);
 
