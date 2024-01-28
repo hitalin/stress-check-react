@@ -10,6 +10,7 @@ import { calculateScore } from './CalculateScore';
 import { Employee } from './AppTypes';
 import { sections } from './LoadSections';
 import './App.css';
+import ShowChoices from './ShowChoices';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -90,8 +91,9 @@ const App: React.FC = () => {
               </>
               ) : (
               <>
-                <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
-                <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+                <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
+                <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
+                <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
               </>
             )}
           </>
