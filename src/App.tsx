@@ -24,10 +24,7 @@ const App: React.FC = () => {
   };
 
   const handleStartSection = () => {
-    if (currentSection < sections.length - 1) {
-      setCurrentSection(currentSection + 1);
-      setCurrentQuestion(0);
-    }
+    setShowStartSection(false);
   };
 
   return (
@@ -35,7 +32,7 @@ const App: React.FC = () => {
       <header className="App-header">
         <ShowTitle sectionName={sections[currentSection].name} />
         {showStartSection ? (
-          <StartSection description={sections[currentSection + 1].description} onNext={() => setShowStartSection(false)} />
+          <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
         ) : (
           <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={handleNextQuestion} />
         )}
