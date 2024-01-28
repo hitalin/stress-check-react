@@ -1,19 +1,16 @@
 // StartSection.tsx
 import React from 'react';
-import { sections } from './LoadSections';
 
 interface StartSectionProps {
+  description: string;
   onNext: () => void;
 }
 
-const StartSection: React.FC<StartSectionProps> = ({ onNext }) => {
-  const section = sections[0];
-
+const StartSection: React.FC<StartSectionProps> = ({ description, onNext }) => {
   return (
     <div>
-      <h2>{section.name}</h2>
-      <p>{section.description}</p>
-      <button type="button" onClick={onNext}>次に進む</button>
+      <h2>{description}</h2>
+      <button type="button" onClick={onNext}>Start</button>
     </div>
   );
 };
