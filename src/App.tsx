@@ -1,35 +1,34 @@
 // App.tsx
 import React, { useState } from 'react';
+import ShowTitle from './ShowTitle';
 import StartSection from './StartSection';
 import ShowQuestion from './ShowQuestion';
-import ShowTitle from './ShowTitle';
 import { Employee } from './AppTypes';
+import { sections } from './LoadSections';
 import './App.css';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
-  const [step, setStep] = useState(0);
+  const [currentSection, setCurrentSection] = useState<number>(0); // Initialize currentSection with 0
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
 
-  const handleChoiceSelection = (choice: string) => {
-    if (step === 1) {
-      setEmployee({ ...employee, gender: choice });
-    } else if (step === 2) {
-      setEmployee({ ...employee, stressLevel: choice });
+  const handleNextQuestion = () => {
+    if (currentQuestion < sections[currentSection].questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setCurrentSection(currentSection + 1);
+      setCurrentQuestion(0);
     }
-  };
-
-  const handleNext = () => {
-    setStep(step + 1);
   };
 
   return (
     <div className="App">
       <header className="App-header">
         <ShowTitle />
-        {step === 0 ? (
-          <StartSection onNext={handleNext} />
+        {currentSection === 0 ? (
+          <StartSection onNext={handleNextQuestion} />
         ) : (
-          <ShowQuestion onChoiceSelect={handleChoiceSelection} />
+          <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={handleNextQuestion} />
         )}
       </header>
     </div>
