@@ -35,6 +35,8 @@ const App: React.FC = () => {
       setShowStartSection(true);
     } else if (showStartSection && currentSection > 0) {
       setCurrentSection(currentSection - 1);
+      setCurrentQuestion(sections[currentSection - 1].questions.length - 1);
+      setShowStartSection(false);
     }
   };
 
