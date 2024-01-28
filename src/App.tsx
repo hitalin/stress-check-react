@@ -50,7 +50,7 @@ const App: React.FC = () => {
   return (
     <div className="App">
       <header className="App-header">
-        <ShowTitle sectionName={sections[currentSection].name} />
+        <ShowTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
         {showStartSection ? (
           <>
             <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
