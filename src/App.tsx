@@ -5,6 +5,7 @@ import ShowSectionTitle from './ShowSectionTitle';
 import StartSection from './StartSection';
 import ShowQuestion from './ShowQuestion';
 import BackButtons from './BackButtons';
+import ShowResult from './ShowResult';
 import { Employee } from './AppTypes';
 import { sections } from './LoadSections';
 import './App.css';
@@ -14,9 +15,13 @@ const App: React.FC = () => {
   const [currentSection, setCurrentSection] = useState<number>(0); // Initialize currentSection with 0
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
   const [showStartSection, setShowStartSection] = useState<boolean>(true); // Initialize showStartSection with true
+  const [showResults, setShowResults] = useState<boolean>(false);
 
   const handleNextQuestion = () => {
-    if (currentQuestion < sections[currentSection].questions.length - 1) {
+    if (currentSection === sections.length - 1 && currentQuestion === sections[currentSection].questions.length - 1) {
+      // If we're at the last question of the last section, show the results
+      setShowResults(true);
+    } else if (currentQuestion < sections[currentSection].questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setCurrentSection(currentSection + 1);
@@ -52,16 +57,22 @@ const App: React.FC = () => {
     <div className="App">
       <header className="App-header">
         <ShowTitle />
-        {currentSection !== 0 && <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />}
-        {showStartSection ? (
+        {showResults ? (
+          <ShowResult sections={sections} />
+        ) : (
           <>
-            <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
-            {currentSection !== 0 && <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>}
-          </>
-          ) : (
-          <>
-            <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={handleNextQuestion} />
-            <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+            {currentSection !== 0 && <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />}
+            {showStartSection ? (
+              <>
+                <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
+                {currentSection !== 0 && <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>}
+              </>
+              ) : (
+              <>
+                <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={handleNextQuestion} />
+                <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+              </>
+            )}
           </>
         )}
       </header>
