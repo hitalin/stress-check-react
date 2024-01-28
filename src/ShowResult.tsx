@@ -1,37 +1,28 @@
-import React, { useEffect, useState, useCallback } from 'react';
-import { Question, Section } from './AppTypes'; // Import the Question and Section types
+import React, { useEffect, useState } from 'react';
+import { Section } from './AppTypes'; // Import the Section type
 
-type Props = {
+interface Props {
   sections: Section[];
-};
+  scores: number[];
+}
 
-const ShowResult: React.FC<Props> = ({ sections }) => {
+const ShowResult: React.FC<Props> = ({ sections, scores }) => {
   const [stressLevel, setStressLevel] = useState<string>('');
 
-  const calculateScore = useCallback((questions: Question[]) => {
-    return questions.reduce((total, question) => {
-      let score = question.score;
-      if (question.reverse) {
-        score = 5 - score;
-      }
-      return total + score;
-    }, 0);
-  }, []);
-
   useEffect(() => {
-    const scores = sections.slice(1).map(section => calculateScore(section.questions));
-    const isHighStress = scores[1] >= 77 || (scores[0] + scores[2] + scores[3] === 76 && scores[1] >= 63);
+    const scoresWithDefaults = scores.map(score => score || 0); // Replace undefined or NaN with 0
+    const isHighStress = scoresWithDefaults[1] >= 77 || (scoresWithDefaults[0] + scoresWithDefaults[2] + scoresWithDefaults[3] === 76 && scoresWithDefaults[1] >= 63);
     setStressLevel(isHighStress ? 'high' : 'low');
-  }, [sections, calculateScore]);
+  }, [scores]);
 
   return (
     <div>
       <h2>判定</h2>
       <p>{stressLevel === 'high' ? '高ストレス者です' : '低ストレス者です'}</p>
-      {sections.slice(1).map((section) => (
+      {sections.slice(1).map((section, index) => (
         <div key={section.step}>
           <h3>{section.name}</h3>
-          <p>合計点: {calculateScore(section.questions)}</p>
+          <p>合計点: {scores[index + 1]}</p>
         </div>
       ))}
     </div>

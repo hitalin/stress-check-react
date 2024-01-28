@@ -6,6 +6,7 @@ import StartSection from './StartSection';
 import ShowQuestion from './ShowQuestion';
 import BackButtons from './BackButtons';
 import ShowResult from './ShowResult';
+import { calculateScore } from './CalculateScore';
 import { Employee } from './AppTypes';
 import { sections } from './LoadSections';
 import './App.css';
@@ -16,6 +17,27 @@ const App: React.FC = () => {
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
   const [showStartSection, setShowStartSection] = useState<boolean>(true); // Initialize showStartSection with true
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
+
+  const handleChoiceSelect = (choice: string, questionIndex: number) => {
+    const choiceIndex = sections[currentSection].choices.indexOf(choice);
+    const choiceValue = choiceIndex >= 0 ? choiceIndex + 1 : 0; // Add 1 to the index to start the score at 1
+
+    // Update the score of the selected question
+    sections[currentSection].questions[questionIndex].score = choiceValue;
+
+    // Calculate the score of the current section
+    const sectionScore = calculateScore(sections[currentSection].questions);
+
+    // Update the scores state
+    setScores(prevScores => {
+      const newScores = [...prevScores];
+      newScores[currentSection] = sectionScore;
+      return newScores;
+    });
+
+    handleNextQuestion(); // Call handleNextQuestion function to move to the next question
+  };
 
   const handleNextQuestion = () => {
     if (currentSection === sections.length - 1 && currentQuestion === sections[currentSection].questions.length - 1) {
@@ -52,13 +74,12 @@ const App: React.FC = () => {
     setShowStartSection(true);
   };
 
-
   return (
     <div className="App">
       <header className="App-header">
         <ShowTitle />
         {showResults ? (
-          <ShowResult sections={sections} />
+          <ShowResult sections={sections} scores={scores} />
         ) : (
           <>
             {currentSection !== 0 && <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />}
@@ -69,7 +90,7 @@ const App: React.FC = () => {
               </>
               ) : (
               <>
-                <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={handleNextQuestion} />
+                <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>
               </>
             )}
