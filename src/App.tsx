@@ -52,14 +52,14 @@ const App: React.FC = () => {
         {showStartSection ? (
           <>
             <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
-            <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+            {currentSection !== 0 && <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>}
           </>
           ) : (
           <>
             <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={handleNextQuestion} />
             <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>
           </>
-)}
+        )}
       </header>
     </div>
   );
