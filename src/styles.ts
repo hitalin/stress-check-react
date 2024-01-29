@@ -4,3 +4,5 @@ export const dotsContainerStyle = "flex flex-wrap justify-center";
 export const dotStyle = "h-2.5 w-2.5 rounded-full m-1 sm:h-3 sm:w-3 sm:m-1.5";
 export const backButtonClass = "m-2 hover:opacity-50";
 export const flexColumnRowClass = "flex flex-col sm:flex-row";
+export const marginStyle = "mt-1 mb-1";
+export const textStyle = "flex flex-grow items-center justify-center";

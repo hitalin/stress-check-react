@@ -6,13 +6,14 @@ import StartSection from './StartSection';
 import NextButton from './NextButton';
 import ProgressDots from './ProgressDots';
 import ShowQuestion from './ShowQuestion';
+import ShowChoices from './ShowChoices';
 import BackButtons from './BackButtons';
 import ShowResult from './ShowResult';
-import { calculateScore } from './CalculateScore';
 import { Employee } from './AppTypes';
 import { sections } from './LoadSections';
+import { calculateScore } from './CalculateScore';
+import { marginStyle, textStyle } from './styles';
 import './App.css';
-import ShowChoices from './ShowChoices';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -87,29 +88,29 @@ const App: React.FC = () => {
           <ShowResult sections={sections} scores={scores} />
         ) : (
           <>
-            {currentSection !== 0 && <div className="mt-1"><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
+            {currentSection !== 0 && <div className={marginStyle}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div className="mt-1 flex flex-grow items-center justify-center">
+                <div className={`${marginStyle} ${textStyle}`}>
                   <StartSection description={sections[currentSection].description} />
                 </div>
-                <div className="mt-1">
+                <div className={marginStyle}>
                   <NextButton onNext={handleNextButton} />
                 </div>
-                {currentSection !== 0 && <div className="mb-1"><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
+                {currentSection !== 0 && <div className={marginStyle}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
               </>
               ) : (
               <>
-                <div className="mt-1">
+                <div className={marginStyle}>
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div className="mt-1 flex flex-grow flex-col items-center justify-center">
+                <div className={`${marginStyle} ${textStyle} flex-col`}>
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
-                <div className="mt-1">
+                <div className={marginStyle}>
                   <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 </div>
-                <div className="mt-1 flex justify-between">
+                <div className={`${marginStyle} justify-between`}>
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
                 </div>
               </>
