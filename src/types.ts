@@ -9,6 +9,7 @@ export type Section = {
   description: string;
   questions: Question[];
   choices: string[];
+  factors: Factor[];
 };
 
 export type Question = {
@@ -17,3 +18,11 @@ export type Question = {
   score: number;
   reverse: boolean;
 };
+
+export type Factor = {
+  point: number;
+  scale: string;
+  value: number;
+  inverse: boolean;
+};
+

@@ -7,6 +7,7 @@ export const sections: Section[] = [
     description: '4つのSTEPによる簡単な質問から、あなたの職場におけるストレスレベルを測定します。\n質問は全部で57問です。（所要時間約5分間）',
     questions: [{ id: 1, text: 'はじめに性別を選んでください', score: 0, reverse: false }],
     choices: ['男性', '女性', 'その他', '答えない'],
+    factors: [{ point: 0, scale: '', value: 0, inverse: false }],
   },
   {
     step: 1,
@@ -32,6 +33,17 @@ export const sections: Section[] = [
       { id: 17, text: '働きがいのある仕事だ', score: 0, reverse: false },
     ],
     choices: ['そうだ', 'まあそうだ', 'ややちがう', 'ちがう'],
+    factors: [
+      { point: 1, scale: '心理的な仕事の負担（量）', value: 0, inverse: true },
+      { point: 2, scale: '心理的な仕事の負担（質）', value: 0, inverse: true },
+      { point: 3, scale: '自覚的な身体的負担度', value: 0, inverse: true },
+      { point: 4, scale: '職場の対人関係でのストレス', value: 0, inverse: true },
+      { point: 5, scale: '職場環境によるストレス', value: 0, inverse: true },
+      { point: 6, scale: '仕事のコントロール度', value: 0, inverse: false },
+      { point: 7, scale: '技能の活用度', value: 0, inverse: false },
+      { point: 8, scale: '仕事の適性度', value: 0, inverse: false },
+      { point: 9, scale: '働きがい', value: 0, inverse: false },
+    ],
   },
   {
     step: 2,
@@ -69,6 +81,14 @@ export const sections: Section[] = [
       { id: 29, text: 'よく眠れない', score: 0, reverse: false },
     ],
     choices: ['ほとんどなかった', 'ときどきあった', 'しばしばあった', 'ほとんどいつもあった'],
+    factors: [
+      { point: 1, scale: '活気', value: 0, inverse: false },
+      { point: 2, scale: 'イライラ感', value: 0, inverse: true },
+      { point: 3, scale: '疲労感', value: 0, inverse: true },
+      { point: 4, scale: '不安感', value: 0, inverse: true },
+      { point: 5, scale: '抑うつ感', value: 0, inverse: true },
+      { point: 6, scale: '身体愁訴', value: 0, inverse: true },
+    ],
   },
   {
     step: 3,
@@ -86,6 +106,11 @@ export const sections: Section[] = [
       { id: 9, text: 'あなたの個人的な問題を相談したら、次の人たちはどのくらい聞いてくれますか?\n配偶者、家族、友人等', score: 0, reverse: false },
     ],
     choices: ['非常に', 'かなり', '多少', '全くない'],
+    factors: [
+      { point: 1, scale: '上司からのサポート', value: 0, inverse: false },
+      { point: 2, scale: '同僚からのサポート', value: 0, inverse: false },
+      { point: 3, scale: '家族・友人からのサポート', value: 0, inverse: false },
+    ],
   },
   {
     step: 4,
@@ -96,6 +121,7 @@ export const sections: Section[] = [
       { id: 2, text: '家庭環境に満足だ', score: 0, reverse: false },
     ],
     choices: ['満足', 'まあ満足', 'やや不満足', '不満足'],
+    factors: [{ point: 1, scale: '仕事や生活の満足度', value: 0, inverse: false }],
   },
 ];
 
