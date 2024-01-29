@@ -1,5 +1,7 @@
+// ShowResult.tsx
 import React, { useEffect, useState } from 'react';
-import { Section } from './types'; // Import the Section type
+import { Section } from './types';
+import { calculateStressLevel } from './calculateStressLevel';
 
 interface Props {
   sections: Section[];
@@ -10,21 +12,17 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
   const [stressLevel, setStressLevel] = useState<string>('');
 
   useEffect(() => {
-    const scoresWithDefaults = scores.map(score => score || 0); // Replace undefined or NaN with 0
-    const isHighStress = scoresWithDefaults[2] >= 77 || (scoresWithDefaults[1] + scoresWithDefaults[3] === 76 && scoresWithDefaults[2] >= 63);
-    setStressLevel(isHighStress ? 'high' : 'low');
+    const level = calculateStressLevel(scores);
+    setStressLevel(level);
   }, [scores]);
 
   return (
     <div>
       <h2>判定</h2>
       <p>{stressLevel === 'high' ? '高ストレス者です' : '低ストレス者です'}</p>
-      {sections.slice(1).map((section, index) => (
-        <div key={section.step}>
-          <h3>{section.name}</h3>
-          <p>合計点: {scores[index + 1]}</p>
-        </div>
-      ))}
+      <p>STEP{sections[1].step} {sections[1].name}の合計点: {scores[1]}</p>
+      <p>STEP{sections[2].step} {sections[2].name}の合計点: {scores[2]}</p>
+      <p>STEP{sections[3].step} {sections[3].name}の合計点: {scores[3]}</p>
     </div>
   );
 };
