@@ -1,5 +1,6 @@
 // ProgressDots.tsx
 import React from 'react';
+import { flexCenterClass } from './styles';
 
 interface ProgressDotsProps {
   questionIndex: number;
@@ -8,7 +9,7 @@ interface ProgressDotsProps {
 
 const ProgressDots: React.FC<ProgressDotsProps> = ({ questionIndex, totalQuestions }) => {
   return (
-    <div className="flex justify-center">
+    <div className={flexCenterClass}>
       {Array.from({ length: totalQuestions }, (_, i) => `dot-${i + totalQuestions}`).map((key, index) => (
         <div
           key={key}

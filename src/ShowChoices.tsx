@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './AppTypes';
-import { buttonClass } from './styles';
+import { flexColumnRowClass, buttonClass } from './styles';
 
 interface ShowChoicesProps {
   section: Section;
@@ -12,7 +12,7 @@ const ShowChoices: React.FC<ShowChoicesProps> = ({ section, questionIndex, onCho
   const question = section.questions[questionIndex];
 
   return (
-    <div className='flex flex-col sm:flex-row'>
+    <div className={flexColumnRowClass}>
       {section.choices.map((choice, index) => {
         return (
           <button
