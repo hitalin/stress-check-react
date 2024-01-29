@@ -87,7 +87,7 @@ const App: React.FC = () => {
           <ShowResult sections={sections} scores={scores} />
         ) : (
           <>
-            {currentSection !== 0 && <div className="mt-2"><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
+            {currentSection !== 0 && <div className="mt-1"><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
                 <div className="mt-1 flex flex-grow items-center justify-center">
@@ -96,7 +96,7 @@ const App: React.FC = () => {
                 <div className="mt-1">
                   <NextButton onNext={handleNextButton} />
                 </div>
-                {currentSection !== 0 && <div className="mb-3"><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
+                {currentSection !== 0 && <div className="mb-1"><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
               </>
               ) : (
               <>
