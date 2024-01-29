@@ -2,11 +2,11 @@
 import React from 'react';
 
 interface ProgressDotsProps {
-  currentQuestionIndex: number;
+  questionIndex: number;
   totalQuestions: number;
 }
 
-const ProgressDots: React.FC<ProgressDotsProps> = ({ currentQuestionIndex, totalQuestions }) => {
+const ProgressDots: React.FC<ProgressDotsProps> = ({ questionIndex, totalQuestions }) => {
   return (
     <div className="flex justify-center">
       {Array.from({ length: totalQuestions }, (_, i) => `dot-${i + totalQuestions}`).map((key, index) => (
@@ -16,7 +16,7 @@ const ProgressDots: React.FC<ProgressDotsProps> = ({ currentQuestionIndex, total
             height: '10px',
             width: '10px',
             borderRadius: '50%',
-            backgroundColor: index <= currentQuestionIndex ? '#008CBA' : '#bbb',
+            backgroundColor: index <= questionIndex ? '#008CBA' : '#bbb',
             margin: '5px',
           }}
         />

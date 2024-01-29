@@ -92,7 +92,7 @@ const App: React.FC = () => {
               </>
               ) : (
               <>
-                <ProgressDots currentQuestionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />
+                <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />
                 <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
