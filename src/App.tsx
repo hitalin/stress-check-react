@@ -78,7 +78,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App flex flex-col h-screen justify-between">
+    <div className="App flex flex-col h-screen justify-between sm:py-2">
       <header className="App-header px-4 sm:px-6 lg:px-8">
         <div className="pt-6">
           <ShowTitle />
