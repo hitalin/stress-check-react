@@ -1,7 +1,9 @@
 // styles.ts
 export const baseButton = "px-4 py-2 rounded shadow-lg transition-colors duration-300 m-2";
 export const blueButton = "bg-blue-100 text-blue-500 border-2 border-blue-300 hover:bg-blue-50";
-export const buttonClass = `${baseButton} ${blueButton}`;
+export const hoverButton = "hover:shadow-2xl hover:scale-105";
+export const transitionButton = "transition-all duration-500"
+export const buttonClass = `${baseButton} ${blueButton} ${hoverButton} ${transitionButton}`;
 
 export const flexCenterWrap = "flex flex-wrap justify-center";
 
