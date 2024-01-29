@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ShowTitle from './ShowTitle';
 import ShowSectionTitle from './ShowSectionTitle';
 import StartSection from './StartSection';
+import ProgressDots from './ProgressDots';
 import ShowQuestion from './ShowQuestion';
 import BackButtons from './BackButtons';
 import ShowResult from './ShowResult';
@@ -91,6 +92,7 @@ const App: React.FC = () => {
               </>
               ) : (
               <>
+                <ProgressDots currentQuestionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />
                 <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
