@@ -19,11 +19,6 @@ a {
   cursor: pointer;
 }
 
-.centerText {
+.pre-line {
   white-space: pre-line;
-  text-align: center;
-}
-
-.largeText {
-  font-size: 2em;
 }
