@@ -90,26 +90,26 @@ const App: React.FC = () => {
             {currentSection !== 0 && <div className="mt-2"><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div className="mt-2 flex flex-grow items-center justify-center">
+                <div className="mt-1 flex flex-grow items-center justify-center">
                   <StartSection description={sections[currentSection].description} />
                 </div>
-                <div className="mt-2">
+                <div className="mt-1">
                   <NextButton onNext={handleNextButton} />
                 </div>
                 {currentSection !== 0 && <div className="mb-3"><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
               </>
               ) : (
               <>
-                <div className="mt-2">
+                <div className="mt-1">
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div className="mt-2 flex flex-grow flex-col items-center justify-center">
+                <div className="mt-1 flex flex-grow flex-col items-center justify-center">
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
-                <div className="mt-2">
+                <div className="mt-1">
                   <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 </div>
-                <div className="flex justify-between">
+                <div className="mt-1 flex justify-between">
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
                 </div>
               </>
