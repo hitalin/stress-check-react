@@ -1,4 +1,4 @@
-import { Section } from './AppTypes';
+import { Section } from './types';
 
 export const sections: Section[] = [
   {

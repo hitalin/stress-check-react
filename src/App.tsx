@@ -9,9 +9,9 @@ import ShowQuestion from './ShowQuestion';
 import ShowChoices from './ShowChoices';
 import BackButtons from './BackButtons';
 import ShowResult from './ShowResult';
-import { Employee } from './AppTypes';
-import { sections } from './LoadSections';
-import { calculateScore } from './CalculateScore';
+import { Employee } from './types';
+import { sections } from './loadSections';
+import { calculateScore } from './calculateScore';
 import { marginStyle, flexCenterGrow } from './styles';
 import './App.css';
 

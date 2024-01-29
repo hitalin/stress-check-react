@@ -1,5 +1,5 @@
 import React from 'react';
-import { Section } from './AppTypes';
+import { Section } from './types';
 
 interface ShowQuestionProps {
   section: Section;
