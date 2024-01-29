@@ -90,10 +90,10 @@ const App: React.FC = () => {
             {currentSection !== 0 && <div className="mt-3"><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div className="mt-3 flex-grow flex items-center justify-center">
+                <div className="mt-3 flex flex-grow items-center justify-center">
                   <StartSection description={sections[currentSection].description} />
                 </div>
-                <div className="flex items-center justify-center" style={{ height: 'calc(100vh - 400px)' }}>
+                <div className="mt-3">
                   <NextButton onNext={handleNextButton} />
                 </div>
                 {currentSection !== 0 && <div className="mb-3"><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
@@ -103,13 +103,13 @@ const App: React.FC = () => {
                 <div className="mt-3">
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div className="flex flex-col mt-3 flex-grow items-center justify-center">
+                <div className="mt-3 flex flex-grow flex-col items-center justify-center">
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div className="mt-3">
                   <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 </div>
-                <div className="mb-3">
+                <div className="mt-3">
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
                 </div>
               </>
