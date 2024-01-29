@@ -1,17 +1,14 @@
 // StartSection.tsx
 import React from 'react';
-import { buttonClass } from './styles';
 
 interface StartSectionProps {
   description: string;
-  onNext: () => void;
 }
 
-const StartSection: React.FC<StartSectionProps> = ({ description, onNext }) => {
+const StartSection: React.FC<StartSectionProps> = ({ description }) => {
   return (
     <div>
       <h2 className="font-body text-container">{description}</h2>
-      <button type="button" onClick={onNext} className={buttonClass}>次へ</button>
     </div>
   );
 };

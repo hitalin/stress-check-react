@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import ShowTitle from './ShowTitle';
 import ShowSectionTitle from './ShowSectionTitle';
 import StartSection from './StartSection';
+import NextButton from './NextButton';
 import ProgressDots from './ProgressDots';
 import ShowQuestion from './ShowQuestion';
 import BackButtons from './BackButtons';
@@ -54,7 +55,7 @@ const App: React.FC = () => {
     }
   };
 
-  const handleStartSection = () => {
+  const handleNextButton = () => {
     setShowStartSection(false);
   };
 
@@ -77,25 +78,40 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <ShowTitle />
+    <div className="App flex flex-col h-screen justify-between">
+      <header className="App-header px-4 sm:px-6 lg:px-8">
+        <div className="pt-6">
+          <ShowTitle />
+        </div>
         {showResults ? (
           <ShowResult sections={sections} scores={scores} />
         ) : (
           <>
-            {currentSection !== 0 && <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />}
+            {currentSection !== 0 && <div className="mt-3"><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <StartSection description={sections[currentSection].description} onNext={handleStartSection} />
-                {currentSection !== 0 && <BackButtons  onBackToTitle={handleBackToTitle} onBack={handleBack}/>}
+                <div className="mt-3 flex-grow flex items-center justify-center">
+                  <StartSection description={sections[currentSection].description} />
+                </div>
+                <div className="flex items-center justify-center" style={{ height: 'calc(100vh - 400px)' }}>
+                  <NextButton onNext={handleNextButton} />
+                </div>
+                {currentSection !== 0 && <div className="mb-3"><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
               </>
               ) : (
               <>
-                <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />
-                <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
-                <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
-                <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+                <div className="mt-3">
+                  {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
+                </div>
+                <div className="flex flex-col mt-3 flex-grow items-center justify-center">
+                  <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
+                </div>
+                <div className="mt-3">
+                  <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
+                </div>
+                <div className="mb-3">
+                  <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+                </div>
               </>
             )}
           </>
