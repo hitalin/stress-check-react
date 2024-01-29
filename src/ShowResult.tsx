@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Section } from './AppTypes'; // Import the Section type
+import { Section } from './types'; // Import the Section type
 
 interface Props {
   sections: Section[];
