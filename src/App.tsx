@@ -109,7 +109,7 @@ const App: React.FC = () => {
                 <div className="mt-2">
                   <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 </div>
-                <div className="mt-2 flex justify-between">
+                <div className="flex justify-between">
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
                 </div>
               </>
