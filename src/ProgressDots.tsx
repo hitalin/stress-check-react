@@ -1,6 +1,6 @@
 // ProgressDots.tsx
 import React from 'react';
-import { dotsContainerStyle, dotStyle } from './styles';
+import { flexCenterWrap, dotStyle } from './styles';
 
 interface ProgressDotsProps {
   questionIndex: number;
@@ -9,7 +9,7 @@ interface ProgressDotsProps {
 
 const ProgressDots: React.FC<ProgressDotsProps> = ({ questionIndex, totalQuestions }) => {
   return (
-    <div className={dotsContainerStyle}>
+    <div className={flexCenterWrap}>
       {Array.from({ length: totalQuestions }, (_, i) => `dot-${i + totalQuestions}`).map((key, index) => (
         <div className={dotStyle} style={{backgroundColor: index <= questionIndex ? '#008CBA' : '#bbb'}} />
       ))}

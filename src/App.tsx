@@ -12,7 +12,7 @@ import ShowResult from './ShowResult';
 import { Employee } from './AppTypes';
 import { sections } from './LoadSections';
 import { calculateScore } from './CalculateScore';
-import { marginStyle, textStyle } from './styles';
+import { marginStyle, flexCenterGrow } from './styles';
 import './App.css';
 
 const App: React.FC = () => {
@@ -91,7 +91,7 @@ const App: React.FC = () => {
             {currentSection !== 0 && <div className={marginStyle}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div className={`${marginStyle} ${textStyle}`}>
+                <div className={`${marginStyle} ${flexCenterGrow}`}>
                   <StartSection description={sections[currentSection].description} />
                 </div>
                 <div className={marginStyle}>
@@ -104,7 +104,7 @@ const App: React.FC = () => {
                 <div className={marginStyle}>
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div className={`${marginStyle} ${textStyle} flex-col`}>
+                <div className={`${marginStyle} ${flexCenterGrow} flex-col`}>
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div className={marginStyle}>
