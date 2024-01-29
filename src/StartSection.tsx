@@ -10,7 +10,7 @@ interface StartSectionProps {
 const StartSection: React.FC<StartSectionProps> = ({ description, onNext }) => {
   return (
     <div>
-      <h2 style={{ whiteSpace: 'pre-line', textAlign: 'center' }}>{description}</h2>
+      <h2 className="centerText">{description}</h2>
       <button type="button" onClick={onNext} className={buttonClass}>次へ</button>
     </div>
   );

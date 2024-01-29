@@ -11,7 +11,7 @@ const ShowQuestion: React.FC<ShowQuestionProps> = ({ section, questionIndex }) =
 
   return (
     <div>
-      <h3 style={{ whiteSpace: 'pre-line', textAlign: 'center', fontSize: '2em' }}>{question.text}</h3>
+      <h3 className="centerText largeText">{question.text}</h3>
     </div>
   );
 };
