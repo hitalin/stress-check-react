@@ -12,8 +12,8 @@ import ShowResult from './ShowResult';
 import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
-import { marginStyle, flexCenterGrow } from './styles';
-import './App.css';
+import { css } from '@emotion/react';
+import { appStyle, appHeaderStyle, pt6Style, marginStyle, flexCenterGrow } from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -79,38 +79,38 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="App flex flex-col h-screen justify-between sm:py-2">
-      <header className="App-header px-4 sm:px-6 lg:px-8">
-        <div className="pt-6">
+    <div css={appStyle}>
+      <header css={appHeaderStyle}>
+        <div css={pt6Style}>
           <ShowTitle />
         </div>
         {showResults ? (
           <ShowResult sections={sections} scores={scores} />
         ) : (
           <>
-            {currentSection !== 0 && <div className={marginStyle}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
+            {currentSection !== 0 && <div css={css`${marginStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div className={`${marginStyle} ${flexCenterGrow}`}>
+                <div css={css`${marginStyle} ${flexCenterGrow}`}>
                   <StartSection description={sections[currentSection].description} />
                 </div>
-                <div className={marginStyle}>
+                <div css={css`${marginStyle}`}>
                   <NextButton onNext={handleNextButton} />
                 </div>
-                {currentSection !== 0 && <div className={marginStyle}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
+                {currentSection !== 0 && <div css={css`${marginStyle}`}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
               </>
               ) : (
               <>
-                <div className={marginStyle}>
+                <div css={css`${marginStyle}`}>
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div className={`${marginStyle} ${flexCenterGrow} flex-col`}>
+                <div css={css`${marginStyle} ${flexCenterGrow}`}>
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
-                <div className={marginStyle}>
+                <div css={css`${marginStyle}`}>
                   <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 </div>
-                <div className={`${marginStyle} justify-between`}>
+                <div css={css`${marginStyle}`}>
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
                 </div>
               </>

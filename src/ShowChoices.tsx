@@ -12,13 +12,13 @@ const ShowChoices: React.FC<ShowChoicesProps> = ({ section, questionIndex, onCho
   const question = section.questions[questionIndex];
 
   return (
-    <div className={flexColumnRowClass}>
+    <div css={flexColumnRowClass}>
       {section.choices.map((choice, index) => {
         return (
           <button
             key={`${question.id}-${index}`}
             type="button"
-            className={buttonClass}
+            css={buttonClass}
             onClick={() => onChoiceSelect(choice)}
           >
             {choice}

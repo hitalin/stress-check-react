@@ -8,7 +8,7 @@ interface StartSectionProps {
 const StartSection: React.FC<StartSectionProps> = ({ description }) => {
   return (
     <div>
-      <h2 className="font-body text-container">{description}</h2>
+      <h2>{description}</h2>
     </div>
   );
 };

@@ -8,7 +8,7 @@ interface NextButtonProps {
 
 const NextButton: React.FC<NextButtonProps> = ({ onNext }) => {
   return (
-    <button type="button" onClick={onNext} className={buttonClass}>次へ</button>
+    <button type="button" onClick={onNext} css={buttonClass}>次へ</button>
   );
 };
 
