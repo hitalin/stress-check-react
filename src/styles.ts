@@ -210,15 +210,16 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
 
 export const ShowChoiceButtons = css`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 100%;
-  margin-top: auto;
+  width: 300px;
+  margin: 0.25rem auto;
 
   @media (min-width: 768px) {
-    flex-direction: row;
-    flex-wrap: wrap;
+    margin-top: auto;
+    flex-direction: column;
+    width: auto;
   }
 `;
 
@@ -254,14 +255,14 @@ export const showProgress = css`
 
 export const showBackButtons = css`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   width: 100%;
   margin-top: auto;
 
-  @media (max-width: 767px) {
-    flex-direction: column;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
   }
 `;
 
