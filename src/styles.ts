@@ -147,6 +147,14 @@ export const showProgress = css`
   }
 `;
 
+export const showBackButtons = css`
+  position: absolute;
+  bottom: 3px;
+  left: 3px;
+  display: flex;
+  flex-direction: row;
+`;
+
 export const baseDot = css`
   height: 0.5rem;
   width: 0.5rem;

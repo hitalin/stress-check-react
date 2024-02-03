@@ -13,7 +13,7 @@ import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import { css } from '@emotion/react';
-import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showProgress} from './styles';
+import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showProgress, showBackButtons} from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -97,7 +97,7 @@ const App: React.FC = () => {
                 <div css={css`${marginStyle}`}>
                   <NextButton onNext={handleNextButton} />
                 </div>
-                {currentSection !== 0 && <div css={css`${marginStyle}`}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
+                {currentSection !== 0 && <div css={css`${showBackButtons}`}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
               </>
               ) : (
               <>
@@ -110,7 +110,7 @@ const App: React.FC = () => {
                 <div css={css`${marginStyle}`}>
                   <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
                 </div>
-                <div css={css`${marginStyle}`}>
+                <div css={css`${showBackButtons}`}>
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
                 </div>
               </>
