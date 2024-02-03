@@ -13,7 +13,7 @@ import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import { css } from '@emotion/react';
-import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showProgress, ShowChoiceButtons, showBackButtons} from './styles';
+import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showProgress, ShowChoiceButtons, showQuestionText, showBackButtons} from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -104,7 +104,7 @@ const App: React.FC = () => {
                 <div css={css`${showProgress}`}>
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div css={css`${marginStyle}`}>
+                <div css={css`${showQuestionText}`}>
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div css={css`${ShowChoiceButtons}`}>

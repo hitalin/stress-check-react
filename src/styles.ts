@@ -45,16 +45,6 @@ export const linkStyle = css`
   color: #333;
 `;
 
-export const textContainerStyle = css`
-  white-space: pre-line;
-  text-align: center;
-  font-size: 1.125rem;
-  width: 100%;
-  height: auto;
-  overflow: auto;
-  color: #333;
-`;
-
 export const appStyle = css`
   display: flex;
   flex-direction: column;
@@ -106,6 +96,32 @@ export const sectionTitleStyle = css`
     left: 3px;
     transform: translate(10px, 10px);
   }
+`;
+
+export const questionColors = [
+  '#000000', // セクション0: 黒（このままで良い）
+  '#AED581', // セクション1: より濃い黄緑、でもまだ淡い色調
+  '#92CAFF', // セクション2: より濃い水色、でも淡い色調を保持
+  '#9FC3F7', // セクション3: より濃い青、淡い色調を保持しつつ読みやすく
+  '#C7A4FF', // セクション4: より濃い紫、淡い色調を保持しつつ視認性を高める
+];
+
+export const dynamicQuestionColor = (colorIndex: number) => css`
+  color: ${questionColors[colorIndex % questionColors.length]};
+`;
+
+export const showQuestionText = css`
+  font-size: 2rem; // 20px相当。デフォルトより大きくする
+  font-weight: bold; // 太字で読みやすく
+  line-height: 1.5; // 行間を適切に設定
+  text-align: center; // 中央揃えで読みやすく
+  margin: 20px 0; // 上下のマージンで適切な間隔を確保
+  position: absolute;
+  top: 25vh;
+  height: auto;
+  width: 100%;
+  overflow: auto;
+  white-space: pre-line;
 `;
 
 export const baseButton = css`
