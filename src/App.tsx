@@ -13,7 +13,7 @@ import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import { css } from '@emotion/react';
-import { appStyle, appHeaderStyle, pt6Style, marginStyle} from './styles';
+import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle} from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -81,14 +81,14 @@ const App: React.FC = () => {
   return (
     <div css={appStyle}>
       <header css={appHeaderStyle}>
-        <div css={pt6Style}>
+        <div css={titleStyle}>
           <ShowTitle />
         </div>
         {showResults ? (
           <ShowResult sections={sections} scores={scores} />
         ) : (
           <>
-            {currentSection !== 0 && <div css={css`${marginStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
+            {currentSection !== 0 && <div css={css`${sectionTitleStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
                 <div css={css`${marginStyle}`}>

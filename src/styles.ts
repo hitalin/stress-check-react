@@ -90,15 +90,20 @@ export const appHeaderStyle = css`
   }
 `;
 
-export const pt6Style = css`
-  // @media (min-width: 640px) {
-  //   display: none;
-  // }
-
+export const titleStyle = css`
   @media (min-width: 1024px) {
     position: absolute;
     top: 0px;
     left: 0px;
+    transform: translate(10px, 10px);
+  }
+`;
+
+export const sectionTitleStyle = css`
+  @media (min-width: 1024px) {
+    position: absolute;
+    top: 20px;
+    left: 3px;
     transform: translate(10px, 10px);
   }
 `;
