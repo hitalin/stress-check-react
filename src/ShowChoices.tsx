@@ -1,6 +1,6 @@
 import React from 'react';
 import { Section } from './types';
-import { flexColumnRowClass, buttonClass } from './styles';
+import { dynamicChoiceButton } from './styles';
 
 interface ShowChoicesProps {
   section: Section;
@@ -12,19 +12,17 @@ const ShowChoices: React.FC<ShowChoicesProps> = ({ section, questionIndex, onCho
   const question = section.questions[questionIndex];
 
   return (
-    <div css={flexColumnRowClass}>
-      {section.choices.map((choice, index) => {
-        return (
-          <button
-            key={`${question.id}-${index}`}
-            type="button"
-            css={buttonClass}
-            onClick={() => onChoiceSelect(choice)}
-          >
-            {choice}
-          </button>
-        );
-      })}
+    <div>
+      {section.choices.map((choice, index) => (
+        <button
+          key={`${question.id}-${index}`}
+          type="button"
+          css={dynamicChoiceButton(index)} // 色を動的に適用
+          onClick={() => onChoiceSelect(choice)}
+        >
+          {choice}
+        </button>
+      ))}
     </div>
   );
 };

@@ -128,7 +128,79 @@ export const transitionButton = css`
   transition: all 0.5s;
 `;
 
-export const buttonClass = css`
+export const choiceColors = [
+  css`
+    background-color: #FFD1A4; // 淡いオレンジ
+    color: #805300; // オレンジに合わせたテキスト色
+    border: 2px solid #FFD1A4; // 枠線も同色で
+    &:hover {
+      background-color: #FFB073;
+    }
+  `,
+  css`
+    background-color: #B7E1CD; // 淡い緑
+    color: #1E4D2B; // 緑に合わせたテキスト色
+    border: 2px solid #B7E1CD;
+    &:hover {
+      background-color: #9FD3B1;
+    }
+  `,
+  css`
+    background-color: #cce5ff;
+    color: #004085;
+    border: 2px solid #b8daff;
+    &:hover {
+      background-color: #e6f7ff;
+    }
+  `,
+  css`
+    background-color: #BDD7EE; // 淡い青
+    color: #003C8F; // 青に合わせたテキスト色
+    border: 2px solid #BDD7EE;
+    &:hover {
+      background-color: #A6C8E1;
+    }
+  `
+];
+
+// choiceButtonClass を更新して色を動的に適用できるように変更
+export const dynamicChoiceButton = (colorIndex: number) => css`
+  ${baseButton};
+  ${choiceColors[colorIndex % choiceColors.length]}; // 色の循環を保証
+  ${transitionButton};
+`;
+
+export const ShowChoiceButtons = css`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: absolute;
+  bottom: 100px;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    justify-content: center;
+    bottom: 100px;
+  }
+`;
+
+export const baseColor = css`
+  color: #FF9999;
+`;
+
+export const backButtonClass = css`
+  ${baseButton};
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: transparent;
+  }
+`;
+
+
+export const nextButtonClass = css`
   ${baseButton};
   ${blueButton};
   ${transitionButton};
@@ -173,21 +245,6 @@ export const smDot = css`
 export const dotStyle = css`
   ${baseDot};
   ${smDot};
-`;
-
-export const backButtonClass = css`
-  margin: 0.5rem;
-  &:hover {
-    opacity: 0.5;
-  }
-`;
-
-export const flexColumnRowClass = css`
-  display: flex;
-  flex-direction: column;
-  @media (min-width: 640px) {
-    flex-direction: row;
-  }
 `;
 
 export const marginStyle = css`

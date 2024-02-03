@@ -1,6 +1,6 @@
 // NextButton.tsx
 import React from 'react';
-import { buttonClass } from './styles';
+import { nextButtonClass } from './styles';
 
 interface NextButtonProps {
   onNext: () => void;
@@ -8,7 +8,7 @@ interface NextButtonProps {
 
 const NextButton: React.FC<NextButtonProps> = ({ onNext }) => {
   return (
-    <button type="button" onClick={onNext} css={buttonClass}>次へ</button>
+    <button type="button" onClick={onNext} css={nextButtonClass}>次へ</button>
   );
 };
 
