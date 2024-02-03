@@ -73,7 +73,20 @@ export const appHeaderStyle = css`
   }
 
   @media (min-width: 1024px) {
-    padding: 2.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #FF9999;
+    border-radius: 25px;
+    padding: 20px;
+    width: 70vw;
+    height: 80vh;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 `;
 
@@ -152,11 +165,4 @@ export const flexColumnRowClass = css`
 export const marginStyle = css`
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
-`;
-
-export const flexCenterGrow = css`
-  display: flex;
-  flex-grow: 1;
-  align-items: center;
-  justify-content: center;
 `;

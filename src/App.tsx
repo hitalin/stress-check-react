@@ -13,7 +13,7 @@ import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import { css } from '@emotion/react';
-import { appStyle, appHeaderStyle, pt6Style, marginStyle, flexCenterGrow } from './styles';
+import { appStyle, appHeaderStyle, pt6Style, marginStyle} from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -91,7 +91,7 @@ const App: React.FC = () => {
             {currentSection !== 0 && <div css={css`${marginStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div css={css`${marginStyle} ${flexCenterGrow}`}>
+                <div css={css`${marginStyle}`}>
                   <StartSection description={sections[currentSection].description} />
                 </div>
                 <div css={css`${marginStyle}`}>
@@ -104,7 +104,7 @@ const App: React.FC = () => {
                 <div css={css`${marginStyle}`}>
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
-                <div css={css`${marginStyle} ${flexCenterGrow}`}>
+                <div css={css`${marginStyle}`}>
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div css={css`${marginStyle}`}>
