@@ -16,8 +16,8 @@ export const globalStyles = css`
   }
   @media (max-width: 767px) {
     body {
-      font-size: 16px;
-      line-height: 1.6;
+      font-size: 14px;
+      line-height: 1.8;
     }
   }
   h1,h2,h3,h4,h5,h6 {
@@ -67,12 +67,13 @@ export const appStyle = css`
 `;
 
 export const appHeaderStyle = css`
-  padding: 1rem;
+  padding: 2rem 1rem;
   @media (min-width: 640px) {
     padding: 1.5rem;
   }
+
   @media (min-width: 1024px) {
-    padding: 2rem;
+    padding: 2.5rem 2rem;
   }
 `;
 
@@ -83,7 +84,6 @@ export const pt6Style = css`
 export const baseButton = css`
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
   transition: color 0.3s;
   margin: 0.5rem;
 `;
@@ -97,12 +97,6 @@ export const blueButton = css`
   }
 `;
 
-export const hoverButton = css`
-  &:hover {
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-    transform: scale(1.05);
-  }
-`;
 
 export const transitionButton = css`
   transition: all 0.5s;
@@ -111,7 +105,6 @@ export const transitionButton = css`
 export const buttonClass = css`
   ${baseButton};
   ${blueButton};
-  ${hoverButton};
   ${transitionButton};
 `;
 
