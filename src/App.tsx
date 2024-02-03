@@ -101,7 +101,7 @@ const App: React.FC = () => {
               </>
               ) : (
               <>
-                <div css={css`${showProgress}`}>
+                <div css={css`${marginStyle}`}>
                   {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
                 </div>
                 <div css={css`${showQuestionText}`}>

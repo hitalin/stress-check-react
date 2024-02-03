@@ -65,8 +65,6 @@ export const appHeaderStyle = css`
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     border: 2px solid #FF9999;
     border-radius: 25px;
     padding: 20px;
@@ -80,22 +78,11 @@ export const appHeaderStyle = css`
   }
 `;
 
+
 export const titleStyle = css`
-  @media (min-width: 1024px) {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    transform: translate(10px, 10px);
-  }
 `;
 
 export const sectionTitleStyle = css`
-  @media (min-width: 1024px) {
-    position: absolute;
-    top: 20px;
-    left: 3px;
-    transform: translate(10px, 10px);
-  }
 `;
 
 export const questionColors = [
@@ -111,17 +98,13 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
 `;
 
 export const showQuestionText = css`
-  font-size: 2rem; // 20px相当。デフォルトより大きくする
-  font-weight: bold; // 太字で読みやすく
-  line-height: 1.5; // 行間を適切に設定
-  text-align: center; // 中央揃えで読みやすく
-  margin: 20px 0; // 上下のマージンで適切な間隔を確保
-  position: absolute;
-  top: 25vh;
-  height: auto;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1.5;
+  text-align: center;
+  margin: 15vh auto;
   width: 100%;
-  overflow: auto;
-  white-space: pre-line;
+  white-space: pre-line; // 改行を保持
 `;
 
 export const baseButton = css`
@@ -129,6 +112,20 @@ export const baseButton = css`
   border-radius: 0.5rem;
   transition: color 0.3s;
   margin: 0.5rem;
+`;
+
+export const baseColor = css`
+  color: #FF9999;
+`;
+
+export const backButtonClass = css`
+  ${baseButton};
+  background-color: transparent;
+  border: none;
+
+  &:hover {
+    background-color: transparent;
+  }
 `;
 
 export const blueButton = css`
@@ -191,30 +188,13 @@ export const ShowChoiceButtons = css`
   flex-direction: column;
   align-items: center;
   width: 100%;
-  position: absolute;
-  bottom: 100px;
+  margin-top: auto;
 
   @media (min-width: 640px) {
     flex-direction: row;
     justify-content: center;
-    bottom: 100px;
   }
 `;
-
-export const baseColor = css`
-  color: #FF9999;
-`;
-
-export const backButtonClass = css`
-  ${baseButton};
-  background-color: transparent;
-  border: none;
-
-  &:hover {
-    background-color: transparent;
-  }
-`;
-
 
 export const nextButtonClass = css`
   ${baseButton};
@@ -222,35 +202,13 @@ export const nextButtonClass = css`
   ${transitionButton};
 `;
 
-export const showProgress = css`
-  position: absolute;
-  top: 40px;
-  left: 3px;
-  display: flex;
-  flex-direction: row;
-
-  @media (min-width: 1024px) {
-    left: auto;
-    right: 3px;
-  }
-`;
-
-export const showBackButtons = css`
-  position: absolute;
-  bottom: 3px;
-  left: 3px;
-  display: flex;
-  flex-direction: row;
-`;
-
-export const baseDot = css`
+// styles.ts
+export const dotStyle = css`
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 50%;
   margin: 0.25rem;
-`;
 
-export const smDot = css`
   @media (min-width: 640px) {
     height: 0.6rem;
     width: 0.6rem;
@@ -258,9 +216,19 @@ export const smDot = css`
   }
 `;
 
-export const dotStyle = css`
-  ${baseDot};
-  ${smDot};
+// styles.ts
+export const showProgress = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+`;
+
+export const showBackButtons = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: auto;
 `;
 
 export const marginStyle = css`
