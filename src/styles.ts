@@ -48,12 +48,13 @@ export const linkStyle = css`
 export const appStyle = css`
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: space-between;
   padding: 0.5rem 0;
-  @media (min-width: 640px) {
-    padding: 1rem 0;
-}
+
+  @media (max-width: 767px) {
+    padding: 0.25rem 0;
+  }
 `;
 
 export const appHeaderStyle = css`
@@ -115,12 +116,15 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
 
 export const showQuestionText = css`
   font-size: 2rem;
-  font-weight: bold;
-  line-height: 1.5;
   text-align: center;
-  margin: 15vh auto;
-  width: 100%;
+  margin: 10vh auto 1rem;
   white-space: pre-line;
+  padding: 0 1rem;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+    margin-top: 5vh;
+  }
 `;
 
 export const baseButton = css`
@@ -138,11 +142,16 @@ export const backButtonClass = css`
   ${baseButton};
   background-color: transparent;
   border: none;
-
   &:hover {
     background-color: transparent;
   }
+
+  @media (max-width: 767px) {
+    flex: 1;
+    margin: 0.25rem;
+  }
 `;
+
 
 export const blueButton = css`
   background-color: #cce5ff;
@@ -207,7 +216,7 @@ export const ShowChoiceButtons = css`
   margin-top: auto;
 
   @media (min-width: 640px) {
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
   }
 `;
@@ -232,11 +241,14 @@ export const dotStyle = css`
   }
 `;
 
-// styles.ts
 export const showProgress = css`
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: flex-end; // default to right alignment for larger screens
+
+  @media (max-width: 767px) {
+    justify-content: flex-start; // align left on mobile screens
+  }
 `;
 
 export const showBackButtons = css`
