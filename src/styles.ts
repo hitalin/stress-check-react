@@ -1,40 +1,57 @@
 import { css } from '@emotion/react';
 
 export const globalStyles = css`
+  * {
+    box-sizing: border-box;
+  }
   body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    padding: 0;
+    color: #333;
+    font-family: "新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    font-size: 18px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
   }
-
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+  @media (max-width: 767px) {
+    body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+  h1,h2,h3,h4,h5,h6 {
+    margin: 0;
+    font-size: 100%;
+    font-weight: normal;
+    line-height: 1.5;
+  }
+  p {
+    margin: 0;
+  }
+  ul {
+    list-style: none;
   }
 `;
 
 export const bodyStyle = css`
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif; // Tailwind CSS default font
+  font-family: "新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 `;
 
 export const linkStyle = css`
   text-decoration: none;
-  color: #1a202c; // Tailwind CSS default text color
+  color: #333;
 `;
 
 export const textContainerStyle = css`
   white-space: pre-line;
   text-align: center;
-  font-size: 1.25rem; // Tailwind CSS default font size
+  font-size: 1.125rem;
   width: 100%;
   height: auto;
   overflow: auto;
-  color: #1a202c; // Tailwind CSS default text color
+  color: #333;
 `;
 
 export const appStyle = css`
@@ -45,7 +62,7 @@ export const appStyle = css`
   padding: 0.5rem 0;
   @media (min-width: 640px) {
     padding: 1rem 0;
-  }
+}
 `;
 
 export const appHeaderStyle = css`
