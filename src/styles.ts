@@ -124,7 +124,6 @@ export const blueButton = css`
   }
 `;
 
-
 export const transitionButton = css`
   transition: all 0.5s;
 `;
@@ -135,10 +134,17 @@ export const buttonClass = css`
   ${transitionButton};
 `;
 
-export const flexCenterWrap = css`
+export const showProgress = css`
+  position: absolute;
+  top: 40px;
+  left: 3px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
+
+  @media (min-width: 1024px) {
+    left: auto;
+    right: 3px;
+  }
 `;
 
 export const baseDot = css`
