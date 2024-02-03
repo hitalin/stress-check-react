@@ -118,14 +118,14 @@ export const baseDot = css`
   height: 0.5rem;
   width: 0.5rem;
   border-radius: 50%;
-  margin: 0.05rem;
+  margin: 0.25rem;
 `;
 
 export const smDot = css`
   @media (min-width: 640px) {
     height: 0.6rem;
     width: 0.6rem;
-    margin: 0.075rem;
+    margin: 0.3rem;
   }
 `;
 
