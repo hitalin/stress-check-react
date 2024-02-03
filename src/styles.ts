@@ -211,13 +211,14 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
 export const ShowChoiceButtons = css`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   width: 100%;
   margin-top: auto;
 
-  @media (min-width: 640px) {
-    flex-direction: column;
-    justify-content: center;
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
   }
 `;
 
@@ -254,9 +255,14 @@ export const showProgress = css`
 export const showBackButtons = css`
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
   margin-top: auto;
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+  }
 `;
 
 export const marginStyle = css`
