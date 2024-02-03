@@ -13,7 +13,7 @@ import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import { css } from '@emotion/react';
-import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showProgress, ShowChoiceButtons, showQuestionText, showBackButtons} from './styles';
+import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showNextButton, ShowChoiceButtons, showQuestionText, showBackButtons, sectionDescriptionStyle} from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
@@ -91,10 +91,10 @@ const App: React.FC = () => {
             {currentSection !== 0 && <div css={css`${sectionTitleStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div css={css`${marginStyle}`}>
+                <div css={css`${sectionDescriptionStyle}`}>
                   <StartSection description={sections[currentSection].description} />
                 </div>
-                <div css={css`${marginStyle}`}>
+                <div css={css`${showNextButton}`}>
                   <NextButton onNext={handleNextButton} />
                 </div>
                 {currentSection !== 0 && <div css={css`${showBackButtons}`}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}

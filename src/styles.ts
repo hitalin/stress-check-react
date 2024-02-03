@@ -85,6 +85,22 @@ export const titleStyle = css`
 export const sectionTitleStyle = css`
 `;
 
+export const sectionDescriptionStyle = css`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  white-space: pre-line;
+`;
+
+export const showNextButton = css`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+`;
+
 export const questionColors = [
   '#000000', // セクション0: 黒（このままで良い）
   '#AED581', // セクション1: より濃い黄緑、でもまだ淡い色調
@@ -104,7 +120,7 @@ export const showQuestionText = css`
   text-align: center;
   margin: 15vh auto;
   width: 100%;
-  white-space: pre-line; // 改行を保持
+  white-space: pre-line;
 `;
 
 export const baseButton = css`
