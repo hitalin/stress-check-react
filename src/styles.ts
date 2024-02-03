@@ -7,6 +7,7 @@ export const globalStyles = css`
   body {
     margin: 0;
     padding: 0;
+    background: url("../public/bg.png");
     color: #333;
     font-family: "新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
     font-size: 18px;
