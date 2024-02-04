@@ -13,20 +13,20 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
   const [values, setValues] = useState<number[][]>([]);
   const [method1Result, setMethod1Result] = useState<boolean>(false);
   const [method2Result, setMethod2Result] = useState<boolean>(false);
+  const [totals, setTotals] = useState<number[]>([]);
 
   useEffect(() => {
-    const { method1, method2 } = calculateStressLevel(scores, values);
+    const { method1, method2, totals } = calculateStressLevel(scores, values);
     setMethod1Result(method1);
     setMethod2Result(method2);
+    setTotals(totals);
   }, [scores, values]);
 
   useEffect(() => {
-    setValues(
-      sections.map((section) => {
-        const questions: Question[] = section.questions;
-        return section.factors.map((factor) => calcScoreFromQuestions(questions, factor));
-      })
-    );
+    setValues(sections.map((section) => {
+      const questions: Question[] = section.questions;
+      return section.factors.map(factor => calcScoreFromQuestions(questions, factor));
+    }));
   }, [sections]);
 
   return (
@@ -41,6 +41,7 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
         return (
           <div key={section.step}>
             <p>STEP{section.step} {section.name}の合計点: {scores[index]}</p>
+            <p>このセクションの評価点の合計: {totals[index]}</p>
             {section.factors.map((factor, factorIndex) => (
               <p key={factor.scale}>
                 {factor.scale}の評価点: {values[index]?.[factorIndex]}
@@ -54,4 +55,3 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
 };
 
 export default ShowResult;
-
