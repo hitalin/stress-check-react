@@ -6,7 +6,7 @@ import { Question, Factor } from './types';
  * @param {Factor} factor 評価する尺度
  * @returns {number} 評価点
  */
-export function calcScoreFromQuestions(questions: Question[], factor: Factor): number {
+export function calculateValue(questions: Question[], factor: Factor): number {
   // 質問IDに基づいてフィルタリングされた質問のスコアを集計
   const filteredQuestions = questions.filter(question => factor.items?.includes(question.id));
   const totalScore = filteredQuestions.reduce((total, question) => total + question.score, 0);

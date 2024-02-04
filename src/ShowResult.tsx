@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { Section, Question } from './types';
 import { calculateStressLevel } from './calculateStressLevel';
-import { calcScoreFromQuestions } from './calculateValue';
+import { calculateValue } from './calculateValue';
 
 interface Props {
   sections: Section[];
@@ -25,7 +25,7 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
   useEffect(() => {
     setValues(sections.map((section) => {
       const questions: Question[] = section.questions;
-      return section.factors.map(factor => calcScoreFromQuestions(questions, factor));
+      return section.factors.map(factor => calculateValue(questions, factor));
     }));
   }, [sections]);
 
