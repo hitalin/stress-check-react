@@ -10,25 +10,30 @@ interface Props {
 }
 
 const ShowResult: React.FC<Props> = ({ sections, scores }) => {
-  const [stressLevel, setStressLevel] = useState<string>('');
   const [values, setValues] = useState<number[][]>([]);
+  const [method1Result, setMethod1Result] = useState<boolean>(false);
+  const [method2Result, setMethod2Result] = useState<boolean>(false);
 
   useEffect(() => {
-    const level = calculateStressLevel(scores);
-    setStressLevel(level);
-  }, [scores]);
+    const { method1, method2 } = calculateStressLevel(scores, values);
+    setMethod1Result(method1);
+    setMethod2Result(method2);
+  }, [scores, values]);
 
   useEffect(() => {
-    setValues(sections.map((section) => {
-      const questions: Question[] = section.questions;
-      return section.factors.map(factor => calcScoreFromQuestions(questions, factor));
-    }));
+    setValues(
+      sections.map((section) => {
+        const questions: Question[] = section.questions;
+        return section.factors.map((factor) => calcScoreFromQuestions(questions, factor));
+      })
+    );
   }, [sections]);
 
   return (
     <div>
       <h2>判定</h2>
-      <p>{stressLevel === 'high' ? '高ストレス者です' : '低ストレス者です'}</p>
+      <p>１ 合計点数を使う方法: {method1Result ? '高ストレス者です' : '低ストレス者です'}</p>
+      <p>２ 素点換算表を使う方法: {method2Result ? '高ストレス者です' : '低ストレス者です'}</p>
       {sections.map((section, index) => {
         // Skip section0 and section4
         if (index === 0 || index === 4) return null;
@@ -49,3 +54,4 @@ const ShowResult: React.FC<Props> = ({ sections, scores }) => {
 };
 
 export default ShowResult;
+
