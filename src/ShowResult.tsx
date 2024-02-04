@@ -36,6 +36,7 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
   return (
     <div>
       <h2>判定</h2>
+      <p>性別: {employee.gender}</p>
       <p>ストレスレベル: {employee.level === 'high' ? '高ストレス者です' : '低ストレス者です'}</p>
       {sections.map((section, index) => {
         // Skip section0 and section4

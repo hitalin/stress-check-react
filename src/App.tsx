@@ -30,6 +30,11 @@ const App: React.FC = () => {
     // Update the score of the selected question
     sections[currentSection].questions[questionIndex].score = choiceValue;
 
+    // If the current section is 0 and the question ID is 1, set the selected choice as the employee's gender
+    if (currentSection === 0 && sections[currentSection].questions[questionIndex].id === 1) {
+      setEmployee(prev => ({ ...prev, gender: choice }));
+    }
+
     // Calculate the score of the current section
     const sectionScore = calculateScore(sections[currentSection].questions);
 
