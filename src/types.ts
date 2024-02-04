@@ -24,5 +24,12 @@ export type Factor = {
   scale: string;
   value: number;
   inverse: boolean;
+  rates?: Rate[];
+  items?: number[];
 };
 
+export type Rate = {
+  min: number;
+  max: number;
+  value: number;
+};
