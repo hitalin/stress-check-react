@@ -29,7 +29,7 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
   useEffect(() => {
     setValues(sections.map((section) => {
       const questions: Question[] = section.questions;
-      return section.factors.map(factor => calculateValue(questions, factor));
+      return section.factors?.map(factor => calculateValue(questions, factor)) ?? [];
     }));
   }, [sections]);
 
@@ -46,7 +46,7 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
           <div key={section.step}>
             <p>STEP{section.step} {section.name}の合計点: {scores[index]}</p>
             <p>このセクションの評価点の合計: {totals[index]}</p>
-            {section.factors.map((factor, factorIndex) => (
+            {section.factors?.map((factor, factorIndex) => (
               <p key={factor.scale}>
                 {factor.scale}の評価点: {values[index]?.[factorIndex]}
               </p>

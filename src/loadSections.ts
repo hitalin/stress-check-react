@@ -7,7 +7,6 @@ export const sections: Section[] = [
     description: '4つのSTEPによる簡単な質問から、\nあなたの職場におけるストレスレベルを測定します。\n質問は全部で57問です。（所要時間約5分間）',
     questions: [{ id: 1, text: 'はじめに性別を選んでください', score: 0, reverse: false }],
     choices: ['男性', '女性', 'その他', '答えない'],
-    factors: [{ point: 0, scale: '', value: 0, inverse: false }],
   },
   {
     step: 1,
@@ -38,7 +37,7 @@ export const sections: Section[] = [
         point: 1,
         scale: '心理的な仕事の負担（量）',
         value: 0,
-        inverse: true,
+        type: "subtraction",
         rates: [
           { min: 3, max: 5, value: 5 },
           { min: 6, max: 7, value: 4 },
@@ -52,7 +51,7 @@ export const sections: Section[] = [
         point: 2,
         scale: '心理的な仕事の負担（質）',
         value: 0,
-        inverse: true,
+        type: "subtraction",
         rates: [
           { min: 3, max: 5, value: 5 },
           { min: 6, max: 7, value: 4 },
@@ -66,7 +65,7 @@ export const sections: Section[] = [
         point: 3,
         scale: '自覚的な身体的負担度',
         value: 0,
-        inverse: true,
+        type: "subtraction",
         rates: [
           { min: 1, max: 1, value: 4 },
           { min: 2, max: 2, value: 3 },
@@ -79,7 +78,7 @@ export const sections: Section[] = [
         point: 4,
         scale: '職場の対人関係でのストレス',
         value: 0,
-        inverse: true,
+        type: "complex",
         rates: [
           { min: 3, max: 3, value: 5 },
           { min: 4, max: 5, value: 4 },
@@ -93,7 +92,7 @@ export const sections: Section[] = [
         point: 5,
         scale: '職場環境によるストレス',
         value: 0,
-        inverse: true,
+        type: "subtraction",
         rates: [
           { min: 1, max: 1, value: 4 },
           { min: 2, max: 2, value: 3 },
@@ -106,7 +105,7 @@ export const sections: Section[] = [
         point: 6,
         scale: '仕事のコントロール度',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 3, max: 4, value: 1 },
           { min: 5, max: 6, value: 2 },
@@ -120,7 +119,7 @@ export const sections: Section[] = [
         point: 7,
         scale: '技能の活用度',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 1, max: 1, value: 1 },
           { min: 2, max: 2, value: 2 },
@@ -133,7 +132,7 @@ export const sections: Section[] = [
         point: 8,
         scale: '仕事の適性度',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 1, max: 1, value: 1 },
           { min: 2, max: 2, value: 2 },
@@ -146,7 +145,7 @@ export const sections: Section[] = [
         point: 9,
         scale: '働きがい',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 1, max: 1, value: 1 },
           { min: 2, max: 2, value: 2 },
@@ -198,7 +197,7 @@ export const sections: Section[] = [
         point: 1,
         scale: '活気',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 3, max: 3, value: 1 },
           { min: 4, max: 5, value: 2 },
@@ -212,7 +211,7 @@ export const sections: Section[] = [
         point: 2,
         scale: 'イライラ感',
         value: 0,
-        inverse: true,
+        type: 'addition',
         rates: [
           { min: 3, max: 3, value: 5 },
           { min: 4, max: 5, value: 4 },
@@ -226,7 +225,7 @@ export const sections: Section[] = [
         point: 3,
         scale: '疲労感',
         value: 0,
-        inverse: true,
+        type: 'addition',
         rates: [
           { min: 3, max: 3, value: 5 },
           { min: 4, max: 4, value: 4 },
@@ -240,7 +239,7 @@ export const sections: Section[] = [
         point: 4,
         scale: '不安感',
         value: 0,
-        inverse: true,
+        type: 'addition',
         rates: [
           { min: 3, max: 3, value: 5 },
           { min: 4, max: 5, value: 4 },
@@ -254,7 +253,7 @@ export const sections: Section[] = [
         point: 5,
         scale: '抑うつ感',
         value: 0,
-        inverse: true,
+        type: 'addition',
         rates: [
           { min: 6, max: 6, value: 5 },
           { min: 7, max: 8, value: 4 },
@@ -268,7 +267,7 @@ export const sections: Section[] = [
         point: 6,
         scale: '身体愁訴',
         value: 0,
-        inverse: true,
+        type: 'addition',
         rates: [
           { min: 11, max: 11, value: 5 },
           { min: 12, max: 15, value: 4 },
@@ -301,7 +300,7 @@ export const sections: Section[] = [
         point: 1,
         scale: '上司からのサポート',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 3, max: 4, value: 1 },
           { min: 5, max: 6, value: 2 },
@@ -315,7 +314,7 @@ export const sections: Section[] = [
         point: 2,
         scale: '同僚からのサポート',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 3, max: 5, value: 1 },
           { min: 6, max: 7, value: 2 },
@@ -329,7 +328,7 @@ export const sections: Section[] = [
         point: 3,
         scale: '家族・友人からのサポート',
         value: 0,
-        inverse: false,
+        type: "subtraction",
         rates: [
           { min: 3, max: 6, value: 1 },
           { min: 7, max: 8, value: 2 },
@@ -350,7 +349,6 @@ export const sections: Section[] = [
       { id: 2, text: '家庭環境に満足だ', score: 0, reverse: false },
     ],
     choices: ['満足', 'まあ満足', 'やや不満足', '不満足'],
-    factors: [{ point: 1, scale: '仕事や生活の満足度', value: 0, inverse: false }],
   },
 ];
 
