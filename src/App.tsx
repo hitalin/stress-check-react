@@ -16,7 +16,7 @@ import { css } from '@emotion/react';
 import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showNextButton, ShowChoiceButtons, showQuestionText, showBackButtons, sectionDescriptionStyle} from './styles';
 
 const App: React.FC = () => {
-  const [employee, setEmployee] = useState<Employee>({ gender: '', stressLevel: '' });
+  const [employee, setEmployee] = useState<Employee>({ gender: '', level: '' });
   const [currentSection, setCurrentSection] = useState<number>(0); // Initialize currentSection with 0
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
   const [showStartSection, setShowStartSection] = useState<boolean>(true); // Initialize showStartSection with true
@@ -85,7 +85,7 @@ const App: React.FC = () => {
           <ShowTitle />
         </div>
         {showResults ? (
-          <ShowResult sections={sections} scores={scores} />
+          <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
         ) : (
           <>
             {currentSection !== 0 && <div css={css`${sectionTitleStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}

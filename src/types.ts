@@ -1,6 +1,6 @@
 export type Employee = {
   gender: string;
-  stressLevel: string;
+  level: string;
 };
 
 export type Section = {
