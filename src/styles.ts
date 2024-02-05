@@ -92,6 +92,7 @@ export const titleAndProgressStyle = css`
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid #FF9999;
+  min-height: 70px;
 
   @media (min-width: 768px) {
     flex-direction: row;
