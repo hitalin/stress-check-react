@@ -247,18 +247,19 @@ export const ShowChoiceButtons = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
   position: fixed;
-  bottom: 150px;
+  bottom: 125px;
 
   @media (min-width: 768px) {
     flex-direction: row;
     margin-top: auto;
     margin-bottom: 1rem;
     padding: initial;
+    align-items: center;
   }
 `;
 
@@ -296,6 +297,7 @@ export const showBackButtons = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   width: 100%;
   margin-top: auto;
   position: fixed;
