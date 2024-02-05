@@ -150,7 +150,7 @@ export const showQuestionText = css`
   @media (max-width: 767px) {
     font-size: 1.5rem;
     margin-top: 5vh;
-    margin-bottom: 10px;
+    margin-bottom: 50px;
   }
 `;
 
@@ -252,7 +252,7 @@ export const ShowChoiceButtons = css`
   margin: 0 auto;
   padding: 0 20px;
   position: fixed;
-  bottom: 125px;
+  top: 80%;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -269,7 +269,7 @@ export const nextButtonClass = css`
   ${transitionButton};
 
   position: fixed;
-  bottom: 75px; // Adjust this value as needed
+  top: 80%;
   margin-top: auto;
   margin-bottom: 1rem;
   width: auto;
@@ -302,6 +302,10 @@ export const showBackButtons = css`
   margin-top: auto;
   position: fixed;
   bottom: 0;
+
+  @media (max-width: 767px) {
+    border-top: 2px solid #FF9999;
+  }
 
   @media (min-width: 768px) {
     flex-direction: row;
