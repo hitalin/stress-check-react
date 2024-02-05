@@ -114,8 +114,10 @@ const App: React.FC = () => {
           )}
         </div>
         {showResults ? (
-          <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
-        ) : (
+          <>
+            <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
+          </>
+          ) : (
           <>
             {showStartSection ? (
               <>

@@ -4,6 +4,7 @@ import { Section, Question } from './types';
 import { calculateLevel } from './calculateLevel';
 import { calculateValue } from './calculateValue';
 import { Employee } from './types';
+import ShowRadar from './ShowRadar';
 
 type Props = {
   employee: Employee;
@@ -13,11 +14,12 @@ type Props = {
 };
 
 const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }) => {
-  const [values, setValues] = useState<number[][]>([]);
+  const [values, setValues] = useState<{ scale: string; value: number; }[][]>([]);
   const [totals, setTotals] = useState<number[]>([]);
 
   useEffect(() => {
-    const { method1, method2, totals } = calculateLevel(scores, values);
+    const valuesNumbers = values.map(value => value.map(v => v.value));
+    const { method1, method2, totals } = calculateLevel(scores, valuesNumbers);
     if (method1 && method2) {
       setEmployee(prev => ({ ...prev, level: 'high' }));
     } else {
@@ -29,7 +31,10 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
   useEffect(() => {
     setValues(sections.map((section) => {
       const questions: Question[] = section.questions;
-      return section.factors?.map(factor => calculateValue(questions, factor)) ?? [];
+      return section.factors?.map(factor => ({
+        scale: factor.scale,
+        value: calculateValue(questions, factor)
+      })) ?? [];
     }));
   }, [sections]);
 
@@ -38,19 +43,22 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
       <h2>判定</h2>
       <p>性別: {employee.gender}</p>
       <p>ストレスレベル: {employee.level === 'high' ? '高ストレス者です' : '低ストレス者です'}</p>
-      {sections.map((section, index) => {
+      {sections.map((section, sectionIndex) => {
         // Skip section0 and section4
-        if (index === 0 || index === 4) return null;
+        if (sectionIndex === 0 || sectionIndex === 4) return null;
 
         return (
           <div key={section.step}>
-            <p>STEP{section.step} {section.name}の合計点: {scores[index]}</p>
-            <p>このセクションの評価点の合計: {totals[index]}</p>
+            <p>STEP{section.step} {section.name}の合計点: {scores[sectionIndex]}</p>
+            <p>このセクションの評価点の合計: {totals[sectionIndex]}</p>
             {section.factors?.map((factor, factorIndex) => (
               <p key={factor.scale}>
-                {factor.scale}の評価点: {values[index]?.[factorIndex]}
+                {factor.scale}の評価点: {values[sectionIndex]?.[factorIndex]?.value}
               </p>
             ))}
+            <div>
+              <ShowRadar factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
+            </div>
           </div>
         );
       })}
