@@ -292,7 +292,7 @@ export const sections: Section[] = [
       { id: 6, text: 'あなたが困った時、次の人たちは\nどのくらい頼りになりますか?\n配偶者、家族、友人等', score: 0, reverse: false },
       { id: 7, text: 'あなたの個人的な問題を相談したら、\n次の人たちはどのくらい聞いてくれますか?\n上司', score: 0, reverse: false },
       { id: 8, text: 'あなたの個人的な問題を相談したら、\n次の人たちはどのくらい聞いてくれますか?\n職場の同僚', score: 0, reverse: false },
-      { id: 9, text: 'あなたの個人的な問題を相談したら、^n次の人たちはどのくらい聞いてくれますか?\n配偶者、家族、友人等', score: 0, reverse: false },
+      { id: 9, text: 'あなたの個人的な問題を相談したら、\n次の人たちはどのくらい聞いてくれますか?\n配偶者、家族、友人等', score: 0, reverse: false },
     ],
     choices: ['非常に', 'かなり', '多少', '全くない'],
     factors: [

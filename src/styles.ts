@@ -195,37 +195,45 @@ export const transitionButton = css`
 
 export const choiceColors = [
   css`
-    background-color: #FFD1A4; // 淡いオレンジ
-    color: #805300; // オレンジに合わせたテキスト色
-    border: 2px solid #FFD1A4; // 枠線も同色で
+    background-color: #FFE6C2;
+    color: #805300;
+    border: 2px solid #B37400;
     &:hover {
-      background-color: #FFB073;
+      background-color: #FFC88F;
+      color: #997A52;
+      border: 2px solid #FFC88F;
     }
   `,
   css`
-    background-color: #B7E1CD; // 淡い緑
-    color: #1E4D2B; // 緑に合わせたテキスト色
-    border: 2px solid #B7E1CD;
+    background-color: #D1EDE0;
+    color: #1E4D2B;
+    border: 2px solid #1A4731;
     &:hover {
-      background-color: #9FD3B1;
+      background-color: #BFE6C4;
+      color: #507F60;
+      border: 2px solid #BFE6C4;
     }
   `,
   css`
-    background-color: #cce5ff;
+    background-color: #E1F0FF;
     color: #004085;
-    border: 2px solid #b8daff;
+    border: 2px solid #003374;
     &:hover {
       background-color: #e6f7ff;
+      color: #336699;
+      border: 2px solid #e6f7ff;
     }
   `,
   css`
-    background-color: #BDD7EE; // 淡い青
-    color: #003C8F; // 青に合わせたテキスト色
-    border: 2px solid #BDD7EE;
+    background-color: #D0E3F2;
+    color: #003C8F;
+    border: 2px solid #003274;
     &:hover {
-      background-color: #A6C8E1;
+      background-color: #B2D1E6;
+      color: #336699;
+      border: 2px solid #B2D1E6;
     }
-  `
+  `,
 ];
 
 // choiceButtonClass を更新して色を動的に適用できるように変更
@@ -250,7 +258,7 @@ export const ShowChoiceButtons = css`
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 10px;
   position: fixed;
   top: 50%;
 
