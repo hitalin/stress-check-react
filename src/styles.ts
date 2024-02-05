@@ -150,6 +150,7 @@ export const showQuestionText = css`
   @media (max-width: 767px) {
     font-size: 1.5rem;
     margin-top: 5vh;
+    margin-bottom: 10px;
   }
 `;
 
@@ -232,9 +233,9 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   ${baseButton};
   ${choiceColors[colorIndex % choiceColors.length]};
   ${transitionButton};
-  width: 100%;
+  width: 75%;
   box-sizing: border-box;
-  margin: 0;
+  margin: 10px 0;
 
   @media (min-width: 768px) {
     width: auto;
@@ -249,9 +250,9 @@ export const ShowChoiceButtons = css`
   align-items: center;
   width: 100%;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 20px;
   position: fixed;
-  bottom: 100px;
+  bottom: 150px;
 
   @media (min-width: 768px) {
     flex-direction: row;
