@@ -327,8 +327,12 @@ export const levelResult = css`
   text-align: center;
 `;
 
-export const sectionResult= css`
+export const sectionResult = css`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+
+  @media (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
 `;
