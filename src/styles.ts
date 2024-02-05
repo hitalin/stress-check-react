@@ -247,14 +247,15 @@ export const ShowChoiceButtons = css`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
   width: 100%;
   margin: 0 auto;
   padding: 0 20px;
   position: fixed;
-  top: 80%;
+  top: 50%;
 
   @media (min-width: 768px) {
+    top: 80%;
     flex-direction: row;
     margin-top: auto;
     margin-bottom: 1rem;
