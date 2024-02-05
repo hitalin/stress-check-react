@@ -224,6 +224,16 @@ export const choiceColors = [
       border: 2px solid #F1FAFF; // Softer border
     }
   `,
+  css`
+    background-color: #E9D8FD; // Softer purple
+    color: #4A1D6E;
+    border: 2px solid #D6BCFA; // Softer border
+    &:hover {
+      background-color: #F3EBFF; // Lighter color on hover
+      color: #7C4DFF;
+      border: 2px solid #F3EBFF; // Lighter border on hover
+    }
+  `,
 ];
 
 // choiceButtonClass を更新して色を動的に適用できるように変更
