@@ -9,6 +9,7 @@ export type Section = {
   description: string;
   questions: Question[];
   choices: string[];
+  group?: string;
   factors?: Factor[];
 };
 

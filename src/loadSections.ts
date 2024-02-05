@@ -32,6 +32,7 @@ export const sections: Section[] = [
       { id: 17, text: '働きがいのある仕事だ', score: 0, reverse: false },
     ],
     choices: ['そうだ', 'まあそうだ', 'ややちがう', 'ちがう'],
+    group: "ストレスの原因因子",
     factors: [
       {
         point: 1,
@@ -192,6 +193,7 @@ export const sections: Section[] = [
       { id: 29, text: 'よく眠れない', score: 0, reverse: false },
     ],
     choices: ['ほとんどなかった', 'ときどきあった', 'しばしばあった', 'ほとんどいつもあった'],
+    group: "ストレスによる心身反応",
     factors: [
       {
         point: 1,
@@ -295,6 +297,7 @@ export const sections: Section[] = [
       { id: 9, text: 'あなたの個人的な問題を相談したら、\n次の人たちはどのくらい聞いてくれますか?\n配偶者、家族、友人等', score: 0, reverse: false },
     ],
     choices: ['非常に', 'かなり', '多少', '全くない'],
+    group: "ストレス反応への影響因子",
     factors: [
       {
         point: 1,

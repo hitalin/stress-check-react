@@ -40,25 +40,18 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
 
   return (
     <div>
-      <h2>判定</h2>
-      <p>性別: {employee.gender}</p>
-      <p>ストレスレベル: {employee.level === 'high' ? '高ストレス者です' : '低ストレス者です'}</p>
+      <p>性別: {employee.gender} レベル: {employee.level === 'high' ? '高ストレス者' : '低ストレス者'}</p>
       {sections.map((section, sectionIndex) => {
         // Skip section0 and section4
         if (sectionIndex === 0 || sectionIndex === 4) return null;
 
         return (
           <div key={section.step}>
-            <p>STEP{section.step} {section.name}の合計点: {scores[sectionIndex]}</p>
-            <p>このセクションの評価点の合計: {totals[sectionIndex]}</p>
-            {section.factors?.map((factor, factorIndex) => (
-              <p key={factor.scale}>
-                {factor.scale}の評価点: {values[sectionIndex]?.[factorIndex]?.value}
-              </p>
-            ))}
-            <div>
-              <ShowRadar factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
-            </div>
+            <p>STEP{section.step} {section.name}</p>
+            <p>スコアの合計: {scores[sectionIndex]}</p>
+            <p>評価点の合計: {totals[sectionIndex]}</p>
+            <p>{section.group}</p>
+            <ShowRadar factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
           </div>
         );
       })}
