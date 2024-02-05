@@ -234,6 +234,7 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   ${transitionButton};
 
   width: 100%;
+  box-sizing: border-box;
 
   @media (min-width: 768px) {
     width: auto;
@@ -248,7 +249,7 @@ export const ShowChoiceButtons = css`
   width: 100%;
   margin: 0 auto;
   position: fixed;
-  bottom: 50px;
+  bottom: 100px;
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -263,7 +264,7 @@ export const nextButtonClass = css`
   ${transitionButton};
 
   position: fixed;
-  bottom: 50px;
+  bottom: 75px; // Adjust this value as needed
   margin-top: auto;
   margin-bottom: 1rem;
   width: auto;
@@ -294,7 +295,7 @@ export const showBackButtons = css`
   width: 100%;
   margin-top: auto;
   position: fixed;
-  bottom: 50px;
+  bottom: 0;
 
   @media (min-width: 768px) {
     flex-direction: row;
