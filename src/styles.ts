@@ -230,14 +230,15 @@ export const choiceColors = [
 // choiceButtonClass を更新して色を動的に適用できるように変更
 export const dynamicChoiceButton = (colorIndex: number) => css`
   ${baseButton};
-  ${choiceColors[colorIndex % choiceColors.length]}; // 色の循環を保証
+  ${choiceColors[colorIndex % choiceColors.length]};
   ${transitionButton};
-
   width: 100%;
   box-sizing: border-box;
+  margin: 0;
 
   @media (min-width: 768px) {
     width: auto;
+    margin: initial;
   }
 `;
 
@@ -248,6 +249,7 @@ export const ShowChoiceButtons = css`
   align-items: center;
   width: 100%;
   margin: 0 auto;
+  padding: 0 15px;
   position: fixed;
   bottom: 100px;
 
@@ -255,6 +257,7 @@ export const ShowChoiceButtons = css`
     flex-direction: row;
     margin-top: auto;
     margin-bottom: 1rem;
+    padding: initial;
   }
 `;
 
