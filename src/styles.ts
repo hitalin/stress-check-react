@@ -46,6 +46,7 @@ export const linkStyle = css`
 `;
 
 export const appStyle = css`
+  position  : relative;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -80,12 +81,15 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = css`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  height: 100%;
+  font-size: 1.5rem;
+  margin: 10vh auto 1rem;
   white-space: pre-line;
+  padding: 0 1rem;
+
+  @media (max-width: 767px) {
+    font-size: 1.5rem;
+    margin-top: 5vh;
+  }
 `;
 
 export const titleAndProgressStyle = css`
@@ -232,16 +236,18 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
 
 export const ShowChoiceButtons = css`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 300px;
-  margin: 0.25rem auto;
+  width: 100%;
+  margin: 0 auto;
+  position: fixed;
+  bottom: 50px;
 
   @media (min-width: 768px) {
+    flex-direction: row;
     margin-top: auto;
-    flex-direction: column;
-    width: auto;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -249,6 +255,12 @@ export const nextButtonClass = css`
   ${baseButton};
   ${blueButton};
   ${transitionButton};
+
+  position: fixed;
+  bottom: 50px;
+  margin-top: auto;
+  margin-bottom: 1rem;
+  width: auto;
 `;
 
 // styles.ts
