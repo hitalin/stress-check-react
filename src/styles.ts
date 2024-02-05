@@ -79,13 +79,6 @@ export const appHeaderStyle = css`
   }
 `;
 
-
-export const titleStyle = css`
-`;
-
-export const sectionTitleStyle = css`
-`;
-
 export const sectionDescriptionStyle = css`
   display: flex;
   flex-direction: column;
@@ -93,6 +86,34 @@ export const sectionDescriptionStyle = css`
   text-align: center;
   height: 100%;
   white-space: pre-line;
+`;
+
+export const titleAndProgressStyle = css`
+  display: flex;
+  flex-direction: column;
+  border-bottom: 2px solid #FF9999;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+`;
+
+export const titleStyle = css`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  flex-grow: 1;
+`;
+
+export const progressStyle = css`
+  @media (min-width: 768px) {
+    align-self: center;
+  }
+`;
+
+export const sectionTitleStyle = css`
 `;
 
 export const showNextButton = css`
@@ -235,12 +256,6 @@ export const dotStyle = css`
   width: 0.5rem;
   border-radius: 50%;
   margin: 0.25rem;
-
-  @media (min-width: 640px) {
-    height: 0.6rem;
-    width: 0.6rem;
-    margin: 0.3rem;
-  }
 `;
 
 export const showProgress = css`
@@ -264,9 +279,4 @@ export const showBackButtons = css`
     flex-direction: row;
     justify-content: space-between;
   }
-`;
-
-export const marginStyle = css`
-  margin-top: 0.25rem;
-  margin-bottom: 0.25rem;
 `;

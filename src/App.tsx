@@ -13,7 +13,19 @@ import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import { css } from '@emotion/react';
-import { appStyle, appHeaderStyle, titleStyle, sectionTitleStyle, marginStyle, showNextButton, ShowChoiceButtons, showQuestionText, showBackButtons, sectionDescriptionStyle} from './styles';
+import {
+  appStyle,
+  appHeaderStyle,
+  titleStyle,
+  sectionTitleStyle,
+  titleAndProgressStyle,
+  progressStyle,
+  showNextButton,
+  ShowChoiceButtons,
+  showQuestionText,
+  showBackButtons,
+  sectionDescriptionStyle,
+} from './styles';
 
 const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', level: '' });
@@ -32,14 +44,14 @@ const App: React.FC = () => {
 
     // If the current section is 0 and the question ID is 1, set the selected choice as the employee's gender
     if (currentSection === 0 && sections[currentSection].questions[questionIndex].id === 1) {
-      setEmployee(prev => ({ ...prev, gender: choice }));
+      setEmployee((prev) => ({ ...prev, gender: choice }));
     }
 
     // Calculate the score of the current section
     const sectionScore = calculateScore(sections[currentSection].questions);
 
     // Update the scores state
-    setScores(prevScores => {
+    setScores((prevScores) => {
       const newScores = [...prevScores];
       newScores[currentSection] = sectionScore;
       return newScores;
@@ -86,37 +98,77 @@ const App: React.FC = () => {
   return (
     <div css={appStyle}>
       <header css={appHeaderStyle}>
-        <div css={titleStyle}>
-          <ShowTitle />
+        <div css={titleAndProgressStyle}>
+          <div css={titleStyle}>
+            <ShowTitle />
+            {currentSection !== 0 && (
+              <div css={sectionTitleStyle}>
+                <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
+              </div>
+            )}
+          </div>
+          {currentSection !== 0 && !showResults && !showStartSection && (
+            <div css={progressStyle}>
+              <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />
+            </div>
+          )}
         </div>
         {showResults ? (
           <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
         ) : (
           <>
-            {currentSection !== 0 && <div css={css`${sectionTitleStyle}`}><ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} /></div>}
             {showStartSection ? (
               <>
-                <div css={css`${sectionDescriptionStyle}`}>
+                <div
+                  css={css`
+                    ${sectionDescriptionStyle}
+                  `}
+                >
                   <StartSection description={sections[currentSection].description} />
                 </div>
-                <div css={css`${showNextButton}`}>
+                <div
+                  css={css`
+                    ${showNextButton}
+                  `}
+                >
                   <NextButton onNext={handleNextButton} />
                 </div>
-                {currentSection !== 0 && <div css={css`${showBackButtons}`}><BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/></div>}
+                {currentSection !== 0 && (
+                  <div
+                    css={css`
+                      ${showBackButtons}
+                    `}
+                  >
+                    <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
+                  </div>
+                )}
               </>
-              ) : (
+            ) : (
               <>
-                <div css={css`${marginStyle}`}>
-                  {currentSection !== 0 && <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />}
-                </div>
-                <div css={css`${showQuestionText}`}>
+                <div
+                  css={css`
+                    ${showQuestionText}
+                  `}
+                >
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
-                <div css={css`${ShowChoiceButtons}`}>
-                  <ShowChoices section={sections[currentSection]} questionIndex={currentQuestion} onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)} />
+                <div
+                  css={css`
+                    ${ShowChoiceButtons}
+                  `}
+                >
+                  <ShowChoices
+                    section={sections[currentSection]}
+                    questionIndex={currentQuestion}
+                    onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)}
+                  />
                 </div>
-                <div css={css`${showBackButtons}`}>
-                  <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack}/>
+                <div
+                  css={css`
+                    ${showBackButtons}
+                  `}
+                >
+                  <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
                 </div>
               </>
             )}
@@ -125,6 +177,6 @@ const App: React.FC = () => {
       </header>
     </div>
   );
-}
+};
 
 export default App;
