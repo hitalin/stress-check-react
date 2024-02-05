@@ -37,7 +37,28 @@ const ShowRadar: React.FC<ShowRadarProps> = ({ factors, level }) => {
   };
 
   return (
-    <Radar data={data} plugins={[RadialLinearScale, PointElement, LineElement, ArcElement]} />
+    <div style={{width: '50.0%', height: '50.0%'}}>
+      <Radar
+        data={data}
+        options={{
+          scales: {
+            r: {
+              suggestedMin: 0,
+              suggestedMax: 5,
+              ticks: {
+                stepSize: 1
+              }
+            }
+          },
+          plugins: {
+            legend: {
+              display: false
+            }
+          }
+        }}
+        plugins={[RadialLinearScale, PointElement, LineElement, ArcElement]}
+      />
+    </div>
   );
 };
 
