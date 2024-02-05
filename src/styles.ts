@@ -322,3 +322,13 @@ export const showBackButtons = css`
     position: static;
   }
 `;
+
+export const levelResult = css`
+  text-align: center;
+`;
+
+export const sectionResult= css`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+`;

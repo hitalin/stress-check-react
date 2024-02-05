@@ -37,7 +37,7 @@ const ShowRadar: React.FC<ShowRadarProps> = ({ factors, level }) => {
   };
 
   return (
-    <div style={{width: '30.0%', height: '30.0%'}}>
+    <div style={{width: '100.0%', height: '100.0%'}}>
       <Radar
         data={data}
         options={{

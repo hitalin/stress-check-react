@@ -4,6 +4,7 @@ import { Section, Question } from './types';
 import { calculateLevel } from './calculateLevel';
 import { calculateValue } from './calculateValue';
 import { Employee } from './types';
+import { sectionResult, levelResult } from './styles';
 import ShowRadar from './ShowRadar';
 
 type Props = {
@@ -40,21 +41,25 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
 
   return (
     <div>
-      <p>性別: {employee.gender} レベル: {employee.level === 'high' ? '高ストレス者' : '低ストレス者'}</p>
-      {sections.map((section, sectionIndex) => {
-        // Skip section0 and section4
-        if (sectionIndex === 0 || sectionIndex === 4) return null;
+      <div css={levelResult}>
+        <p>{employee.level === 'high' ? '高ストレス者' : '低ストレス者'}です</p>
+      </div>
+      <div css={sectionResult}>
+        {sections.map((section, sectionIndex) => {
+          // Skip section0 and section4
+          if (sectionIndex === 0 || sectionIndex === 4) return null;
 
-        return (
-          <div key={section.step}>
-            <p>STEP{section.step} {section.name}</p>
-            <p>スコアの合計: {scores[sectionIndex]}</p>
-            <p>評価点の合計: {totals[sectionIndex]}</p>
-            <p>{section.group}</p>
-            <ShowRadar factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
-          </div>
-        );
-      })}
+          return (
+            <div key={section.step}>
+              <p>STEP{section.step} {section.name}</p>
+              <p>スコアの合計: {scores[sectionIndex]}</p>
+              <p>評価点の合計: {totals[sectionIndex]}</p>
+              <p>{section.group}</p>
+              <ShowRadar factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
