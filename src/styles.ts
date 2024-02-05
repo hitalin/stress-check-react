@@ -232,6 +232,12 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   ${baseButton};
   ${choiceColors[colorIndex % choiceColors.length]}; // 色の循環を保証
   ${transitionButton};
+
+  width: 100%;
+
+  @media (min-width: 768px) {
+    width: auto;
+  }
 `;
 
 export const ShowChoiceButtons = css`
@@ -287,9 +293,12 @@ export const showBackButtons = css`
   align-items: center;
   width: 100%;
   margin-top: auto;
+  position: fixed;
+  bottom: 50px;
 
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: space-between;
+    position: static;
   }
 `;
