@@ -195,43 +195,33 @@ export const transitionButton = css`
 
 export const choiceColors = [
   css`
-    background-color: #FFE6C2;
+    background-color: #FFEDD5; // Softer orange
     color: #805300;
-    border: 2px solid #B37400;
+    border: 2px solid #FFCBA4; // Softer border
     &:hover {
-      background-color: #FFC88F;
+      background-color: #FFE8C2;
       color: #997A52;
-      border: 2px solid #FFC88F;
+      border: 2px solid #FFE8C2; // Softer border
     }
   `,
   css`
-    background-color: #D1EDE0;
+    background-color: #E1F2D8; // Softer green
     color: #1E4D2B;
-    border: 2px solid #1A4731;
+    border: 2px solid #C1E2B3; // Softer border
     &:hover {
-      background-color: #BFE6C4;
+      background-color: #D1E8C4;
       color: #507F60;
-      border: 2px solid #BFE6C4;
+      border: 2px solid #D1E8C4; // Softer border
     }
   `,
   css`
-    background-color: #E1F0FF;
+    background-color: #E6F7FF; // Softer blue
     color: #004085;
-    border: 2px solid #003374;
+    border: 2px solid #CCE9FF; // Softer border
     &:hover {
-      background-color: #e6f7ff;
+      background-color: #F1FAFF;
       color: #336699;
-      border: 2px solid #e6f7ff;
-    }
-  `,
-  css`
-    background-color: #D0E3F2;
-    color: #003C8F;
-    border: 2px solid #003274;
-    &:hover {
-      background-color: #B2D1E6;
-      color: #336699;
-      border: 2px solid #B2D1E6;
+      border: 2px solid #F1FAFF; // Softer border
     }
   `,
 ];
