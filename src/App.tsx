@@ -35,19 +35,22 @@ const App: React.FC = () => {
   const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
 
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
-    const choiceIndex = sections[currentSection].choices.indexOf(choice);
+    const choiceIndex = sections[currentSection]?.choices?.indexOf(choice) ?? 0;
     const choiceValue = choiceIndex >= 0 ? choiceIndex + 1 : 0; // Add 1 to the index to start the score at 1
 
     // Update the score of the selected question
-    sections[currentSection].questions[questionIndex].score = choiceValue;
+    const currentQuestions = sections[currentSection]?.questions;
+    if (currentQuestions) {
+      currentQuestions[questionIndex].score = choiceValue;
+    }
 
     // If the current section is 0 and the question ID is 1, set the selected choice as the employee's gender
-    if (currentSection === 0 && sections[currentSection].questions[questionIndex].id === 1) {
+    if (currentSection === 0 && currentQuestions?.[questionIndex]?.id === 1) {
       setEmployee((prev) => ({ ...prev, gender: choice }));
     }
 
     // Calculate the score of the current section
-    const sectionScore = calculateScore(sections[currentSection].questions);
+    const sectionScore = calculateScore(currentQuestions ?? []);
 
     // Update the scores state
     setScores((prevScores) => {
@@ -60,10 +63,10 @@ const App: React.FC = () => {
   };
 
   const handleNextQuestion = () => {
-    if (currentSection === sections.length - 1 && currentQuestion === sections[currentSection].questions.length - 1) {
+    if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
       // If we're at the last question of the last section, show the results
       setShowResults(true);
-    } else if (currentQuestion < sections[currentSection].questions.length - 1) {
+    } else if (currentQuestion < ((sections[currentSection]?.questions?.length ?? 0) - 1)) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setCurrentSection(currentSection + 1);
@@ -83,10 +86,12 @@ const App: React.FC = () => {
       setShowStartSection(true);
     } else if (showStartSection && currentSection > 0) {
       setCurrentSection(currentSection - 1);
-      setCurrentQuestion(sections[currentSection - 1].questions.length - 1);
+      setCurrentQuestion((sections[currentSection - 1]?.questions?.length ?? 0) - 1);
       setShowStartSection(false);
     }
   };
+
+
 
   const handleBackToTitle = () => {
     setCurrentSection(0);
@@ -109,7 +114,7 @@ const App: React.FC = () => {
           </div>
           {currentSection !== 0 && !showResults && !showStartSection && (
             <div css={progressStyle}>
-              <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection].questions.length} />
+              <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection]?.questions?.length ?? 0} />
             </div>
           )}
         </div>

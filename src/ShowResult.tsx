@@ -31,7 +31,7 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
 
   useEffect(() => {
     setValues(sections.map((section) => {
-      const questions: Question[] = section.questions;
+      const questions: Question[] = section.questions || [];
       return section.factors?.map(factor => ({
         scale: factor.scale,
         value: calculateValue(questions, factor)
@@ -47,7 +47,7 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
       <div css={sectionResult}>
         {sections.map((section, sectionIndex) => {
           // Skip section0 and section4
-          if (sectionIndex === 0 || sectionIndex === 4) return null;
+          if (sectionIndex === 0 || sectionIndex === 4 || sectionIndex === 5) return null;
 
           return (
             <div key={section.step}>

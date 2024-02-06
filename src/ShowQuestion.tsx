@@ -8,10 +8,14 @@ interface ShowQuestionProps {
   questionIndex: number;
 }
 
+// ShowQuestion.tsx
 const ShowQuestion: React.FC<ShowQuestionProps> = ({ section, questionIndex }) => {
-  const question = section.questions[questionIndex];
-  // セクションインデックスに基づいて動的にスタイルを適用
+  const question = section.questions?.[questionIndex];
   const questionStyle = dynamicQuestionColor(section.step);
+
+  if (!question) {
+    return null;
+  }
 
   return (
     <div>
