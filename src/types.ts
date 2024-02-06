@@ -7,8 +7,9 @@ export type Section = {
   step: number;
   name: string;
   description: string;
-  questions: Question[];
-  choices: string[];
+  next: string;
+  questions?: Question[];
+  choices?: string[];
   group?: string;
   factors?: Factor[];
 };

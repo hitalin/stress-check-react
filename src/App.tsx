@@ -134,7 +134,7 @@ const App: React.FC = () => {
                 <div
                   css={showNextButton}
                 >
-                  <NextButton onNext={handleNextButton} />
+                  <NextButton onNext={handleNextButton} nextText={sections[currentSection].next} />
                 </div>
                 {currentSection !== 0 && (
                   <div

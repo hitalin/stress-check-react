@@ -5,6 +5,7 @@ export const sections: Section[] = [
     step: 0,
     name: '性別について',
     description: '4つのSTEPによる簡単な質問から、\nあなたの職場におけるストレスレベルを測定します。\n質問は全部で57問です。（所要時間約5分間）',
+    next: '次へ',
     questions: [{ id: 1, text: 'はじめに性別を選んでください', score: 0, reverse: false }],
     choices: ['男性', '女性', 'その他', '答えない'],
   },
@@ -12,6 +13,7 @@ export const sections: Section[] = [
     step: 1,
     name: '仕事について',
     description: 'あなたの仕事についてうかがいます。\n4つの中から最もあてはまる選択ボタンを選んでください。（全17問）',
+    next: '次へ',
     questions: [
       { id: 1, text: '非常にたくさんの仕事を\nしなければならない', score: 0, reverse: true },
       { id: 2, text: '時間内に仕事が\n処理しきれない', score: 0, reverse: true },
@@ -161,6 +163,7 @@ export const sections: Section[] = [
     step: 2,
     name: '最近1か月の状態について',
     description: '最近 1 か月間のあなたの状態についてうかがいます。\n4つの中から最もあてはまる選択ボタンを選んでください。（全29問）',
+    next: '次へ',
     questions: [
       { id: 1, text: '活気がわいてくる', score: 0, reverse: true },
       { id: 2, text: '元気がいっぱいだ', score: 0, reverse: true },
@@ -285,6 +288,7 @@ export const sections: Section[] = [
     step: 3,
     name: '周りの方々について',
     description: 'あなたの周りの方々についてうかがいます。\n4つの中から最もあてはまるものを選んでください。（全9問）',
+    next: '次へ',
     questions: [
       { id: 1, text: '次の人たちとはどのくらい気軽に話ができますか？\n上司', score: 0, reverse: false },
       { id: 2, text: '次の人たちとはどのくらい気軽に話ができますか？\n職場の同僚', score: 0, reverse: false },
@@ -347,11 +351,18 @@ export const sections: Section[] = [
     step: 4,
     name: '満足度について',
     description: 'あなたの満足度についてうかがいます。\n4つの中から最もあてはまるものを選んでください。（全2問）',
+    next: '次へ',
     questions: [
       { id: 1, text: '仕事に満足だ', score: 0, reverse: false },
       { id: 2, text: '家庭環境に満足だ', score: 0, reverse: false },
     ],
     choices: ['満足', 'まあ満足', 'やや不満足', '不満足'],
+  },
+  {
+    step: 5,
+    name: 'レベルについて',
+    description: 'これで質問は、終わりです。\nお疲れさまでした。\nチェック結果にお進みください。',
+    next: '結果を見る',
   },
 ];
 
