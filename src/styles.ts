@@ -311,8 +311,6 @@ export const showBackButtons = css`
 
   @media (max-width: 767px) {
     border-top: 2px solid #FF9999;
-    margin: auto 1rem;
-    padding: 0 1rem;
   }
 
   @media (min-width: 768px) {
