@@ -240,7 +240,7 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   ${baseButton};
   ${choiceColors[colorIndex % choiceColors.length]};
   ${transitionButton};
-  width: 75%;
+  width: 80%;
   box-sizing: border-box;
   margin: 10px 0;
 
@@ -304,8 +304,6 @@ export const showProgress = css`
 export const showBackButtons = css`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   width: 100%;
   margin-top: auto;
   position: fixed;
