@@ -76,7 +76,11 @@ const App: React.FC = () => {
   };
 
   const handleNextButton = () => {
-    setShowStartSection(false);
+    if (currentSection === sections.length - 1) {
+      setShowResults(true);
+    } else {
+      setShowStartSection(false);
+    }
   };
 
   const handleBack = () => {
@@ -118,12 +122,10 @@ const App: React.FC = () => {
             </div>
           )}
         </div>
-        {showResults ? (
+        {showResults && currentSection === sections.length - 1 ? (
           <>
             <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
-            <div
-              css={showBackButtons}
-            >
+            <div css={showBackButtons}>
               <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={showResults} />
             </div>
           </>
