@@ -1,5 +1,18 @@
 import { css } from '@emotion/react';
 
+export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
+export const softBlack = '#333333';
+export const lightSalmonPink = '#FFD1DC';
+export const SalmonPink = '#FF9999';
+
+export const questionColors = [
+  '#000000', // セクション0: 黒（このままで良い）
+  '#AED581', // セクション1: より濃い黄緑、でもまだ淡い色調
+  '#92CAFF', // セクション2: より濃い水色、でも淡い色調を保持
+  '#9FC3F7', // セクション3: より濃い青、淡い色調を保持しつつ読みやすく
+  '#C7A4FF', // セクション4: より濃い紫、淡い色調を保持しつつ視認性を高める
+];
+
 export const globalStyles = css`
   * {
     box-sizing: border-box;
@@ -8,8 +21,8 @@ export const globalStyles = css`
     margin: 0;
     padding: 0;
     background: url("../public/bg.png");
-    color: #333;
-    font-family: "新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+    color: ${softBlack};
+    font-family: ${friendlyFont};
     font-size: 18px;
     line-height: 1.5;
     -webkit-text-size-adjust: 100%;
@@ -37,12 +50,12 @@ export const globalStyles = css`
 export const bodyStyle = css`
   margin: 0;
   padding: 0;
-  font-family: "新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+  font-family: ${friendlyFont};
 `;
 
 export const linkStyle = css`
   text-decoration: none;
-  color: #333;
+  color: ${softBlack};
 `;
 
 export const appStyle = css`
@@ -57,10 +70,6 @@ export const appStyle = css`
     padding: 0.25rem 0;
   }
 `;
-
-// Define the new color
-export const lightSalmonPink = '#FFD1DC';
-export const SalmonPink = '#FF9999';
 
 export const appHeaderStyle = css`
   padding: 2rem 1rem;
@@ -139,14 +148,6 @@ export const showNextButton = css`
   justify-content: center;
   width: 100%;
 `;
-
-export const questionColors = [
-  '#000000', // セクション0: 黒（このままで良い）
-  '#AED581', // セクション1: より濃い黄緑、でもまだ淡い色調
-  '#92CAFF', // セクション2: より濃い水色、でも淡い色調を保持
-  '#9FC3F7', // セクション3: より濃い青、淡い色調を保持しつつ読みやすく
-  '#C7A4FF', // セクション4: より濃い紫、淡い色調を保持しつつ視認性を高める
-];
 
 export const dynamicQuestionColor = (colorIndex: number) => css`
   color: ${questionColors[colorIndex % questionColors.length]};
