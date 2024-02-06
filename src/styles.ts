@@ -58,6 +58,10 @@ export const appStyle = css`
   }
 `;
 
+// Define the new color
+export const lightSalmonPink = '#FFD1DC';
+export const SalmonPink = '#FF9999';
+
 export const appHeaderStyle = css`
   padding: 2rem 1rem;
   @media (min-width: 640px) {
@@ -67,7 +71,7 @@ export const appHeaderStyle = css`
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;
-    border: 2px solid #FF9999;
+    border: 2px solid ${lightSalmonPink};
     border-radius: 25px;
     padding: 20px;
     width: 70vw;
@@ -94,7 +98,7 @@ export const sectionDescriptionStyle = css`
 export const titleAndProgressStyle = css`
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid #FF9999;
+  border-bottom: 2px solid ${lightSalmonPink};
   min-height: 45px;
   margin-bottom: 10px;
 
@@ -166,10 +170,6 @@ export const baseButton = css`
   border-radius: 0.5rem;
   transition: color 0.3s;
   margin: 0.5rem;
-`;
-
-export const baseColor = css`
-  color: #FF9999;
 `;
 
 export const backButtonClass = css`
@@ -324,6 +324,11 @@ export const showProgress = css`
   }
 `;
 
+// styles.ts
+export const emojiColor = css`
+  color: ${SalmonPink};
+`;
+
 export const showBackButtons = css`
   display: flex;
   flex-direction: column;
@@ -333,7 +338,7 @@ export const showBackButtons = css`
   bottom: 0;
 
   @media (max-width: 767px) {
-    border-top: 2px solid #FF9999;
+    border-top: 2px solid ${lightSalmonPink};
   }
 
   @media (min-width: 768px) {
