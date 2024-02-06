@@ -256,7 +256,7 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
 
   @media (max-width: 767px) {
     font-size: 1rem;
-    width: 100%;
+    width: 80%;
   }
 `;
 
@@ -298,7 +298,7 @@ export const nextButtonClass = css`
 
   @media (max-width: 767px) {
     font-size: 1rem;
-    width: 100%;
+    width: 80%;
   }
 `;
 
