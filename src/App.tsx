@@ -93,6 +93,7 @@ const App: React.FC = () => {
     setCurrentSection(0);
     setCurrentQuestion(0);
     setShowStartSection(true);
+    setShowResults(false);
   };
 
   return (
@@ -116,8 +117,15 @@ const App: React.FC = () => {
         {showResults ? (
           <>
             <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
+            <div
+              css={css`
+                ${showBackButtons}
+              `}
+            >
+              <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={showResults} />
+            </div>
           </>
-          ) : (
+        ) : (
           <>
             {showStartSection ? (
               <>

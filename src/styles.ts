@@ -100,7 +100,7 @@ export const titleAndProgressStyle = css`
 
   @media (max-width: 767px) {
     margin-bottom: 0;
-    margin-top: 10px;
+    margin-top: 5px;
   }
 
   @media (min-width: 768px) {
@@ -331,8 +331,7 @@ export const showBackButtons = css`
   @media (min-width: 768px) {
     flex-direction: row;
     justify-content: flex-start;
-    position: static;
-    margin-bottom: -20px;
+    margin-bottom: 0;
   }
 `;
 
