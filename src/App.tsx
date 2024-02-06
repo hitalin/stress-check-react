@@ -118,9 +118,7 @@ const App: React.FC = () => {
           <>
             <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
             <div
-              css={css`
-                ${showBackButtons}
-              `}
+              css={showBackButtons}
             >
               <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={showResults} />
             </div>
@@ -130,24 +128,18 @@ const App: React.FC = () => {
             {showStartSection ? (
               <>
                 <div
-                  css={css`
-                    ${sectionDescriptionStyle}
-                  `}
+                  css={sectionDescriptionStyle}
                 >
                   <StartSection description={sections[currentSection].description} />
                 </div>
                 <div
-                  css={css`
-                    ${showNextButton}
-                  `}
+                  css={showNextButton}
                 >
                   <NextButton onNext={handleNextButton} />
                 </div>
                 {currentSection !== 0 && (
                   <div
-                    css={css`
-                      ${showBackButtons}
-                    `}
+                    css={showBackButtons}
                   >
                     <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
                   </div>
@@ -156,16 +148,12 @@ const App: React.FC = () => {
             ) : (
               <>
                 <div
-                  css={css`
-                    ${showQuestionText}
-                  `}
+                  css={showQuestionText}
                 >
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div
-                  css={css`
-                    ${ShowChoiceButtons}
-                  `}
+                  css={ShowChoiceButtons}
                 >
                   <ShowChoices
                     section={sections[currentSection]}
@@ -174,9 +162,7 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div
-                  css={css`
-                    ${showBackButtons}
-                  `}
+                  css={showBackButtons}
                 >
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
                 </div>
