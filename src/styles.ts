@@ -289,6 +289,13 @@ export const dotStyle = css`
   width: 0.5rem;
   border-radius: 50%;
   margin: 0.25rem;
+
+  @media (max-width: 767px) {
+    height: 0.4rem;
+    width: 0.4rem;
+    border-radius: 50%;
+    margin: 0.2rem;
+  }
 `;
 
 export const showProgress = css`
