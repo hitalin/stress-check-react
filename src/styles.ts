@@ -253,6 +253,10 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   flex: 1 1 0%;
   box-sizing: border-box;
   margin: 8px;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    width: 100%;
   }
 `;
 
@@ -291,6 +295,11 @@ export const nextButtonClass = css`
   margin-top: auto;
   margin-bottom: 2rem;
   bottom: 30px;
+
+  @media (max-width: 767px) {
+    font-size: 1rem;
+    width: 100%;
+  }
 `;
 
 // styles.ts
