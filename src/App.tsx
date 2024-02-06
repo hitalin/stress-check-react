@@ -12,7 +12,6 @@ import ShowResult from './ShowResult';
 import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
-import { css } from '@emotion/react';
 import {
   appStyle,
   appHeaderStyle,
