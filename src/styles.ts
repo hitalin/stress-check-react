@@ -95,7 +95,13 @@ export const titleAndProgressStyle = css`
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid #FF9999;
-  min-height: 70px;
+  min-height: 45px;
+  margin-bottom: 10px;
+
+  @media (max-width: 767px) {
+    margin-bottom: 0;
+    margin-top: 10px;
+  }
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -104,6 +110,7 @@ export const titleAndProgressStyle = css`
 `;
 
 export const titleStyle = css`
+  font-size: 0.9rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -118,6 +125,7 @@ export const progressStyle = css`
 `;
 
 export const sectionTitleStyle = css`
+  font-size: 0.9rem;
 `;
 
 export const showNextButton = css`
@@ -322,8 +330,9 @@ export const showBackButtons = css`
 
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     position: static;
+    margin-bottom: -20px;
   }
 `;
 
