@@ -260,7 +260,7 @@ export const ShowChoiceButtons = css`
   padding: 0 1rem;
   white-space: pre-line;
   position: fixed;
-  top: 50%;
+  top: 45%;
 
   @media (min-width: 768px) {
     top: 80%;
