@@ -11,7 +11,7 @@ export const sections: Section[] = [
   {
     step: 1,
     name: '仕事について',
-    description: 'あなたの仕事についてうかがいます。\n最もあてはまる選択ボタンを選んでください。',
+    description: 'あなたの仕事についてうかがいます。\n4つの中から最もあてはまる選択ボタンを選んでください。（全17問）',
     questions: [
       { id: 1, text: '非常にたくさんの仕事を\nしなければならない', score: 0, reverse: true },
       { id: 2, text: '時間内に仕事が\n処理しきれない', score: 0, reverse: true },
@@ -160,7 +160,7 @@ export const sections: Section[] = [
   {
     step: 2,
     name: '最近1か月の状態について',
-    description: '最近 1 か月間のあなたの状態についてうかがいます。\n最もあてはまる選択ボタンを選んでください。',
+    description: '最近 1 か月間のあなたの状態についてうかがいます。\n4つの中から最もあてはまる選択ボタンを選んでください。（全29問）',
     questions: [
       { id: 1, text: '活気がわいてくる', score: 0, reverse: true },
       { id: 2, text: '元気がいっぱいだ', score: 0, reverse: true },
@@ -284,7 +284,7 @@ export const sections: Section[] = [
   {
     step: 3,
     name: '周りの方々について',
-    description: 'あなたの周りの方々についてうかがいます。\n最もあてはまる選択ボタンを選んでください。',
+    description: 'あなたの周りの方々についてうかがいます。\n4つの中から最もあてはまるものを選んでください。（全9問）',
     questions: [
       { id: 1, text: '次の人たちとはどのくらい気軽に話ができますか？\n上司', score: 0, reverse: false },
       { id: 2, text: '次の人たちとはどのくらい気軽に話ができますか？\n職場の同僚', score: 0, reverse: false },

@@ -81,13 +81,12 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = css`
-  font-size: 1.5rem;
+  font-size: 1rem;
   margin: 10vh auto 1rem;
   white-space: pre-line;
   padding: 0 1rem;
 
   @media (max-width: 767px) {
-    font-size: 1.5rem;
     margin-top: 5vh;
   }
 `;
@@ -247,7 +246,7 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
 
   @media (min-width: 768px) {
     width: auto;
-    margin: initial;
+    margin: 10px;
   }
 `;
 
@@ -257,8 +256,9 @@ export const ShowChoiceButtons = css`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin: 0 auto;
-  padding: 0 10px;
+  margin: auto 1rem;
+  padding: 0 1rem;
+  white-space: pre-line;
   position: fixed;
   top: 50%;
 
@@ -267,7 +267,6 @@ export const ShowChoiceButtons = css`
     flex-direction: row;
     margin-top: auto;
     margin-bottom: 1rem;
-    padding: initial;
     align-items: center;
   }
 `;
@@ -314,6 +313,8 @@ export const showBackButtons = css`
 
   @media (max-width: 767px) {
     border-top: 2px solid #FF9999;
+    margin: auto 1rem;
+    padding: 0 1rem;
   }
 
   @media (min-width: 768px) {
@@ -328,6 +329,7 @@ export const levelResult = css`
 `;
 
 export const sectionResult = css`
+  text-align: center;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;

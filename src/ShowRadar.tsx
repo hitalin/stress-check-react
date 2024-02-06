@@ -19,47 +19,48 @@ interface ShowRadarProps {
 
 const ShowRadar: React.FC<ShowRadarProps> = ({ factors, level }) => {
   const data = {
-    labels: factors.map(factor => factor.scale),
-    datasets: [{
-      data: factors.map(factor => factor.value),
-      borderColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
-      backgroundColor: level === 'high' ? ['rgba(255, 0, 0, 0.2)'] : ['rgba(0, 0, 255, 0.2)'],
-      pointBackgroundColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
-      pointBorderColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
-      pointHoverBackgroundColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
-      pointHoverBorderColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
-      pointRadius: 3,
-      pointHitRadius: 10,
-      lineTension: 0.3,
-      fill: true,
-      showLine: true,
-    }]
+    labels: factors.map((factor) => factor.scale),
+    datasets: [
+      {
+        data: factors.map((factor) => factor.value),
+        borderColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
+        backgroundColor: level === 'high' ? ['rgba(255, 0, 0, 0.2)'] : ['rgba(0, 0, 255, 0.2)'],
+        pointBackgroundColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
+        pointBorderColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
+        pointHoverBackgroundColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
+        pointHoverBorderColor: level === 'high' ? ['rgba(255, 0, 0, 1)'] : ['rgba(0, 0, 255, 1)'],
+        pointRadius: 3,
+        pointHitRadius: 10,
+        lineTension: 0.3,
+        fill: true,
+        showLine: true,
+      },
+    ],
   };
 
   return (
-    <div style={{width: '100.0%', height: '100.0%'}}>
-      <Radar
-        data={data}
-        options={{
-          scales: {
-            r: {
-              suggestedMin: 0,
-              suggestedMax: 5,
-              ticks: {
-                stepSize: 1
-              }
-            }
+    <Radar
+      data={data}
+      options={{
+        scales: {
+          r: {
+            suggestedMin: 0,
+            suggestedMax: 5,
+            ticks: {
+              stepSize: 1,
+            },
           },
-          plugins: {
-            legend: {
-              display: false
-            }
-          }
-        }}
-        plugins={[RadialLinearScale, PointElement, LineElement, ArcElement]}
-      />
-    </div>
+        },
+        plugins: {
+          legend: {
+            display: false,
+          },
+        },
+      }}
+      plugins={[RadialLinearScale, PointElement, LineElement, ArcElement]}
+    />
   );
 };
 
 export default ShowRadar;
+
