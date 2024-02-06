@@ -148,14 +148,14 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
 `;
 
 export const showQuestionText = css`
-  font-size: 2rem;
+  font-size: 2.5rem;
   text-align: center;
   margin: 10vh auto 1rem;
   white-space: pre-line;
   padding: 0 1rem;
 
   @media (max-width: 767px) {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-top: 5vh;
     margin-bottom: 50px;
   }
@@ -248,21 +248,20 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   ${baseButton};
   ${choiceColors[colorIndex % choiceColors.length]};
   ${transitionButton};
-  width: 80%;
+  width: 22%;
+  font-size: 1.2rem;
+  flex: 1 1 0%;
   box-sizing: border-box;
-  margin: 10px 0;
-
-  @media (min-width: 768px) {
-    width: auto;
-    margin: 10px;
+  margin: 8px;
   }
 `;
 
 export const ShowChoiceButtons = css`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  flex-wrap: nowrap;
   width: 100%;
   margin: auto 1rem;
   padding: 0 1rem;
@@ -272,12 +271,13 @@ export const ShowChoiceButtons = css`
 
   @media (min-width: 768px) {
     top: 80%;
-    flex-direction: row;
+    flex-direction: column;
     margin-top: auto;
-    margin-bottom: 1rem;
-    align-items: center;
+    margin-bottom: 2rem;
+    bottom: 30px;
   }
 `;
+
 
 export const nextButtonClass = css`
   ${baseButton};
@@ -285,10 +285,12 @@ export const nextButtonClass = css`
   ${transitionButton};
 
   position: fixed;
+  font-size: 1.2rem;
+  width: 22%;
   top: 80%;
   margin-top: auto;
-  margin-bottom: 1rem;
-  width: auto;
+  margin-bottom: 2rem;
+  bottom: 30px;
 `;
 
 // styles.ts
