@@ -7,7 +7,7 @@ interface NextButtonProps {
   nextText: string;
 }
 
-const NextButton: React.FC<NextButtonProps> = ({ onNext }) => {
+const NextButton: React.FC<NextButtonProps> = ({ onNext, nextText }) => {
   return (
     <button type="button" onClick={onNext} css={nextButtonClass}>{nextText}</button>
   );
