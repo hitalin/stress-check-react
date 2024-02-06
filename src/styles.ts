@@ -262,22 +262,20 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
 export const ShowChoiceButtons = css`
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  align-items: stretch;
   flex-wrap: nowrap;
   width: 100%;
   margin: auto 1rem;
   padding: 0 1rem;
   white-space: pre-line;
   position: fixed;
-  top: 40%;
+  top: 45%;
+  bottom: 30px;
 
   @media (min-width: 768px) {
     top: 80%;
     flex-direction: column;
     margin-top: auto;
     margin-bottom: 2rem;
-    bottom: 30px;
   }
 `;
 
