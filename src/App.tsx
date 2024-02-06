@@ -110,7 +110,7 @@ const App: React.FC = () => {
         <div css={titleAndProgressStyle}>
           <div css={titleStyle}>
             <ShowTitle />
-            {currentSection !== 0 && !showResults && (
+            {currentSection !== 0 && !showResults && currentSection !== sections.length - 1 && (
               <div css={sectionTitleStyle}>
                 <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
               </div>
