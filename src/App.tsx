@@ -33,6 +33,8 @@ const App: React.FC = () => {
   const [showStartSection, setShowStartSection] = useState<boolean>(true); // Initialize showStartSection with true
   const [showResults, setShowResults] = useState<boolean>(false);
   const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isGoingBack, setIsGoingBack] = useState(false);
 
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
     const choiceIndex = sections[currentSection]?.choices?.indexOf(choice) ?? 0;
@@ -73,6 +75,8 @@ const App: React.FC = () => {
       setCurrentQuestion(0);
       setShowStartSection(true);
     }
+    setIsAnimating(true);
+    setIsGoingBack(false);
   };
 
   const handleNextButton = () => {
@@ -93,6 +97,8 @@ const App: React.FC = () => {
       setCurrentQuestion((sections[currentSection - 1]?.questions?.length ?? 0) - 1);
       setShowStartSection(false);
     }
+    setIsAnimating(true);
+    setIsGoingBack(true);
   };
 
 

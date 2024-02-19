@@ -119,8 +119,6 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = css`
-  ${slideInTextStyle};
-
   font-size: 1rem;
   margin: 10vh auto 1rem;
   white-space: pre-line;
@@ -180,8 +178,6 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
 `;
 
 export const showQuestionText = css`
-  ${slideInTextStyle};
-
   font-size: 2.5rem;
   text-align: center;
   margin: 10vh auto 1rem;
