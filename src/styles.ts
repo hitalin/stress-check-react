@@ -82,7 +82,7 @@ export const appHeaderStyle = css`
     flex-direction: column;
     border: 2px solid ${lightSalmonPink};
     border-radius: 25px;
-    padding: 20px;
+    padding: 0;
     width: 70vw;
     height: 80vh;
     margin: auto;
@@ -111,6 +111,7 @@ export const titleAndProgressStyle = css`
   border-bottom: 2px solid ${lightSalmonPink};
   min-height: 45px;
   margin-bottom: 10px;
+  padding: 0 1rem;
 
   @media (max-width: 767px) {
     margin-bottom: 0;
@@ -161,7 +162,7 @@ export const showQuestionText = css`
   padding: 0 1rem;
 
   @media (max-width: 767px) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     margin-top: 5vh;
     margin-bottom: 50px;
   }
@@ -257,7 +258,7 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   margin: 8px;
 
   @media (max-width: 767px) {
-    width: 70%;
+    width: 80%;
   }
 `;
 
@@ -270,8 +271,8 @@ export const ShowChoiceButtons = css`
   padding: 0 1rem;
   white-space: pre-line;
   position: fixed;
-  top: 45%;
-  bottom: 30px;
+  top: 48%;
+  justify-content: center;
 
   @media (min-width: 768px) {
     top: 80%;
@@ -288,16 +289,16 @@ export const nextButtonClass = css`
   ${transitionButton};
 
   position: fixed;
-  font-size: 1.2rem;
+  font-size: 1rem;
   width: 22%;
-  top: 80%;
+  top: 82%;
   margin-top: auto;
-  margin-bottom: 2rem;
-  bottom: 30px;
+  margin-bottom: 3rem;
+  bottom: 0.5rem;
 
   @media (max-width: 767px) {
-    font-size: 1.0rem;
-    width: 60%;
+    width: 50%;
+    margin-top: 1rem;
   }
 `;
 
@@ -309,10 +310,10 @@ export const dotStyle = css`
   margin: 0.25rem;
 
   @media (max-width: 767px) {
-    height: 0.4rem;
-    width: 0.4rem;
+    height: 0.3rem;
+    width: 0.3rem;
     border-radius: 50%;
-    margin: 0.2rem;
+    margin: 0.15rem;
   }
 `;
 
