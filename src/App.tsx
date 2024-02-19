@@ -93,17 +93,20 @@ const App: React.FC = () => {
     setIsAnimating(true);
     setIsGoingBack(true);
 
-    if (!showStartSection && currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    } else if (!showStartSection && currentQuestion === 0) {
-      setShowStartSection(true);
-    } else if (showStartSection && currentSection > 0) {
-      setCurrentSection(currentSection - 1);
-      setCurrentQuestion((sections[currentSection - 1]?.questions?.length ?? 0) - 1);
-      setShowStartSection(false);
-    }
-    setIsAnimating(true);
-    setIsGoingBack(false);
+    setTimeout(() => { // Wait for the slideOut animation to finish
+      if (!showStartSection && currentQuestion > 0) {
+        setCurrentQuestion(currentQuestion - 1);
+      } else if (!showStartSection && currentQuestion === 0) {
+        setShowStartSection(true);
+      } else if (showStartSection && currentSection > 0) {
+        const newSection = currentSection - 1;
+        setCurrentSection(newSection);
+        setCurrentQuestion((sections[newSection]?.questions?.length ?? 0) - 1);
+        setShowStartSection(false);
+      }
+      setIsAnimating(true);
+      setIsGoingBack(false);
+    }, 1000); // Assuming the animation duration is 1s
   };
 
   const handleBackToTitle = () => {
