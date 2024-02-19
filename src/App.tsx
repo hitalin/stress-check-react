@@ -67,18 +67,23 @@ const App: React.FC = () => {
   };
 
   const handleNextQuestion = () => {
-    if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
-      // If we're at the last question of the last section, show the results
-      setShowResults(true);
-    } else if (currentQuestion < ((sections[currentSection]?.questions?.length ?? 0) - 1)) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      setCurrentSection(currentSection + 1);
-      setCurrentQuestion(0);
-      setShowStartSection(true);
-    }
     setIsAnimating(true);
-    setIsGoingBack(false);
+    setIsGoingBack(true);
+
+    setTimeout(() => {
+      if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
+        // If we're at the last question of the last section, show the results
+        setShowResults(true);
+      } else if (currentQuestion < ((sections[currentSection]?.questions?.length ?? 0) - 1)) {
+        setCurrentQuestion(currentQuestion + 1);
+      } else {
+        setCurrentSection(currentSection + 1);
+        setCurrentQuestion(0);
+        setShowStartSection(true);
+      }
+      setIsAnimating(true);
+      setIsGoingBack(false);
+    }, 1000); // Assuming the animation duration is 1s
   };
 
   const handleNextButton = () => {
