@@ -1,6 +1,6 @@
 import { css, keyframes } from '@emotion/react';
 
-const slideOut = keyframes`
+const nextSlideOut = keyframes`
   0% {
     transform: translateX(0);
     opacity: 1;
@@ -11,7 +11,7 @@ const slideOut = keyframes`
   }
 `;
 
-const slideIn = keyframes`
+const nextSlideIn = keyframes`
   0% {
     transform: translateX(25%);
     opacity: 0;
@@ -22,13 +22,12 @@ const slideIn = keyframes`
   }
 `;
 
-export const slideOutTextStyle = css`
-  animation: ${slideOut} 1s ease-in-out forwards;
-  opacity: 0;
+export const nextSlideOutTextStyle = css`
+  animation: ${nextSlideOut} 1s ease-in-out forwards;
 `;
 
-export const slideInTextStyle = css`
-  animation: ${slideIn} 1s ease-in-out forwards;
+export const nextSlideInTextStyle = css`
+  animation: ${nextSlideIn} 1s ease-in-out forwards;
 `;
 
 export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';

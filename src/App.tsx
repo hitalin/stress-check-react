@@ -24,8 +24,8 @@ import {
   showQuestionText,
   showBackButtons,
   sectionDescriptionStyle,
-  slideInTextStyle,
-  slideOutTextStyle,
+  nextSlideInTextStyle,
+  nextSlideOutTextStyle,
 } from './styles';
 
 const App: React.FC = () => {
@@ -36,6 +36,7 @@ const App: React.FC = () => {
   const [showResults, setShowResults] = useState<boolean>(false);
   const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
   const [isAnimating, setIsAnimating] = useState(false);
+  const [isGoingNext, setIsGoingNext] = useState(false);
   const [isGoingBack, setIsGoingBack] = useState(false);
 
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
@@ -68,7 +69,7 @@ const App: React.FC = () => {
 
   const handleNextQuestion = () => {
     setIsAnimating(true);
-    setIsGoingBack(true);
+    setIsGoingNext(true);
 
     setTimeout(() => {
       if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
@@ -82,7 +83,7 @@ const App: React.FC = () => {
         setShowStartSection(true);
       }
       setIsAnimating(true);
-      setIsGoingBack(false);
+      setIsGoingNext(false);
     }, 1000); // Assuming the animation duration is 1s
   };
 
@@ -96,7 +97,7 @@ const App: React.FC = () => {
 
   const handleBack = () => {
     setIsAnimating(true);
-    setIsGoingBack(true);
+    setIsGoingNext(true);
 
     setTimeout(() => { // Wait for the slideOut animation to finish
       if (!showStartSection && currentQuestion > 0) {
@@ -110,7 +111,7 @@ const App: React.FC = () => {
         setShowStartSection(false);
       }
       setIsAnimating(true);
-      setIsGoingBack(false);
+      setIsGoingNext(false);
     }, 1000); // Assuming the animation duration is 1s
   };
 
@@ -155,7 +156,7 @@ const App: React.FC = () => {
             {showStartSection ? (
               <>
                 <div
-                  css={[sectionDescriptionStyle, isAnimating ? (isGoingBack ? slideOutTextStyle : slideInTextStyle) : {}]}
+                  css={[sectionDescriptionStyle, isAnimating ? (isGoingNext ? nextSlideOutTextStyle : nextSlideInTextStyle) : {}]}
                 >
                   <StartSection description={sections[currentSection].description} />
                 </div>
@@ -175,7 +176,7 @@ const App: React.FC = () => {
             ) : (
               <>
                 <div
-                  css={[showQuestionText, isAnimating ? (isGoingBack ? slideOutTextStyle : slideInTextStyle) : {}]}
+                  css={[showQuestionText, isAnimating ? (isGoingNext ? nextSlideOutTextStyle : nextSlideInTextStyle) : {}]}
                   key={currentQuestion}
                   onAnimationEnd={handleAnimationEnd}
                 >
