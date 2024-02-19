@@ -90,17 +90,25 @@ const App: React.FC = () => {
   };
 
   const handleBack = () => {
-    if (!showStartSection && currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    } else if (!showStartSection && currentQuestion === 0) {
-      setShowStartSection(true);
-    } else if (showStartSection && currentSection > 0) {
-      setCurrentSection(currentSection - 1);
-      setCurrentQuestion((sections[currentSection - 1]?.questions?.length ?? 0) - 1);
-      setShowStartSection(false);
+    if (!isAnimating) {
+      setIsAnimating(true);
+      setIsGoingBack(true);
+
+      // Wait for the animation to finish before updating the state
+      setTimeout(() => {
+        if (!showStartSection && currentQuestion > 0) {
+          setCurrentQuestion(currentQuestion - 1);
+        } else if (!showStartSection && currentQuestion === 0) {
+          setShowStartSection(true);
+        } else if (showStartSection && currentSection > 0) {
+          setCurrentSection(currentSection - 1);
+          setCurrentQuestion((sections[currentSection - 1]?.questions?.length ?? 0) - 1);
+          setShowStartSection(false);
+        }
+        setIsAnimating(true);
+        setIsGoingBack(false);
+      }, 1000); // Assuming the animation duration is 1s
     }
-    setIsAnimating(true);
-    setIsGoingBack(true);
   };
 
   const handleBackToTitle = () => {
