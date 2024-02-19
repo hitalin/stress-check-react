@@ -20,7 +20,7 @@ export const globalStyles = css`
   body {
     margin: 0;
     padding: 0;
-    background: url("../public/bg.png");
+    background: url("/bg.png");
     color: ${softBlack};
     font-family: ${friendlyFont};
     font-size: 18px;
