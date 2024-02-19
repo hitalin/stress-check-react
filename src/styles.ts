@@ -30,6 +30,36 @@ export const nextSlideInTextStyle = css`
   animation: ${nextSlideIn} 1s ease-in-out forwards;
 `;
 
+const prevSlideOut = keyframes`
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+`;
+
+const prevSlideIn = keyframes`
+  0% {
+    transform: translateX(-25%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+export const prevSlideOutTextStyle = css`
+  animation: ${prevSlideOut} 1s ease-in-out forwards;
+`;
+
+export const prevSlideInTextStyle = css`
+  animation: ${prevSlideIn} 1s ease-in-out forwards;
+`;
+
 export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
 export const softBlack = '#555555';
 export const lightSalmonPink = '#FFD1DC';

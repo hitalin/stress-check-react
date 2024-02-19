@@ -24,8 +24,10 @@ import {
   showQuestionText,
   showBackButtons,
   sectionDescriptionStyle,
-  nextSlideInTextStyle,
   nextSlideOutTextStyle,
+  prevSlideOutTextStyle,
+  nextSlideInTextStyle,
+  prevSlideInTextStyle
 } from './styles';
 
 const App: React.FC = () => {
@@ -37,7 +39,26 @@ const App: React.FC = () => {
   const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
   const [isAnimating, setIsAnimating] = useState(false);
   const [isGoingNext, setIsGoingNext] = useState(false);
-  const [isGoingBack, setIsGoingBack] = useState(false);
+  const [isGoingPrev, setIsGoingPrev] = useState(false);
+
+  const getAnimationStyle = () => {
+    if (isAnimating) {
+      if (isGoingNext) {
+        return nextSlideOutTextStyle;
+      }
+      if (isGoingPrev) {
+        return prevSlideOutTextStyle;
+      }
+    } else {
+      if (isGoingNext) {
+        return nextSlideInTextStyle;
+      }
+      if (isGoingPrev) {
+        return prevSlideInTextStyle;
+      }
+    }
+    return {};
+  };
 
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
     const choiceIndex = sections[currentSection]?.choices?.indexOf(choice) ?? 0;
@@ -70,6 +91,7 @@ const App: React.FC = () => {
   const handleNextQuestion = () => {
     setIsAnimating(true);
     setIsGoingNext(true);
+    setIsGoingPrev(false);
 
     setTimeout(() => {
       if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
@@ -82,8 +104,9 @@ const App: React.FC = () => {
         setCurrentQuestion(0);
         setShowStartSection(true);
       }
-      setIsAnimating(true);
-      setIsGoingNext(false);
+      setIsAnimating(false);
+      setIsGoingNext(true);
+      setIsGoingPrev(false);
     }, 1000); // Assuming the animation duration is 1s
   };
 
@@ -97,7 +120,8 @@ const App: React.FC = () => {
 
   const handleBack = () => {
     setIsAnimating(true);
-    setIsGoingNext(true);
+    setIsGoingNext(false);
+    setIsGoingPrev(true);
 
     setTimeout(() => { // Wait for the slideOut animation to finish
       if (!showStartSection && currentQuestion > 0) {
@@ -110,8 +134,9 @@ const App: React.FC = () => {
         setCurrentQuestion((sections[newSection]?.questions?.length ?? 0) - 1);
         setShowStartSection(false);
       }
-      setIsAnimating(true);
+      setIsAnimating(false);
       setIsGoingNext(false);
+      setIsGoingPrev(true);
     }, 1000); // Assuming the animation duration is 1s
   };
 
@@ -156,7 +181,10 @@ const App: React.FC = () => {
             {showStartSection ? (
               <>
                 <div
-                  css={[sectionDescriptionStyle, isAnimating ? (isGoingNext ? nextSlideOutTextStyle : nextSlideInTextStyle) : {}]}
+                  css={[
+                    sectionDescriptionStyle,
+                    getAnimationStyle()
+                  ]}
                 >
                   <StartSection description={sections[currentSection].description} />
                 </div>
@@ -176,7 +204,10 @@ const App: React.FC = () => {
             ) : (
               <>
                 <div
-                  css={[showQuestionText, isAnimating ? (isGoingNext ? nextSlideOutTextStyle : nextSlideInTextStyle) : {}]}
+                  css={[
+                    showQuestionText,
+                    getAnimationStyle()
+                  ]}
                   key={currentQuestion}
                   onAnimationEnd={handleAnimationEnd}
                 >
