@@ -107,7 +107,7 @@ const App: React.FC = () => {
       setIsAnimating(false);
       setIsGoingNext(true);
       setIsGoingPrev(false);
-    }, 1000); // Assuming the animation duration is 1s
+    }, 200);
   };
 
   const handleNextButton = () => {
@@ -137,7 +137,7 @@ const App: React.FC = () => {
       setIsAnimating(false);
       setIsGoingNext(false);
       setIsGoingPrev(true);
-    }, 1000); // Assuming the animation duration is 1s
+    }, 200);
   };
 
   const handleBackToTitle = () => {

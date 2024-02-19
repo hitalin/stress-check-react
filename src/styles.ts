@@ -23,11 +23,11 @@ const nextSlideIn = keyframes`
 `;
 
 export const nextSlideOutTextStyle = css`
-  animation: ${nextSlideOut} 1s ease-in-out forwards;
+  animation: ${nextSlideOut} 0.2s ease-in-out forwards;
 `;
 
 export const nextSlideInTextStyle = css`
-  animation: ${nextSlideIn} 1s ease-in-out forwards;
+  animation: ${nextSlideIn} 0.2s ease-in-out forwards;
 `;
 
 const prevSlideOut = keyframes`
@@ -53,11 +53,11 @@ const prevSlideIn = keyframes`
 `;
 
 export const prevSlideOutTextStyle = css`
-  animation: ${prevSlideOut} 1s ease-in-out forwards;
+  animation: ${prevSlideOut} 0.2s ease-in-out forwards;
 `;
 
 export const prevSlideInTextStyle = css`
-  animation: ${prevSlideIn} 1s ease-in-out forwards;
+  animation: ${prevSlideIn} 0.2s ease-in-out forwards;
 `;
 
 export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
