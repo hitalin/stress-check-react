@@ -270,8 +270,8 @@ export const ShowChoiceButtons = css`
   @media (min-width: 768px) {
     top: 80%;
     flex-direction: column;
-    margin: auto 1rem;
-    padding: 0 1rem;
+    margin: auto 0rem;
+    padding: 0 0rem;
     margin-bottom: 2rem;
   }
 `;
@@ -336,7 +336,7 @@ export const showBackButtons = css`
 
   @media (max-width: 767px) {
     border-top: 2px solid ${lightSalmonPink};
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.75);
   }
 
   @media (min-width: 768px) {
