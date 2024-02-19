@@ -22,11 +22,12 @@ const slideIn = keyframes`
   }
 `;
 
-const slideOutTextStyle = css`
+export const slideOutTextStyle = css`
   animation: ${slideOut} 1s ease-in-out forwards;
+  opacity: 0;
 `;
 
-const slideInTextStyle = css`
+export const slideInTextStyle = css`
   animation: ${slideIn} 1s ease-in-out forwards;
 `;
 

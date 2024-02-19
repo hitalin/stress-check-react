@@ -24,6 +24,8 @@ import {
   showQuestionText,
   showBackButtons,
   sectionDescriptionStyle,
+  slideInTextStyle,
+  slideOutTextStyle,
 } from './styles';
 
 const App: React.FC = () => {
@@ -101,13 +103,15 @@ const App: React.FC = () => {
     setIsGoingBack(true);
   };
 
-
-
   const handleBackToTitle = () => {
     setCurrentSection(0);
     setCurrentQuestion(0);
     setShowStartSection(true);
     setShowResults(false);
+  };
+
+  const handleAnimationEnd = () => {
+    setIsAnimating(false);
   };
 
   return (
@@ -140,7 +144,7 @@ const App: React.FC = () => {
             {showStartSection ? (
               <>
                 <div
-                  css={sectionDescriptionStyle}
+                  css={[sectionDescriptionStyle, isAnimating ? (isGoingBack ? slideOutTextStyle : slideInTextStyle) : {}]}
                 >
                   <StartSection description={sections[currentSection].description} />
                 </div>
@@ -159,7 +163,11 @@ const App: React.FC = () => {
               </>
             ) : (
               <>
-                <div css={showQuestionText} key={currentQuestion}>
+                <div
+                  css={[showQuestionText, isAnimating ? (isGoingBack ? slideOutTextStyle : slideInTextStyle) : {}]}
+                  key={currentQuestion}
+                  onAnimationEnd={handleAnimationEnd}
+                >
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div
