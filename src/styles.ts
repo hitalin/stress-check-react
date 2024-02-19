@@ -64,17 +64,11 @@ export const appStyle = css`
   flex-direction: column;
   min-height: 100vh;
   justify-content: space-between;
-  padding: 0.5rem 0;
-
-  @media (max-width: 767px) {
-    padding: 0.25rem 0;
-  }
 `;
 
 export const appHeaderStyle = css`
-  padding: 2rem 1rem;
+  padding: 0.5rem 0rem;
   @media (min-width: 640px) {
-    padding: 1.5rem;
   }
 
   @media (min-width: 1024px) {
@@ -109,13 +103,12 @@ export const titleAndProgressStyle = css`
   display: flex;
   flex-direction: column;
   border-bottom: 2px solid ${lightSalmonPink};
-  min-height: 45px;
-  margin-bottom: 10px;
+  min-height: 70px;
+  margin-bottom: 0;
   padding: 0 1rem;
 
   @media (max-width: 767px) {
-    margin-bottom: 0;
-    margin-top: 5px;
+    margin-top: 0;
   }
 
   @media (min-width: 768px) {
@@ -267,8 +260,8 @@ export const ShowChoiceButtons = css`
   flex-direction: row;
   flex-wrap: nowrap;
   width: 100%;
-  margin: auto 1rem;
-  padding: 0 1rem;
+  margin: auto 2rem;
+  padding: 0 2rem;
   white-space: pre-line;
   position: fixed;
   top: 50%;
@@ -321,7 +314,7 @@ export const showProgress = css`
   display: flex;
   flex-direction: row;
   justify-content: flex-end; // default to right alignment for larger screens
-
+  margin-bottom: 0.5rem;
   @media (max-width: 767px) {
     justify-content: flex-start; // align left on mobile screens
   }
@@ -342,6 +335,7 @@ export const showBackButtons = css`
 
   @media (max-width: 767px) {
     border-top: 2px solid ${lightSalmonPink};
+    background-color: rgba(255, 255, 255, 0.5);
   }
 
   @media (min-width: 768px) {
