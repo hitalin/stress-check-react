@@ -270,7 +270,8 @@ export const ShowChoiceButtons = css`
   @media (min-width: 768px) {
     top: 80%;
     flex-direction: column;
-    margin-top: auto;
+    margin: auto 1rem;
+    padding: 0 1rem;
     margin-bottom: 2rem;
   }
 `;
