@@ -214,7 +214,10 @@ const App: React.FC = () => {
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div
-                  css={ShowChoiceButtons}
+                  css={[
+                    ShowChoiceButtons,
+                    getAnimationStyle()
+                  ]}
                 >
                   <ShowChoices
                     section={sections[currentSection]}
