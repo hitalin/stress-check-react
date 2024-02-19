@@ -134,7 +134,7 @@ export const appHeaderStyle = css`
   @media (min-width: 1024px) {
     display: flex;
     flex-direction: column;
-    border: 2px solid ${lightSalmonPink};
+    border: 1px solid ${lightSalmonPink};
     border-radius: 25px;
     padding: 0;
     width: 70vw;
@@ -162,7 +162,7 @@ export const sectionDescriptionStyle = css`
 export const titleAndProgressStyle = css`
   display: flex;
   flex-direction: column;
-  border-bottom: 2px solid ${lightSalmonPink};
+  border-bottom: 1px solid ${lightSalmonPink};
   min-height: 70px;
   margin-bottom: 0;
   padding: 0 1rem;
@@ -172,6 +172,7 @@ export const titleAndProgressStyle = css`
   }
 
   @media (min-width: 768px) {
+    margin-top: 1rem;
     flex-direction: row;
     justify-content: flex-start;
   }
@@ -184,6 +185,7 @@ export const titleStyle = css`
   align-items: flex-start;
   width: 100%;
   flex-grow: 1;
+  font-weight: bold;
 `;
 
 export const progressStyle = css`
@@ -209,6 +211,7 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
 
 export const showQuestionText = css`
   font-size: 2.5rem;
+  font-weight: bold;
   text-align: center;
   margin: 10vh auto 1rem;
   white-space: pre-line;
@@ -357,10 +360,10 @@ export const nextButtonClass = css`
 
 // styles.ts
 export const dotStyle = css`
-  height: 0.5rem;
-  width: 0.5rem;
+  height: 0.7rem;
+  width: 0.7rem;
   border-radius: 50%;
-  margin: 0.25rem;
+  margin: 0.2rem;
 
   @media (max-width: 767px) {
     height: 0.3rem;
@@ -394,7 +397,7 @@ export const showBackButtons = css`
   bottom: 0;
 
   @media (max-width: 767px) {
-    border-top: 2px solid ${lightSalmonPink};
+    border-top: 1px solid ${lightSalmonPink};
     background-color: rgba(255, 255, 255, 0.8);
   }
 
