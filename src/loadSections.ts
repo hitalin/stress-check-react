@@ -38,7 +38,7 @@ export const sections: Section[] = [
     factors: [
       {
         point: 1,
-        scale: '心理的な仕事の負担（量）',
+        scale: '心理的な\n仕事の負担（量）',
         value: 0,
         type: "subtraction",
         rates: [
@@ -52,7 +52,7 @@ export const sections: Section[] = [
       },
       {
         point: 2,
-        scale: '心理的な仕事の負担（質）',
+        scale: '心理的な\n仕事の負担（質）',
         value: 0,
         type: "subtraction",
         rates: [
@@ -66,7 +66,7 @@ export const sections: Section[] = [
       },
       {
         point: 3,
-        scale: '自覚的な身体的負担度',
+        scale: '自覚的な\n身体的負担度',
         value: 0,
         type: "subtraction",
         rates: [
@@ -79,7 +79,7 @@ export const sections: Section[] = [
       },
       {
         point: 4,
-        scale: '職場の対人関係でのストレス',
+        scale: '職場の対人関係\nでのストレス',
         value: 0,
         type: "complex",
         rates: [
@@ -93,7 +93,7 @@ export const sections: Section[] = [
       },
       {
         point: 5,
-        scale: '職場環境によるストレス',
+        scale: '職場環境\nによるストレス',
         value: 0,
         type: "subtraction",
         rates: [
@@ -106,7 +106,7 @@ export const sections: Section[] = [
       },
       {
         point: 6,
-        scale: '仕事のコントロール度',
+        scale: '仕事の\nコントロール度',
         value: 0,
         type: "subtraction",
         rates: [
@@ -120,7 +120,7 @@ export const sections: Section[] = [
       },
       {
         point: 7,
-        scale: '技能の活用度',
+        scale: '技能の\n活用度',
         value: 0,
         type: "subtraction",
         rates: [
@@ -133,7 +133,7 @@ export const sections: Section[] = [
       },
       {
         point: 8,
-        scale: '仕事の適性度',
+        scale: '仕事の\n適性度',
         value: 0,
         type: "subtraction",
         rates: [
@@ -305,7 +305,7 @@ export const sections: Section[] = [
     factors: [
       {
         point: 1,
-        scale: '上司からのサポート',
+        scale: '上司からの\nサポート',
         value: 0,
         type: "subtraction",
         rates: [
@@ -319,7 +319,7 @@ export const sections: Section[] = [
       },
       {
         point: 2,
-        scale: '同僚からのサポート',
+        scale: '同僚からの\nサポート',
         value: 0,
         type: "subtraction",
         rates: [
@@ -333,7 +333,7 @@ export const sections: Section[] = [
       },
       {
         point: 3,
-        scale: '家族・友人からのサポート',
+        scale: '家族・友人からの\nサポート',
         value: 0,
         type: "subtraction",
         rates: [

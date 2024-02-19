@@ -19,7 +19,7 @@ interface ShowRadarProps {
 
 const ShowRadar: React.FC<ShowRadarProps> = ({ factors, level }) => {
   const data = {
-    labels: factors.map((factor) => factor.scale),
+    labels: factors.map((factor) => factor.scale.split('\n').map((line) => line.trim())),
     datasets: [
       {
         data: factors.map((factor) => factor.value),
