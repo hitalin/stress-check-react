@@ -153,9 +153,7 @@ const App: React.FC = () => {
               </>
             ) : (
               <>
-                <div
-                  css={showQuestionText}
-                >
+                <div css={showQuestionText} key={currentQuestion}>
                   <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div

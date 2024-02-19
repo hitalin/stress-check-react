@@ -1,4 +1,34 @@
-import { css } from '@emotion/react';
+import { css, keyframes } from '@emotion/react';
+
+const slideOut = keyframes`
+  100% {
+    transform: translateX(-25%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideIn = keyframes`
+  0% {
+    transform: translateX(25%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+`;
+
+const slideOutTextStyle = css`
+  animation: ${slideOut} 1s ease-in-out forwards;
+`;
+
+const slideInTextStyle = css`
+  animation: ${slideIn} 1s ease-in-out forwards;
+`;
 
 export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
 export const softBlack = '#555555';
@@ -89,6 +119,8 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = css`
+  ${slideInTextStyle};
+
   font-size: 1rem;
   margin: 10vh auto 1rem;
   white-space: pre-line;
@@ -148,6 +180,8 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
 `;
 
 export const showQuestionText = css`
+  ${slideInTextStyle};
+
   font-size: 2.5rem;
   text-align: center;
   margin: 10vh auto 1rem;
