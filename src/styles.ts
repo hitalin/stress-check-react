@@ -152,13 +152,14 @@ export const appHeaderStyle = css`
 
 export const sectionDescriptionStyle = css`
   font-size: 1rem;
-  margin: 10vh auto 1rem;
+  margin: 7% auto 1rem;
+  text-align: center;
   white-space: pre-line;
   padding: 0 1rem;
 
   @media (max-width: 767px) {
-    margin-top: 5vh;
-  }
+    margin-top: 7%;
+    margin-bottom: 50px;
 `;
 
 export const titleAndProgressStyle = css`
@@ -215,13 +216,13 @@ export const questionTextStyle = css`
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  margin: 10vh auto 1rem;
+  margin: 7% auto 1rem;
   white-space: pre-line;
   padding: 0 1rem;
 
   @media (max-width: 767px) {
     font-size: 1.5rem;
-    margin-top: 5vh;
+    margin-top: 7%;
     margin-bottom: 50px;
   }
 `;
