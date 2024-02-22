@@ -1,28 +1,28 @@
 // App.tsx
 import React, { useState } from 'react';
-import ShowTitle from './ShowTitle';
-import ShowSectionTitle from './ShowSectionTitle';
-import StartSection from './StartSection';
+import AppTitle from './AppTitle';
+import SectionStep from './SectionStep';
+import SectionDescription from './SectionDescription';
 import NextButton from './NextButton';
 import ProgressDots from './ProgressDots';
-import ShowQuestion from './ShowQuestion';
+import QuestionText from './QuestionText';
 import ChoiceButtons from './ChoiceButtons';
 import BackButtons from './BackButtons';
-import ShowResult from './ShowResult';
+import AggregateResults from './AggregateResults';
 import { Employee } from './types';
 import { sections } from './loadSections';
 import { calculateScore } from './calculateScore';
 import {
   appStyle,
   appHeaderStyle,
-  titleStyle,
+  appTitleStyle,
   sectionTitleStyle,
   titleAndProgressStyle,
-  progressStyle,
-  showNextButton,
-  ShowChoiceButtons,
-  showQuestionText,
-  showBackButtons,
+  progressDotsStyle,
+  nextButtonStyle,
+  choiceButtonsStyle,
+  questionTextStyle,
+  backButtonsStyle,
   sectionDescriptionStyle,
   nextSlideOutTextStyle,
   prevSlideOutTextStyle,
@@ -34,8 +34,8 @@ const App: React.FC = () => {
   const [employee, setEmployee] = useState<Employee>({ gender: '', level: '' });
   const [currentSection, setCurrentSection] = useState<number>(0); // Initialize currentSection with 0
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
-  const [showStartSection, setShowStartSection] = useState<boolean>(true); // Initialize showStartSection with true
-  const [showResults, setShowResults] = useState<boolean>(false);
+  const [startSection, setStartSection] = useState<boolean>(true);
+  const [aggregated, setAggregated] = useState<boolean>(false);
   const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
   const [isAnimating, setIsAnimating] = useState(false);
   const [isGoingNext, setIsGoingNext] = useState(false);
@@ -96,13 +96,13 @@ const App: React.FC = () => {
     setTimeout(() => {
       if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
         // If we're at the last question of the last section, show the results
-        setShowResults(true);
+        setAggregated(true);
       } else if (currentQuestion < ((sections[currentSection]?.questions?.length ?? 0) - 1)) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
         setCurrentSection(currentSection + 1);
         setCurrentQuestion(0);
-        setShowStartSection(true);
+        setStartSection(true);
       }
       setIsAnimating(false);
       setIsGoingNext(true);
@@ -112,9 +112,9 @@ const App: React.FC = () => {
 
   const handleNextButton = () => {
     if (currentSection === sections.length - 1) {
-      setShowResults(true);
+      setAggregated(true);
     } else {
-      setShowStartSection(false);
+      setStartSection(false);
     }
   };
 
@@ -124,15 +124,15 @@ const App: React.FC = () => {
     setIsGoingPrev(true);
 
     setTimeout(() => { // Wait for the slideOut animation to finish
-      if (!showStartSection && currentQuestion > 0) {
+      if (!startSection && currentQuestion > 0) {
         setCurrentQuestion(currentQuestion - 1);
-      } else if (!showStartSection && currentQuestion === 0) {
-        setShowStartSection(true);
-      } else if (showStartSection && currentSection > 0) {
+      } else if (!startSection && currentQuestion === 0) {
+        setStartSection(true);
+      } else if (startSection && currentSection > 0) {
         const newSection = currentSection - 1;
         setCurrentSection(newSection);
         setCurrentQuestion((sections[newSection]?.questions?.length ?? 0) - 1);
-        setShowStartSection(false);
+        setStartSection(false);
       }
       setIsAnimating(false);
       setIsGoingNext(false);
@@ -143,8 +143,8 @@ const App: React.FC = () => {
   const handleBackToTitle = () => {
     setCurrentSection(0);
     setCurrentQuestion(0);
-    setShowStartSection(true);
-    setShowResults(false);
+    setStartSection(true);
+    setAggregated(false);
   };
 
   const handleAnimationEnd = () => {
@@ -155,30 +155,30 @@ const App: React.FC = () => {
     <div css={appStyle}>
       <header css={appHeaderStyle}>
         <div css={titleAndProgressStyle}>
-          <div css={titleStyle}>
-            <ShowTitle />
-            {currentSection !== 0 && !showResults && currentSection !== sections.length - 1 && (
+          <div css={appTitleStyle}>
+            <AppTitle />
+            {currentSection !== 0 && !aggregated && currentSection !== sections.length - 1 && (
               <div css={sectionTitleStyle}>
-                <ShowSectionTitle sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
+                <SectionStep sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
               </div>
             )}
           </div>
-          {currentSection !== 0 && !showResults && !showStartSection && (
-            <div css={progressStyle}>
+          {currentSection !== 0 && !aggregated && !startSection && (
+            <div css={progressDotsStyle}>
               <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection]?.questions?.length ?? 0} />
             </div>
           )}
         </div>
-        {showResults && currentSection === sections.length - 1 ? (
+        {aggregated && currentSection === sections.length - 1 ? (
           <>
-            <ShowResult employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
-            <div css={showBackButtons}>
-              <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={showResults} />
+            <AggregateResults employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
+            <div css={backButtonsStyle}>
+              <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={aggregated} />
             </div>
           </>
         ) : (
           <>
-            {showStartSection ? (
+            {startSection ? (
               <>
                 <div
                   css={[
@@ -186,16 +186,16 @@ const App: React.FC = () => {
                     getAnimationStyle()
                   ]}
                 >
-                  <StartSection description={sections[currentSection].description} />
+                  <SectionDescription description={sections[currentSection].description} />
                 </div>
                 <div
-                  css={showNextButton}
+                  css={nextButtonStyle}
                 >
                   <NextButton onNext={handleNextButton} nextText={sections[currentSection].next} />
                 </div>
                 {currentSection !== 0 && (
                   <div
-                    css={showBackButtons}
+                    css={backButtonsStyle}
                   >
                     <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
                   </div>
@@ -205,17 +205,17 @@ const App: React.FC = () => {
               <>
                 <div
                   css={[
-                    showQuestionText,
+                    questionTextStyle,
                     getAnimationStyle()
                   ]}
                   key={currentQuestion}
                   onAnimationEnd={handleAnimationEnd}
                 >
-                  <ShowQuestion section={sections[currentSection]} questionIndex={currentQuestion} />
+                  <QuestionText section={sections[currentSection]} questionIndex={currentQuestion} />
                 </div>
                 <div
                   css={[
-                    ShowChoiceButtons,
+                    choiceButtonsStyle,
                     getAnimationStyle()
                   ]}
                 >
@@ -226,7 +226,7 @@ const App: React.FC = () => {
                   />
                 </div>
                 <div
-                  css={showBackButtons}
+                  css={backButtonsStyle}
                 >
                   <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
                 </div>

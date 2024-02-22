@@ -1,6 +1,6 @@
 // ProgressDots.tsx
 import React from 'react';
-import { showProgress, dotStyle, SalmonPink, lightSalmonPink } from './styles';
+import { progressDotsStyle, dotStyle, SalmonPink, lightSalmonPink } from './styles';
 
 interface ProgressDotsProps {
   questionIndex: number;
@@ -9,7 +9,7 @@ interface ProgressDotsProps {
 
 const ProgressDots: React.FC<ProgressDotsProps> = ({ questionIndex, totalQuestions }) => {
   return (
-    <div css={showProgress}>
+    <div css={progressDotsStyle}>
       {Array.from({ length: totalQuestions }, (_, i) => `dot-${i + totalQuestions}`).map((key, index) => (
         <div css={dotStyle} style={{backgroundColor: index <= questionIndex ? SalmonPink : lightSalmonPink}} />
       ))}

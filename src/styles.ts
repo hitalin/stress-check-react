@@ -178,7 +178,7 @@ export const titleAndProgressStyle = css`
   }
 `;
 
-export const titleStyle = css`
+export const appTitleStyle = css`
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
@@ -198,7 +198,7 @@ export const sectionTitleStyle = css`
   font-size: 0.9rem;
 `;
 
-export const showNextButton = css`
+export const nextButtonStyle = css`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -209,7 +209,7 @@ export const dynamicQuestionColor = (colorIndex: number) => css`
   color: ${questionColors[colorIndex % questionColors.length]};
 `;
 
-export const showQuestionText = css`
+export const questionTextStyle = css`
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
@@ -318,7 +318,7 @@ export const dynamicChoiceButton = (colorIndex: number) => css`
   }
 `;
 
-export const ShowChoiceButtons = css`
+export const choiceButtonsStyle = css`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -373,7 +373,7 @@ export const dotStyle = css`
   }
 `;
 
-export const showProgress = css`
+export const progressDotsStyle = css`
   display: flex;
   flex-direction: row;
   justify-content: flex-end; // default to right alignment for larger screens
@@ -388,7 +388,7 @@ export const emojiColor = css`
   color: ${SalmonPink};
 `;
 
-export const showBackButtons = css`
+export const backButtonsStyle = css`
   display: flex;
   flex-direction: column;
   width: 100%;

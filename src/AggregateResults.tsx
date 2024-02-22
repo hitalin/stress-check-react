@@ -1,11 +1,11 @@
-// ShowResult.tsx
+// AggregateResults.tsx
 import React, { useEffect, useState } from 'react';
 import { Section, Question } from './types';
 import { calculateLevel } from './calculateLevel';
 import { calculateValue } from './calculateValue';
 import { Employee } from './types';
 import { sectionResult, levelResult } from './styles';
-import ShowRadar from './ShowRadar';
+import RadarChart from './RadarChart';
 
 type Props = {
   employee: Employee;
@@ -14,7 +14,7 @@ type Props = {
   scores: number[];
 };
 
-const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }) => {
+const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, scores }) => {
   const [values, setValues] = useState<{ scale: string; value: number; }[][]>([]);
   const [totals, setTotals] = useState<number[]>([]);
 
@@ -55,7 +55,7 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
               <p>スコアの合計: {scores[sectionIndex]}</p>
               <p>評価点の合計: {totals[sectionIndex]}</p>
               <p>{section.group}</p>
-              <ShowRadar factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
+              <RadarChart factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
             </div>
           );
         })}
@@ -64,4 +64,4 @@ const ShowResult: React.FC<Props> = ({ employee, setEmployee, sections, scores }
   );
 };
 
-export default ShowResult;
+export default AggregateResults;

@@ -1,4 +1,4 @@
-// ShowRadar.tsx
+// RadarChart.tsx
 import React from 'react';
 import { Radar } from 'react-chartjs-2';
 
@@ -12,12 +12,12 @@ interface Factor {
   value: number;
 }
 
-interface ShowRadarProps {
+interface RadarChartProps {
   factors: Factor[];
   level: 'high' | 'low';
 }
 
-const ShowRadar: React.FC<ShowRadarProps> = ({ factors, level }) => {
+const RadarChart: React.FC<RadarChartProps> = ({ factors, level }) => {
   const data = {
     labels: factors.map((factor) => factor.scale.split('\n').map((line) => line.trim())),
     datasets: [
@@ -60,5 +60,5 @@ const ShowRadar: React.FC<ShowRadarProps> = ({ factors, level }) => {
   );
 };
 
-export default ShowRadar;
+export default RadarChart;
 

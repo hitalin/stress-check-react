@@ -1,15 +1,14 @@
-// ShowQuestion.tsx
+// QuestionText.tsx
 import React from 'react';
 import { Section } from './types';
 import { dynamicQuestionColor } from './styles';
 
-interface ShowQuestionProps {
+interface QuestionTextProps {
   section: Section;
   questionIndex: number;
 }
 
-// ShowQuestion.tsx
-const ShowQuestion: React.FC<ShowQuestionProps> = ({ section, questionIndex }) => {
+const QuestionText: React.FC<QuestionTextProps> = ({ section, questionIndex }) => {
   const question = section.questions?.[questionIndex];
   const questionStyle = dynamicQuestionColor(section.step);
 
@@ -24,4 +23,4 @@ const ShowQuestion: React.FC<ShowQuestionProps> = ({ section, questionIndex }) =
   );
 };
 
-export default ShowQuestion;
+export default QuestionText;

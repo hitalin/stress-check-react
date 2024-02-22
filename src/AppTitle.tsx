@@ -1,4 +1,4 @@
-const ShowTitle = () => {
+const AppTitle = () => {
   return (
     <div>
       <h1>５分でできる職場のストレスセルフチェック</h1>
@@ -6,4 +6,4 @@ const ShowTitle = () => {
   );
 };
 
-export default ShowTitle;
+export default AppTitle;
