@@ -1,5 +1,6 @@
 // AggregateResults.tsx
 import React, { useEffect, useState } from 'react';
+// import React, { useEffect, useState, useRef } from 'react';
 import { Section, Question } from './types';
 import { calculateLevel } from './calculateLevel';
 import { calculateValue } from './calculateValue';
@@ -15,12 +16,23 @@ type Props = {
 };
 
 const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, scores }) => {
+  // const isFirstRender = useRef(true);
+
   const [values, setValues] = useState<{ scale: string; value: number; }[][]>([]);
   const [totals, setTotals] = useState<number[]>([]);
 
   useEffect(() => {
     const valuesNumbers = values.map(value => value.map(v => v.value));
     const { method1, method2, totals } = calculateLevel(scores, valuesNumbers);
+
+  // if (isFirstRender.current) {
+  //   isFirstRender.current = false;
+  //   return;
+  // }
+
+  // const areMethodsEqual = method1 === method2;
+  // console.log(`Are method1 and method2 results equal: ${areMethodsEqual ? 'Yes' : 'No'}`);
+
     if (method1 && method2) {
       setEmployee(prev => ({ ...prev, level: 'high' }));
     } else {
