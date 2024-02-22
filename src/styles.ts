@@ -324,6 +324,7 @@ export const choiceButtonsStyle = css`
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  height: 50px;
   width: 100%;
   margin: auto 2rem;
   padding: 0 2rem;
@@ -347,6 +348,7 @@ export const nextButtonClass = css`
 
   position: fixed;
   font-size: 1rem;
+  height: 50px;
   width: 22%;
   top: 82%;
   margin-top: auto;
