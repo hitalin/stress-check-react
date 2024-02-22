@@ -11,7 +11,7 @@ const ProgressDots: React.FC<ProgressDotsProps> = ({ questionIndex, totalQuestio
   return (
     <div css={progressDotsStyle}>
       {Array.from({ length: totalQuestions }, (_, i) => `dot-${i + totalQuestions}`).map((key, index) => (
-        <div css={dotStyle} style={{backgroundColor: index <= questionIndex ? SalmonPink : lightSalmonPink}} />
+        <div key={key} css={dotStyle} style={{backgroundColor: index <= questionIndex ? SalmonPink : lightSalmonPink}} />
       ))}
     </div>
   );
