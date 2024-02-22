@@ -127,7 +127,9 @@ export const appStyle = css`
 `;
 
 export const appHeaderStyle = css`
+  overflow: hidden;
   padding: 0.5rem 0rem;
+
   @media (min-width: 640px) {
   }
 
