@@ -2,14 +2,14 @@ import React from 'react';
 import { Section } from './types';
 import { dynamicChoiceButton } from './styles';
 
-interface ShowChoicesProps {
+interface ChoiceButtonsProps {
   section: Section;
   questionIndex: number;
   onChoiceSelect: (choice: string, questionIndex: number) => void;
 }
 
-// ShowChoices.tsx
-const ShowChoices: React.FC<ShowChoicesProps> = ({ section, questionIndex, onChoiceSelect }) => {
+// ChoiceButtons.tsx
+const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({ section, questionIndex, onChoiceSelect }) => {
   const question = section.questions?.[questionIndex];
 
   if (!section.choices) {
@@ -32,4 +32,4 @@ const ShowChoices: React.FC<ShowChoicesProps> = ({ section, questionIndex, onCho
   );
 };
 
-export default ShowChoices;
+export default ChoiceButtons;

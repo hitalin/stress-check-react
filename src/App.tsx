@@ -6,7 +6,7 @@ import StartSection from './StartSection';
 import NextButton from './NextButton';
 import ProgressDots from './ProgressDots';
 import ShowQuestion from './ShowQuestion';
-import ShowChoices from './ShowChoices';
+import ChoiceButtons from './ChoiceButtons';
 import BackButtons from './BackButtons';
 import ShowResult from './ShowResult';
 import { Employee } from './types';
@@ -219,7 +219,7 @@ const App: React.FC = () => {
                     getAnimationStyle()
                   ]}
                 >
-                  <ShowChoices
+                  <ChoiceButtons
                     section={sections[currentSection]}
                     questionIndex={currentQuestion}
                     onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)}
