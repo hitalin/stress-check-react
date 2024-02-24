@@ -19,18 +19,13 @@ function calculateAdditionPattern(questions: Question[]): number {
   return questions.reduce((total, question) => total + question.score, 0);
 }
 
-// 一般化された複合計算パターンの計算（"complex"タイプ用）
-function calculateComplexPattern(questions: Question[], N: number): number {
-  if (questions.length < N) return 0; // N番目の質問が存在しない場合は0を返す
+function calculateComplexPattern(questions: Question[]): number {
+  // 最初からN-1番目までの質問スコアを減算
+  const subtractionTotal = calculateSubtractionPattern(questions.slice(0, questions.length - 1));
+  // N番目の質問スコアを加算
+  const additionScore = calculateAdditionPattern(questions.slice(questions.length - 1, questions.length));
 
-  // 質問スコアの合計から、最初からN-1番目までの質問スコアを減算
-  const subtractionTotal = questions.slice(0, N - 1).reduce((total, question) => total + question.score, 0);
-
-  // N番目の質問スコア
-  const additionScore = questions[N - 1]?.score ?? 0;
-
-  // 定数Cを5として、一般化された計算式の適用
-  return 5 * N - subtractionTotal + additionScore;
+  return subtractionTotal + additionScore;
 }
 
 export function calculateValue(questions: Question[], factor: Factor): number {
@@ -46,11 +41,9 @@ export function calculateValue(questions: Question[], factor: Factor): number {
     case 'addition':
       score = calculateAdditionPattern(filteredQuestions);
       break;
-    case 'complex': {
-        const N = factor.items?.length ?? 0;
-        score = calculateComplexPattern(filteredQuestions, N);
-        break;
-      }
+    case 'complex':
+      score = calculateComplexPattern(filteredQuestions);
+      break;
     default:
       // 未知のタイプが指定された場合の処理（必要に応じて）
       break;
