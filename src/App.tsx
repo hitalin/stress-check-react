@@ -89,6 +89,8 @@ const App: React.FC = () => {
   };
 
   const handleNextQuestion = () => {
+    if (isAnimating) return;
+
     setIsAnimating(true);
     setIsGoingNext(true);
     setIsGoingPrev(false);
@@ -111,6 +113,8 @@ const App: React.FC = () => {
   };
 
   const handleNextButton = () => {
+    if (isAnimating) return;
+
     setIsAnimating(true);
     setIsGoingNext(true);
     setIsGoingPrev(false);
@@ -128,6 +132,8 @@ const App: React.FC = () => {
   };
 
   const handleBack = () => {
+    if (isAnimating) return;
+
     setIsAnimating(true);
     setIsGoingNext(false);
     setIsGoingPrev(true);
@@ -150,6 +156,8 @@ const App: React.FC = () => {
   };
 
   const handleBackToTitle = () => {
+    if (isAnimating) return;
+
     setIsAnimating(true);
     setIsGoingNext(false);
     setIsGoingPrev(true);
