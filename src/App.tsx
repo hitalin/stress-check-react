@@ -141,10 +141,20 @@ const App: React.FC = () => {
   };
 
   const handleBackToTitle = () => {
-    setCurrentSection(0);
-    setCurrentQuestion(0);
-    setStartSection(true);
-    setAggregated(false);
+    setIsAnimating(true);
+    setIsGoingNext(false);
+    setIsGoingPrev(true);
+
+    setTimeout(() => {
+      setCurrentSection(0);
+      setCurrentQuestion(0);
+      setStartSection(true);
+      setAggregated(false);
+
+      setIsAnimating(false);
+      setIsGoingNext(false);
+      setIsGoingPrev(true);
+    }, 200);
   };
 
   const handleAnimationEnd = () => {
