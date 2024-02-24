@@ -347,19 +347,14 @@ export const nextButtonClass = css`
   ${blueButton};
   ${transitionButton};
 
-  position: fixed;
   font-size: 1rem;
   height: 50px;
   width: 22%;
-  top: 82%;
-  margin-top: auto;
-  margin-bottom: 3rem;
-  bottom: 0.5rem;
+  margin-top: 20%;
 
   @media (max-width: 767px) {
     width: 50%;
-    margin-top: 0.5rem;
-    margin-bottom: 3.5rem;
+    margin-top: 90%;
   }
 `;
 

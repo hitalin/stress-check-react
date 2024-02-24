@@ -111,11 +111,20 @@ const App: React.FC = () => {
   };
 
   const handleNextButton = () => {
-    if (currentSection === sections.length - 1) {
-      setAggregated(true);
-    } else {
-      setStartSection(false);
-    }
+    setIsAnimating(true);
+    setIsGoingNext(true);
+    setIsGoingPrev(false);
+
+    setTimeout(() => {
+      if (currentSection === sections.length - 1) {
+        setAggregated(true);
+      } else {
+        setStartSection(false);
+      }
+      setIsAnimating(false);
+      setIsGoingNext(true);
+      setIsGoingPrev(false);
+    }, 200);
   };
 
   const handleBack = () => {
@@ -199,7 +208,10 @@ const App: React.FC = () => {
                   <SectionDescription description={sections[currentSection].description} />
                 </div>
                 <div
-                  css={nextButtonStyle}
+                  css={[
+                    nextButtonStyle,
+                    getAnimationStyle()
+                  ]}
                 >
                   <NextButton onNext={handleNextButton} nextText={sections[currentSection].next} />
                 </div>
