@@ -122,7 +122,7 @@ export const sections: Section[] = [
         point: 7,
         scale: '技能の\n活用度',
         value: 0,
-        type: "subtraction",
+        type: "addition",
         rates: [
           { min: 1, max: 1, value: 1 },
           { min: 2, max: 2, value: 2 },
@@ -202,7 +202,7 @@ export const sections: Section[] = [
         point: 1,
         scale: '活気',
         value: 0,
-        type: "subtraction",
+        type: "addition",
         rates: [
           { min: 3, max: 3, value: 1 },
           { min: 4, max: 5, value: 2 },
@@ -247,8 +247,8 @@ export const sections: Section[] = [
         type: 'addition',
         rates: [
           { min: 3, max: 3, value: 5 },
-          { min: 4, max: 5, value: 4 },
-          { min: 6, max: 7, value: 3 },
+          { min: 4, max: 4, value: 4 },
+          { min: 5, max: 7, value: 3 },
           { min: 8, max: 9, value: 2 },
           { min: 10, max: 12, value: 1 },
         ],
