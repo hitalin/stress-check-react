@@ -355,7 +355,7 @@ export const nextButtonClass = css`
 
   @media (max-width: 767px) {
     width: 50%;
-    margin-top: 90%;
+    margin-top: 50%;
   }
 `;
 
