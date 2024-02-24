@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import AppTitle from './AppTitle';
 import SectionStep from './SectionStep';
 import SectionDescription from './SectionDescription';
+import CurrentTime from './CurrentTime';
 import NextButton from './NextButton';
 import ProgressDots from './ProgressDots';
 import QuestionText from './QuestionText';
@@ -19,6 +20,7 @@ import {
   sectionTitleStyle,
   titleAndProgressStyle,
   progressDotsStyle,
+  currentTimeStyle,
   nextButtonStyle,
   choiceButtonsStyle,
   questionTextStyle,
@@ -190,6 +192,11 @@ const App: React.FC = () => {
               </div>
             )}
           </div>
+          {aggregated && currentSection === sections.length - 1 && (
+            <div css={currentTimeStyle}>
+              <CurrentTime />
+            </div>
+          )}
           {currentSection !== 0 && !aggregated && !startSection && (
             <div css={progressDotsStyle}>
               <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection]?.questions?.length ?? 0} />
