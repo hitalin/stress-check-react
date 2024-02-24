@@ -194,7 +194,7 @@ export const progressStyle = css`
   }
 `;
 
-export const currentTimeStyle = css`
+export const aggregationDateStyle = css`
   font-size: 0.9rem;
   display: flex;
   flex-direction: column;
