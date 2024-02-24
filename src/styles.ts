@@ -160,6 +160,7 @@ export const sectionDescriptionStyle = css`
   @media (max-width: 767px) {
     margin-top: 7%;
     margin-bottom: 50px;
+  }
 `;
 
 export const titleAndProgressStyle = css`

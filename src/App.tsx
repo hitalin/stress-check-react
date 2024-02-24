@@ -204,6 +204,8 @@ const App: React.FC = () => {
                     sectionDescriptionStyle,
                     getAnimationStyle()
                   ]}
+                  key={currentSection}
+                  onAnimationEnd={handleAnimationEnd}
                 >
                   <SectionDescription description={sections[currentSection].description} />
                 </div>
