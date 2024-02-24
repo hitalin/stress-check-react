@@ -79,7 +79,7 @@ export const sections: Section[] = [
       },
       {
         point: 4,
-        scale: '職場の対人関係\nでのストレス',
+        scale: '職場の対人\n関係でのストレス',
         value: 0,
         type: "complex",
         rates: [
@@ -93,7 +93,7 @@ export const sections: Section[] = [
       },
       {
         point: 5,
-        scale: '職場環境\nによるストレス',
+        scale: '職場環境による\nストレス',
         value: 0,
         type: "subtraction",
         rates: [
@@ -120,7 +120,7 @@ export const sections: Section[] = [
       },
       {
         point: 7,
-        scale: '技能の\n活用度',
+        scale: 'あなたの\n技能の活用度',
         value: 0,
         type: "addition",
         rates: [
@@ -133,7 +133,7 @@ export const sections: Section[] = [
       },
       {
         point: 8,
-        scale: '仕事の\n適性度',
+        scale: 'あなたが\n感じている\n仕事の適性度',
         value: 0,
         type: "subtraction",
         rates: [

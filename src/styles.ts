@@ -409,8 +409,14 @@ export const backButtonsStyle = css`
   }
 `;
 
-export const levelResult = css`
+export const levelResult = (level: 'high' | 'low') => css`
+  font-size: 1.5rem;
   text-align: center;
+  color: ${level === 'high' ? '#721c24' : '#004085'}; // blueButton color
+  background-color: ${level === 'high' ? 'rgba(255, 99, 132, 0.5)' : 'rgba(100, 149, 237, 0.5)'}; // RaderChart backgroundColor
+  border: 2px solid ${level === 'high' ? '#f5c6cb' : '#b8daff'}; // blueButton border
+  border-radius: 5px;
+  margin: 1rem;
 `;
 
 export const sectionResult = css`
@@ -422,4 +428,13 @@ export const sectionResult = css`
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
   }
+`;
+
+export const aggregatedTotal = css`
+  font-size: 0.8rem;
+`;
+
+export const sectionGroup = css`
+  font-size: 0.9rem;
+  font-weight: bold;
 `;

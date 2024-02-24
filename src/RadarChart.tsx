@@ -25,7 +25,7 @@ const RadarChart: React.FC<RadarChartProps> = ({ factors, level }) => {
         data: factors.map((factor) => factor.value),
         borderWidth: 1,
         borderColor: level === 'high' ? ['rgba(255, 99, 132, 1)'] : ['rgba(100, 149, 237, 1)'],
-        backgroundColor: level === 'high' ? ['rgba(255, 99, 132, 0.2)'] : ['rgba(100, 149, 237, 0.2)'],
+        backgroundColor: level === 'high' ? ['rgba(255, 99, 132, 0.5)'] : ['rgba(100, 149, 237, 0.5)'],
         pointBackgroundColor: level === 'high' ? ['rgba(255, 99, 132, 1)'] : ['rgba(100, 149, 237, 1)'],
         pointBorderColor: level === 'high' ? ['rgba(255, 99, 132, 1)'] : ['rgba(100, 149, 237, 1)'],
         pointHoverBackgroundColor: level === 'high' ? ['rgba(255, 99, 132, 1)'] : ['rgba(100, 149, 237, 1)'],

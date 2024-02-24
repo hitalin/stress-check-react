@@ -5,7 +5,7 @@ import { Section, Question } from './types';
 import { calculateLevel } from './calculateLevel';
 import { calculateValue } from './calculateValue';
 import { Employee } from './types';
-import { sectionResult, levelResult } from './styles';
+import { levelResult, sectionResult, sectionGroup, aggregatedTotal } from './styles';
 import RadarChart from './RadarChart';
 
 type Props = {
@@ -53,7 +53,7 @@ const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, sc
 
   return (
     <div>
-      <div css={levelResult}>
+      <div css={levelResult(employee.level as 'high' | 'low')}>
         <p>{employee.level === 'high' ? '高ストレス者' : '低ストレス者'}です</p>
       </div>
       <div css={sectionResult}>
@@ -63,10 +63,14 @@ const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, sc
 
           return (
             <div key={section.step}>
-              <p>STEP{section.step} {section.name}</p>
-              <p>スコアの合計: {scores[sectionIndex]}</p>
-              <p>評価点の合計: {totals[sectionIndex]}</p>
-              <p>{section.group}</p>
+              <div css={aggregatedTotal}>
+                <p>STEP{section.step} {section.name}</p>
+                <p>スコアの合計: {scores[sectionIndex]}</p>
+                <p>評価点の合計: {totals[sectionIndex]}</p>
+              </div>
+              <div css={sectionGroup}>
+                <p>{section.group}</p>
+              </div>
               <RadarChart factors={values[sectionIndex] ?? []} level={employee.level === 'high' || employee.level === 'low' ? employee.level : 'low'} />
             </div>
           );
