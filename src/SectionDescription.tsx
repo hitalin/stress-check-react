@@ -8,7 +8,7 @@ interface SectionDescriptionProps {
 const SectionDescription: React.FC<SectionDescriptionProps> = ({ description }) => {
   return (
     <div>
-      <h2>{description}</h2>
+      <p>{description}</p>
     </div>
   );
 };

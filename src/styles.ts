@@ -96,7 +96,6 @@ export const globalStyles = css`
   h1,h2,h3,h4,h5,h6 {
     margin: 0;
     font-size: 100%;
-    font-weight: normal;
     line-height: 1.5;
   }
   p {
@@ -151,11 +150,10 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = css`
-  font-size: 1rem;
+  font-size: 1.2rem;
   margin: 7% auto 1rem;
   text-align: center;
   white-space: pre-line;
-  padding: 0 1rem;
 
   @media (max-width: 767px) {
     margin-top: 7%;
@@ -167,16 +165,15 @@ export const titleAndProgressStyle = css`
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid ${lightSalmonPink};
-  min-height: 70px;
+  min-height: 80px;
+  margin-top: 0;
   margin-bottom: 0;
   padding: 0 1rem;
-
-  @media (max-width: 767px) {
-    margin-top: 0;
-  }
+  margin-top: 0.5rem;
+  font-weight: bold;
 
   @media (min-width: 768px) {
-    margin-top: 1rem;
+    min-height: 45px;
     flex-direction: row;
     justify-content: flex-start;
   }
@@ -189,12 +186,25 @@ export const appTitleStyle = css`
   align-items: flex-start;
   width: 100%;
   flex-grow: 1;
-  font-weight: bold;
 `;
 
 export const progressStyle = css`
   @media (min-width: 768px) {
     align-self: center;
+  }
+`;
+
+export const currentTimeStyle = css`
+  font-size: 0.9rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 100%;
+  flex-grow: 1;
+
+  @media (max-width: 767px) {
+    justify-content: flex-start;
   }
 `;
 
@@ -217,13 +227,13 @@ export const questionTextStyle = css`
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
-  margin: 7% auto 1rem;
+  margin: 10% auto 1rem;
   white-space: pre-line;
   padding: 0 1rem;
 
   @media (max-width: 767px) {
     font-size: 1.5rem;
-    margin-top: 7%;
+    margin-top: 10%;
     margin-bottom: 50px;
   }
 `;
@@ -336,7 +346,7 @@ export const choiceButtonsStyle = css`
   justify-content: center;
 
   @media (min-width: 768px) {
-    top: 80%;
+    top: 75%;
     flex-direction: column;
     margin-bottom: 2rem;
   }
@@ -351,7 +361,7 @@ export const nextButtonClass = css`
   font-size: 1rem;
   height: 50px;
   width: 22%;
-  margin-top: 20%;
+  margin-top: 10%;
 
   @media (max-width: 767px) {
     width: 50%;
@@ -378,6 +388,7 @@ export const progressDotsStyle = css`
   display: flex;
   flex-direction: row;
   justify-content: flex-end; // default to right alignment for larger screens
+  margin-top: 0.25rem;
   margin-bottom: 0.5rem;
   @media (max-width: 767px) {
     justify-content: flex-start; // align left on mobile screens
