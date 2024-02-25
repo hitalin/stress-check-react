@@ -62,6 +62,7 @@ export const prevSlideInTextStyle = css`
 
 export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
 export const softBlack = '#555555';
+export const extraLightSalmonPink = '#FFE5E9';
 export const lightSalmonPink = '#FFD1DC';
 export const SalmonPink = '#FF9999';
 
@@ -269,6 +270,15 @@ export const blueButton = css`
   }
 `;
 
+export const pinkButton = css`
+  background-color: ${lightSalmonPink};
+  color: ${SalmonPink};
+  border: 2px solid ${SalmonPink};
+  &:hover {
+    background-color: ${extraLightSalmonPink};
+  }
+`;
+
 export const transitionButton = css`
   transition: all 0.5s;
 `;
@@ -353,9 +363,9 @@ export const choiceButtonsStyle = css`
 `;
 
 
-export const nextButtonClass = css`
+export const nextButtonClass = (isLastSection: boolean) => css`
   ${baseButton};
-  ${blueButton};
+  ${isLastSection ? pinkButton : blueButton}; // isLastSection に基づいてスタイルを切り替え
   ${transitionButton};
 
   font-size: 1rem;

@@ -230,7 +230,7 @@ const App: React.FC = () => {
                     getAnimationStyle()
                   ]}
                 >
-                  <NextButton onNext={handleNextButton} nextText={sections[currentSection].next} />
+                  <NextButton onNext={handleNextButton} nextText={sections[currentSection].next} isLastSection={currentSection === sections.length - 1} />
                 </div>
                 {currentSection !== 0 && (
                   <div
