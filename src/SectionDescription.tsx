@@ -1,13 +1,15 @@
-// StartSection.tsx
+// SectionDescription.tsx
 import React from 'react';
+import { sectionDescriptionStyle } from './styles';
 
 interface SectionDescriptionProps {
   description: string;
+  isLastSection: boolean; // 新しい prop を追加
 }
 
-const SectionDescription: React.FC<SectionDescriptionProps> = ({ description }) => {
+const SectionDescription: React.FC<SectionDescriptionProps> = ({ description, isLastSection }) => {
   return (
-    <div>
+    <div css={sectionDescriptionStyle(isLastSection)}>
       <p>{description}</p>
     </div>
   );

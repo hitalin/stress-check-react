@@ -25,7 +25,6 @@ import {
   choiceButtonsStyle,
   questionTextStyle,
   backButtonsStyle,
-  sectionDescriptionStyle,
   nextSlideOutTextStyle,
   prevSlideOutTextStyle,
   nextSlideInTextStyle,
@@ -215,14 +214,13 @@ const App: React.FC = () => {
             {startSection ? (
               <>
                 <div
-                  css={[
-                    sectionDescriptionStyle,
+                  css={
                     getAnimationStyle()
-                  ]}
+                  }
                   key={currentSection}
                   onAnimationEnd={handleAnimationEnd}
                 >
-                  <SectionDescription description={sections[currentSection].description} />
+                  <SectionDescription description={sections[currentSection].description} isLastSection={currentSection === sections.length - 1} />
                 </div>
                 <div
                   css={[

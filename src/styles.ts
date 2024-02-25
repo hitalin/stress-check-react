@@ -65,6 +65,7 @@ export const softBlack = '#555555';
 export const extraLightSalmonPink = '#FFE5E9';
 export const lightSalmonPink = '#FFD1DC';
 export const SalmonPink = '#FF9999';
+export const darkSalmonPink = '#FF7575';
 
 export const questionColors = [
   '#555555', // セクション0: より淡い黒、読みやすさを保持
@@ -150,11 +151,12 @@ export const appHeaderStyle = css`
   }
 `;
 
-export const sectionDescriptionStyle = css`
+export const sectionDescriptionStyle = (isLastSection: boolean) => css`
   font-size: 1.2rem;
   margin: 7% auto 1rem;
   text-align: center;
   white-space: pre-line;
+  color: ${isLastSection ? '#721c24' : softBlack};
 
   @media (max-width: 767px) {
     margin-top: 7%;
@@ -272,7 +274,7 @@ export const blueButton = css`
 
 export const pinkButton = css`
   background-color: ${lightSalmonPink};
-  color: ${SalmonPink};
+  color: #721c24;
   border: 2px solid ${SalmonPink};
   &:hover {
     background-color: ${extraLightSalmonPink};
