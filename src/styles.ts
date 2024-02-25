@@ -65,6 +65,7 @@ export const softBlack = '#555555';
 export const extraLightSalmonPink = '#FFE5E9';
 export const lightSalmonPink = '#FFD1DC';
 export const SalmonPink = '#FF9999';
+export const darkBlue = '#004085';
 export const darkRed = '#D33F3F';
 
 export const questionColors = [
@@ -265,7 +266,7 @@ export const backButtonClass = css`
 
 export const blueButton = css`
   background-color: #cce5ff;
-  color: #004085;
+  color: ${darkBlue};
   border: 2px solid #b8daff;
   &:hover {
     background-color: #e6f7ff;
@@ -308,7 +309,7 @@ export const choiceColors = [
   `,
   css`
     background-color: #E6F7FF; // Softer blue
-    color: #004085;
+    color: ${darkBlue};
     border: 2px solid #CCE9FF; // Softer border
     &:hover {
       background-color: #F1FAFF;
@@ -435,7 +436,7 @@ export const backButtonsStyle = css`
 export const levelResult = (level: 'high' | 'low') => css`
   font-size: 1.5rem;
   text-align: center;
-  color: ${level === 'high' ? darkRed : '#004085'}; // blueButton color
+  color: ${level === 'high' ? darkRed : darkBlue}; // blueButton color
   background-color: ${level === 'high' ? 'rgba(255, 99, 132, 0.5)' : 'rgba(100, 149, 237, 0.5)'}; // RaderChart backgroundColor
   border: 2px solid ${level === 'high' ? '#f5c6cb' : '#b8daff'}; // blueButton border
   border-radius: 5px;
