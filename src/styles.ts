@@ -65,7 +65,7 @@ export const softBlack = '#555555';
 export const extraLightSalmonPink = '#FFE5E9';
 export const lightSalmonPink = '#FFD1DC';
 export const SalmonPink = '#FF9999';
-export const darkSalmonPink = '#FF7575';
+export const darkRed = '#D33F3F';
 
 export const questionColors = [
   '#555555', // セクション0: より淡い黒、読みやすさを保持
@@ -153,11 +153,10 @@ export const appHeaderStyle = css`
 
 export const sectionDescriptionStyle = (isLastSection: boolean) => css`
   font-size: ${isLastSection ? '2.0rem' : '1.2rem'};
-  font-weight: ${isLastSection ? 'bold' : 'normal'};
   margin: 7% auto 1rem;
   text-align: center;
   white-space: pre-line;
-  color: ${isLastSection ? '#721c24' : softBlack};
+  color: ${isLastSection ? darkRed : softBlack};
 
   @media (max-width: 767px) {
     margin-top: 7%;
@@ -275,7 +274,7 @@ export const blueButton = css`
 
 export const pinkButton = css`
   background-color: ${lightSalmonPink};
-  color: #721c24;
+  color: ${darkRed};
   border: 2px solid ${SalmonPink};
   &:hover {
     background-color: ${extraLightSalmonPink};
@@ -436,7 +435,7 @@ export const backButtonsStyle = css`
 export const levelResult = (level: 'high' | 'low') => css`
   font-size: 1.5rem;
   text-align: center;
-  color: ${level === 'high' ? '#721c24' : '#004085'}; // blueButton color
+  color: ${level === 'high' ? darkRed : '#004085'}; // blueButton color
   background-color: ${level === 'high' ? 'rgba(255, 99, 132, 0.5)' : 'rgba(100, 149, 237, 0.5)'}; // RaderChart backgroundColor
   border: 2px solid ${level === 'high' ? '#f5c6cb' : '#b8daff'}; // blueButton border
   border-radius: 5px;
