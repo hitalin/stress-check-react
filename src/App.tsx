@@ -62,6 +62,8 @@ const App: React.FC = () => {
   };
 
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
+    if (isAnimating) return;
+
     const choiceIndex = sections[currentSection]?.choices?.indexOf(choice) ?? 0;
     const choiceValue = choiceIndex >= 0 ? choiceIndex + 1 : 0; // Add 1 to the index to start the score at 1
 
