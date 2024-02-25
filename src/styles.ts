@@ -152,7 +152,8 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = (isLastSection: boolean) => css`
-  font-size: 1.2rem;
+  font-size: ${isLastSection ? '2.0rem' : '1.2rem'};
+  font-weight: ${isLastSection ? 'bold' : 'normal'};
   margin: 7% auto 1rem;
   text-align: center;
   white-space: pre-line;
