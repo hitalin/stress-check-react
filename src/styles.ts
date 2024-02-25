@@ -160,6 +160,7 @@ export const sectionDescriptionStyle = (isLastSection: boolean) => css`
   color: ${isLastSection ? darkRed : softBlack};
 
   @media (max-width: 767px) {
+    font-size: ${isLastSection ? '1.5rem' : '1.0rem'};
     margin-top: 7%;
     margin-bottom: 50px;
   }
