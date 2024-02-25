@@ -439,6 +439,10 @@ export const sectionResult = css`
   @media (max-width: 767px) {
     grid-template-columns: 1fr;
   }
+
+  @media print {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 `;
 
 export const aggregatedTotal = css`
