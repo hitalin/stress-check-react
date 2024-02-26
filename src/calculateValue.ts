@@ -9,7 +9,7 @@ import { Question, Factor } from './types';
 
 // 基本減算パターンの計算
 function calculateSubtractionPattern(questions: Question[]): number {
-  const totalScore = questions.reduce((total, question) => total + question.score, 0);
+  const totalScore = calculateAdditionPattern(questions);
   // 質問の数に応じて動的に調整（例：足された問題数×5から合計スコアを引く）
   return (questions.length * 5) - totalScore;
 }
