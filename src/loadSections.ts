@@ -369,7 +369,7 @@ export const sections: Section[] = [
           { min: 3, max: 3, value: 4 },
           { min: 5, max: 4, value: 3 },
           { min: 6, max: 6, value: 2 },
-          { min: 8, max: 7, value: 1 },
+          { min: 7, max: 8, value: 1 },
         ],
         items: [1, 2],
       },
