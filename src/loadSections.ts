@@ -357,6 +357,23 @@ export const sections: Section[] = [
       { id: 2, text: '家庭環境に満足だ', score: 0, reverse: false },
     ],
     choices: ['満足', 'まあ満足', 'やや不満足', '不満足'],
+    group: "ストレス反応への影響因子",
+    factors: [
+      {
+        point: 1,
+        scale: '仕事や生活の\n満足度',
+        value: 0,
+        type: "addition",
+        rates: [
+          { min: 2, max: 2, value: 5 },
+          { min: 3, max: 3, value: 4 },
+          { min: 5, max: 4, value: 3 },
+          { min: 6, max: 6, value: 2 },
+          { min: 8, max: 7, value: 1 },
+        ],
+        items: [1, 2],
+      },
+    ]
   },
   {
     step: 5,
