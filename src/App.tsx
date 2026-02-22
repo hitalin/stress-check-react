@@ -12,23 +12,7 @@ import QuestionText from "./components/QuestionText";
 import SectionDescription from "./components/SectionDescription";
 import SectionStep from "./components/SectionStep";
 import { sections } from "./data/loadSections";
-import {
-  aggregationDateStyle,
-  appHeaderStyle,
-  appStyle,
-  appTitleStyle,
-  backButtonsStyle,
-  choiceButtonsStyle,
-  nextButtonStyle,
-  nextSlideInTextStyle,
-  nextSlideOutTextStyle,
-  prevSlideInTextStyle,
-  prevSlideOutTextStyle,
-  progressDotsStyle,
-  questionTextStyle,
-  sectionTitleStyle,
-  titleAndProgressStyle,
-} from "./styles";
+import styles from "./styles.module.css";
 import type { Employee } from "./types";
 import { calculateScore } from "./utils/calculateScore";
 
@@ -43,23 +27,15 @@ const App: React.FC = () => {
   const [isGoingNext, setIsGoingNext] = useState(false);
   const [isGoingPrev, setIsGoingPrev] = useState(false);
 
-  const getAnimationStyle = () => {
+  const getAnimationClass = (): string => {
     if (isAnimating) {
-      if (isGoingNext) {
-        return nextSlideOutTextStyle;
-      }
-      if (isGoingPrev) {
-        return prevSlideOutTextStyle;
-      }
+      if (isGoingNext) return styles.nextSlideOut;
+      if (isGoingPrev) return styles.prevSlideOut;
     } else {
-      if (isGoingNext) {
-        return nextSlideInTextStyle;
-      }
-      if (isGoingPrev) {
-        return prevSlideInTextStyle;
-      }
+      if (isGoingNext) return styles.nextSlideIn;
+      if (isGoingPrev) return styles.prevSlideIn;
     }
-    return {};
+    return "";
   };
 
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
@@ -187,24 +163,24 @@ const App: React.FC = () => {
   };
 
   return (
-    <div css={appStyle}>
-      <header css={appHeaderStyle}>
-        <div css={titleAndProgressStyle}>
-          <div css={appTitleStyle}>
+    <div className={styles.app}>
+      <header className={styles.appHeader}>
+        <div className={styles.titleAndProgress}>
+          <div className={styles.appTitle}>
             <AppTitle />
             {currentSection !== 0 && !aggregated && currentSection !== sections.length - 1 && (
-              <div css={sectionTitleStyle}>
+              <div className={styles.sectionTitle}>
                 <SectionStep sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
               </div>
             )}
           </div>
           {aggregated && currentSection === sections.length - 1 && (
-            <div css={aggregationDateStyle}>
+            <div className={styles.aggregationDate}>
               <AggregationDate />
             </div>
           )}
           {currentSection !== 0 && !aggregated && !startSection && (
-            <div css={progressDotsStyle}>
+            <div className={styles.progressDots}>
               <ProgressDots
                 questionIndex={currentQuestion}
                 totalQuestions={sections[currentSection]?.questions?.length ?? 0}
@@ -215,19 +191,19 @@ const App: React.FC = () => {
         {aggregated && currentSection === sections.length - 1 ? (
           <>
             <AggregateResults employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
-            <div css={backButtonsStyle}>
+            <div className={styles.backButtons}>
               <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={aggregated} />
             </div>
           </>
         ) : startSection ? (
           <>
-            <div css={getAnimationStyle()} key={currentSection} onAnimationEnd={handleAnimationEnd}>
+            <div className={getAnimationClass()} key={currentSection} onAnimationEnd={handleAnimationEnd}>
               <SectionDescription
                 description={sections[currentSection].description}
                 isLastSection={currentSection === sections.length - 1}
               />
             </div>
-            <div css={[nextButtonStyle, getAnimationStyle()]}>
+            <div className={`${styles.nextButtonWrapper} ${getAnimationClass()}`}>
               <NextButton
                 onNext={handleNextButton}
                 nextText={sections[currentSection].next}
@@ -235,7 +211,7 @@ const App: React.FC = () => {
               />
             </div>
             {currentSection !== 0 && (
-              <div css={backButtonsStyle}>
+              <div className={styles.backButtons}>
                 <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
               </div>
             )}
@@ -243,20 +219,20 @@ const App: React.FC = () => {
         ) : (
           <>
             <div
-              css={[questionTextStyle, getAnimationStyle()]}
+              className={`${styles.questionText} ${getAnimationClass()}`}
               key={currentQuestion}
               onAnimationEnd={handleAnimationEnd}
             >
               <QuestionText section={sections[currentSection]} questionIndex={currentQuestion} />
             </div>
-            <div css={[choiceButtonsStyle, getAnimationStyle()]}>
+            <div className={`${styles.choiceButtons} ${getAnimationClass()}`}>
               <ChoiceButtons
                 section={sections[currentSection]}
                 questionIndex={currentQuestion}
                 onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)}
               />
             </div>
-            <div css={backButtonsStyle}>
+            <div className={styles.backButtons}>
               <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
             </div>
           </>

@@ -1,15 +1,13 @@
-import { Global } from "@emotion/react";
 import React from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
-import { globalStyles } from "./styles";
+import "./global.css";
 
 const root = document.getElementById("root");
 
 if (root !== null) {
   createRoot(root).render(
     <React.StrictMode>
-      <Global styles={globalStyles} />
       <App />
     </React.StrictMode>,
   );

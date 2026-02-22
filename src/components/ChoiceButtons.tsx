@@ -1,5 +1,5 @@
 import type React from "react";
-import { dynamicChoiceButton } from "../styles";
+import styles from "../styles.module.css";
 import type { Section } from "../types";
 
 interface ChoiceButtonsProps {
@@ -22,7 +22,8 @@ const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({ section, questionIndex, o
         <button
           key={`${question?.id}-${index}`}
           type="button"
-          css={dynamicChoiceButton(index)}
+          className={styles.choiceButton}
+          data-color={index % 4}
           onClick={() => onChoiceSelect(choice, questionIndex)}
         >
           {choice}

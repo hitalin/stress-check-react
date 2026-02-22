@@ -1,0 +1,62 @@
+:root {
+  --friendly-font:
+    "新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック",
+    "MS PGothic", sans-serif;
+  --soft-black: #555555;
+  --extra-light-salmon-pink: #ffe5e9;
+  --light-salmon-pink: #ffd1dc;
+  --salmon-pink: #ff9999;
+  --dark-blue: #004085;
+  --dark-red: #d33f3f;
+  --question-color-0: #555555;
+  --question-color-1: #aed581;
+  --question-color-2: #92caff;
+  --question-color-3: #9fc3f7;
+  --question-color-4: #c7a4ff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url("/bg.png");
+  color: var(--soft-black);
+  font-family: var(--friendly-font);
+  font-size: 18px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (max-width: 767px) {
+  body {
+    font-size: 14px;
+    line-height: 1.8;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: 100%;
+  line-height: 1.5;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--soft-black);
+}

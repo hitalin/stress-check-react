@@ -1,7 +1,7 @@
 // AggregateResults.tsx
 import type React from "react";
 import { useEffect, useState } from "react";
-import { aggregatedTotal, levelResult, sectionGroup, sectionResult } from "../styles";
+import styles from "../styles.module.css";
 import type { Employee, Factor, Question, Section } from "../types";
 import { calculateLevel } from "../utils/calculateLevel";
 import { calculateValue } from "../utils/calculateValue";
@@ -15,22 +15,12 @@ type Props = {
 };
 
 const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, scores }) => {
-  // const isFirstRender = useRef(true);
-
   const [values, setValues] = useState<{ scale: string; value: number }[][]>([]);
   const [totals, setTotals] = useState<number[]>([]);
 
   useEffect(() => {
     const valuesNumbers = values.map((value) => value.map((v) => v.value));
     const { method1, method2, totals } = calculateLevel(scores, valuesNumbers);
-
-    // if (isFirstRender.current) {
-    //   isFirstRender.current = false;
-    //   return;
-    // }
-
-    // const areMethodsEqual = method1 === method2;
-    // console.log(`Are method1 and method2 results equal: ${areMethodsEqual ? 'Yes' : 'No'}`);
 
     if (method1 && method2) {
       setEmployee((prev) => ({ ...prev, level: "high" }));
@@ -56,10 +46,10 @@ const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, sc
 
   return (
     <div>
-      <div css={levelResult(employee.level as "high" | "low")}>
+      <div className={styles.levelResult} data-level={employee.level}>
         <p>{employee.level === "high" ? "高ストレス者" : "低ストレス者"}です</p>
       </div>
-      <div css={sectionResult}>
+      <div className={styles.sectionResult}>
         {sections.map((section, sectionIndex) => {
           // Skip section0 and section4
           if (sectionIndex === 0 || sectionIndex === 5) return null;
@@ -79,14 +69,14 @@ const AggregateResults: React.FC<Props> = ({ employee, setEmployee, sections, sc
           return (
             factors && (
               <div key={section.step}>
-                <div css={aggregatedTotal}>
+                <div className={styles.aggregatedTotal}>
                   <p>
                     STEP{section.step} {section.name}
                   </p>
                   <p>スコアの合計: {scores[sectionIndex]}</p>
                   <p>評価点の合計: {totals[sectionIndex]}</p>
                 </div>
-                <div css={sectionGroup}>
+                <div className={styles.sectionGroup}>
                   <p>{section.group}</p>
                 </div>
                 <RadarChart

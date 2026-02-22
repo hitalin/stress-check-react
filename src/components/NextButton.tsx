@@ -1,16 +1,16 @@
 // NextButton.tsx
 import type React from "react";
-import { nextButtonClass } from "../styles";
+import styles from "../styles.module.css";
 
 interface NextButtonProps {
   onNext: () => void;
   nextText: string;
-  isLastSection: boolean; // 新しい prop を追加
+  isLastSection: boolean;
 }
 
 const NextButton: React.FC<NextButtonProps> = ({ onNext, nextText, isLastSection }) => {
   return (
-    <button type="button" onClick={onNext} css={nextButtonClass(isLastSection)}>
+    <button type="button" onClick={onNext} className={styles.nextButton} data-last-section={isLastSection}>
       {nextText}
     </button>
   );

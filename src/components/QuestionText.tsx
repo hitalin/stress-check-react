@@ -1,6 +1,6 @@
 // QuestionText.tsx
 import type React from "react";
-import { dynamicQuestionColor } from "../styles";
+import styles from "../styles.module.css";
 import type { Section } from "../types";
 
 interface QuestionTextProps {
@@ -10,7 +10,6 @@ interface QuestionTextProps {
 
 const QuestionText: React.FC<QuestionTextProps> = ({ section, questionIndex }) => {
   const question = section.questions?.[questionIndex];
-  const questionStyle = dynamicQuestionColor(section.step);
 
   if (!question) {
     return null;
@@ -18,7 +17,9 @@ const QuestionText: React.FC<QuestionTextProps> = ({ section, questionIndex }) =
 
   return (
     <div>
-      <h3 css={questionStyle}>{question.text}</h3>
+      <h3 className={styles.questionColor} data-section={section.step}>
+        {question.text}
+      </h3>
     </div>
   );
 };

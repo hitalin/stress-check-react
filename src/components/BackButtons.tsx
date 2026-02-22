@@ -1,6 +1,6 @@
 // BackButtons.tsx
 import type React from "react";
-import { backButtonClass, emojiColor } from "../styles";
+import styles from "../styles.module.css";
 
 interface BackButtonsProps {
   onBack: () => void;
@@ -11,12 +11,12 @@ interface BackButtonsProps {
 const BackButtons: React.FC<BackButtonsProps> = ({ onBack, onBackToTitle, showOnlyTitleButton = false }) => {
   return (
     <div>
-      <button type="button" css={backButtonClass} onClick={onBackToTitle}>
-        <span css={emojiColor}>◀</span> タイトル画面に戻る
+      <button type="button" className={styles.backButton} onClick={onBackToTitle}>
+        <span className={styles.emojiColor}>◀</span> タイトル画面に戻る
       </button>
       {!showOnlyTitleButton && (
-        <button type="button" css={backButtonClass} onClick={onBack}>
-          <span css={emojiColor}>◀</span> 一つ前の画面に戻る
+        <button type="button" className={styles.backButton} onClick={onBack}>
+          <span className={styles.emojiColor}>◀</span> 一つ前の画面に戻る
         </button>
       )}
     </div>
