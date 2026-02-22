@@ -1,4 +1,4 @@
-import { Question } from './types';
+import type { Question } from "../types";
 
 export function calculateScore(questions: Question[]): number {
   return questions.reduce((total, question) => {

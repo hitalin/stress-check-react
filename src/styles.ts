@@ -1,4 +1,4 @@
-import { css, keyframes } from '@emotion/react';
+import { css, keyframes } from "@emotion/react";
 
 const nextSlideOut = keyframes`
   0% {
@@ -60,20 +60,21 @@ export const prevSlideInTextStyle = css`
   animation: ${prevSlideIn} 0.2s ease-in-out forwards;
 `;
 
-export const friendlyFont = '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
-export const softBlack = '#555555';
-export const extraLightSalmonPink = '#FFE5E9';
-export const lightSalmonPink = '#FFD1DC';
-export const SalmonPink = '#FF9999';
-export const darkBlue = '#004085';
-export const darkRed = '#D33F3F';
+export const friendlyFont =
+  '"新丸ゴ M", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif';
+export const softBlack = "#555555";
+export const extraLightSalmonPink = "#FFE5E9";
+export const lightSalmonPink = "#FFD1DC";
+export const SalmonPink = "#FF9999";
+export const darkBlue = "#004085";
+export const darkRed = "#D33F3F";
 
 export const questionColors = [
-  '#555555', // セクション0: より淡い黒、読みやすさを保持
-  '#AED581', // セクション1: より濃い黄緑、でもまだ淡い色調
-  '#92CAFF', // セクション2: より濃い水色、でも淡い色調を保持
-  '#9FC3F7', // セクション3: より濃い青、淡い色調を保持しつつ読みやすく
-  '#C7A4FF', // セクション4: より濃い紫、淡い色調を保持しつつ視認性を高める
+  "#555555", // セクション0: より淡い黒、読みやすさを保持
+  "#AED581", // セクション1: より濃い黄緑、でもまだ淡い色調
+  "#92CAFF", // セクション2: より濃い水色、でも淡い色調を保持
+  "#9FC3F7", // セクション3: より濃い青、淡い色調を保持しつつ読みやすく
+  "#C7A4FF", // セクション4: より濃い紫、淡い色調を保持しつつ視認性を高める
 ];
 
 export const globalStyles = css`
@@ -153,14 +154,14 @@ export const appHeaderStyle = css`
 `;
 
 export const sectionDescriptionStyle = (isLastSection: boolean) => css`
-  font-size: ${isLastSection ? '2.0rem' : '1.2rem'};
+  font-size: ${isLastSection ? "2.0rem" : "1.2rem"};
   margin: 7% auto 1rem;
   text-align: center;
   white-space: pre-line;
   color: ${isLastSection ? darkRed : softBlack};
 
   @media (max-width: 767px) {
-    font-size: ${isLastSection ? '1.5rem' : '1.0rem'};
+    font-size: ${isLastSection ? "1.5rem" : "1.0rem"};
     margin-top: 7%;
     margin-bottom: 50px;
   }
@@ -264,7 +265,6 @@ export const backButtonClass = css`
   }
 `;
 
-
 export const blueButton = css`
   background-color: #cce5ff;
   color: ${darkBlue};
@@ -366,7 +366,6 @@ export const choiceButtonsStyle = css`
   }
 `;
 
-
 export const nextButtonClass = (isLastSection: boolean) => css`
   ${baseButton};
   ${isLastSection ? pinkButton : blueButton}; // isLastSection に基づいてスタイルを切り替え
@@ -434,12 +433,12 @@ export const backButtonsStyle = css`
   }
 `;
 
-export const levelResult = (level: 'high' | 'low') => css`
+export const levelResult = (level: "high" | "low") => css`
   font-size: 1.5rem;
   text-align: center;
-  color: ${level === 'high' ? darkRed : darkBlue}; // blueButton color
-  background-color: ${level === 'high' ? 'rgba(255, 99, 132, 0.5)' : 'rgba(100, 149, 237, 0.5)'}; // RaderChart backgroundColor
-  border: 2px solid ${level === 'high' ? '#f5c6cb' : '#b8daff'}; // blueButton border
+  color: ${level === "high" ? darkRed : darkBlue}; // blueButton color
+  background-color: ${level === "high" ? "rgba(255, 99, 132, 0.5)" : "rgba(100, 149, 237, 0.5)"}; // RaderChart backgroundColor
+  border: 2px solid ${level === "high" ? "#f5c6cb" : "#b8daff"}; // blueButton border
   border-radius: 5px;
   margin: 1rem;
 `;

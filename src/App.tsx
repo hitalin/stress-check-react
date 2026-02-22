@@ -1,38 +1,39 @@
 // App.tsx
-import React, { useState } from 'react';
-import AppTitle from './AppTitle';
-import SectionStep from './SectionStep';
-import SectionDescription from './SectionDescription';
-import AggregationDate from './AggregationDate';
-import NextButton from './NextButton';
-import ProgressDots from './ProgressDots';
-import QuestionText from './QuestionText';
-import ChoiceButtons from './ChoiceButtons';
-import BackButtons from './BackButtons';
-import AggregateResults from './AggregateResults';
-import { Employee } from './types';
-import { sections } from './loadSections';
-import { calculateScore } from './calculateScore';
+import type React from "react";
+import { useState } from "react";
+import AggregateResults from "./components/AggregateResults";
+import AggregationDate from "./components/AggregationDate";
+import AppTitle from "./components/AppTitle";
+import BackButtons from "./components/BackButtons";
+import ChoiceButtons from "./components/ChoiceButtons";
+import NextButton from "./components/NextButton";
+import ProgressDots from "./components/ProgressDots";
+import QuestionText from "./components/QuestionText";
+import SectionDescription from "./components/SectionDescription";
+import SectionStep from "./components/SectionStep";
+import { sections } from "./data/loadSections";
 import {
-  appStyle,
+  aggregationDateStyle,
   appHeaderStyle,
+  appStyle,
   appTitleStyle,
+  backButtonsStyle,
+  choiceButtonsStyle,
+  nextButtonStyle,
+  nextSlideInTextStyle,
+  nextSlideOutTextStyle,
+  prevSlideInTextStyle,
+  prevSlideOutTextStyle,
+  progressDotsStyle,
+  questionTextStyle,
   sectionTitleStyle,
   titleAndProgressStyle,
-  progressDotsStyle,
-  aggregationDateStyle,
-  nextButtonStyle,
-  choiceButtonsStyle,
-  questionTextStyle,
-  backButtonsStyle,
-  nextSlideOutTextStyle,
-  prevSlideOutTextStyle,
-  nextSlideInTextStyle,
-  prevSlideInTextStyle
-} from './styles';
+} from "./styles";
+import type { Employee } from "./types";
+import { calculateScore } from "./utils/calculateScore";
 
 const App: React.FC = () => {
-  const [employee, setEmployee] = useState<Employee>({ gender: '', level: '' });
+  const [employee, setEmployee] = useState<Employee>({ gender: "", level: "" });
   const [currentSection, setCurrentSection] = useState<number>(0); // Initialize currentSection with 0
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
   const [startSection, setStartSection] = useState<boolean>(true);
@@ -99,10 +100,13 @@ const App: React.FC = () => {
     setIsGoingPrev(false);
 
     setTimeout(() => {
-      if (currentSection === (sections?.length ?? 0) - 1 && currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1) {
+      if (
+        currentSection === (sections?.length ?? 0) - 1 &&
+        currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1
+      ) {
         // If we're at the last question of the last section, show the results
         setAggregated(true);
-      } else if (currentQuestion < ((sections[currentSection]?.questions?.length ?? 0) - 1)) {
+      } else if (currentQuestion < (sections[currentSection]?.questions?.length ?? 0) - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
         setCurrentSection(currentSection + 1);
@@ -141,7 +145,8 @@ const App: React.FC = () => {
     setIsGoingNext(false);
     setIsGoingPrev(true);
 
-    setTimeout(() => { // Wait for the slideOut animation to finish
+    setTimeout(() => {
+      // Wait for the slideOut animation to finish
       if (!startSection && currentQuestion > 0) {
         setCurrentQuestion(currentQuestion - 1);
       } else if (!startSection && currentQuestion === 0) {
@@ -200,7 +205,10 @@ const App: React.FC = () => {
           )}
           {currentSection !== 0 && !aggregated && !startSection && (
             <div css={progressDotsStyle}>
-              <ProgressDots questionIndex={currentQuestion} totalQuestions={sections[currentSection]?.questions?.length ?? 0} />
+              <ProgressDots
+                questionIndex={currentQuestion}
+                totalQuestions={sections[currentSection]?.questions?.length ?? 0}
+              />
             </div>
           )}
         </div>
@@ -211,66 +219,46 @@ const App: React.FC = () => {
               <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={aggregated} />
             </div>
           </>
+        ) : startSection ? (
+          <>
+            <div css={getAnimationStyle()} key={currentSection} onAnimationEnd={handleAnimationEnd}>
+              <SectionDescription
+                description={sections[currentSection].description}
+                isLastSection={currentSection === sections.length - 1}
+              />
+            </div>
+            <div css={[nextButtonStyle, getAnimationStyle()]}>
+              <NextButton
+                onNext={handleNextButton}
+                nextText={sections[currentSection].next}
+                isLastSection={currentSection === sections.length - 1}
+              />
+            </div>
+            {currentSection !== 0 && (
+              <div css={backButtonsStyle}>
+                <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
+              </div>
+            )}
+          </>
         ) : (
           <>
-            {startSection ? (
-              <>
-                <div
-                  css={
-                    getAnimationStyle()
-                  }
-                  key={currentSection}
-                  onAnimationEnd={handleAnimationEnd}
-                >
-                  <SectionDescription description={sections[currentSection].description} isLastSection={currentSection === sections.length - 1} />
-                </div>
-                <div
-                  css={[
-                    nextButtonStyle,
-                    getAnimationStyle()
-                  ]}
-                >
-                  <NextButton onNext={handleNextButton} nextText={sections[currentSection].next} isLastSection={currentSection === sections.length - 1} />
-                </div>
-                {currentSection !== 0 && (
-                  <div
-                    css={backButtonsStyle}
-                  >
-                    <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
-                  </div>
-                )}
-              </>
-            ) : (
-              <>
-                <div
-                  css={[
-                    questionTextStyle,
-                    getAnimationStyle()
-                  ]}
-                  key={currentQuestion}
-                  onAnimationEnd={handleAnimationEnd}
-                >
-                  <QuestionText section={sections[currentSection]} questionIndex={currentQuestion} />
-                </div>
-                <div
-                  css={[
-                    choiceButtonsStyle,
-                    getAnimationStyle()
-                  ]}
-                >
-                  <ChoiceButtons
-                    section={sections[currentSection]}
-                    questionIndex={currentQuestion}
-                    onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)}
-                  />
-                </div>
-                <div
-                  css={backButtonsStyle}
-                >
-                  <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
-                </div>
-              </>
-            )}
+            <div
+              css={[questionTextStyle, getAnimationStyle()]}
+              key={currentQuestion}
+              onAnimationEnd={handleAnimationEnd}
+            >
+              <QuestionText section={sections[currentSection]} questionIndex={currentQuestion} />
+            </div>
+            <div css={[choiceButtonsStyle, getAnimationStyle()]}>
+              <ChoiceButtons
+                section={sections[currentSection]}
+                questionIndex={currentQuestion}
+                onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)}
+              />
+            </div>
+            <div css={backButtonsStyle}>
+              <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} />
+            </div>
           </>
         )}
       </header>

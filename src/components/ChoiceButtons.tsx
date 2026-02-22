@@ -1,6 +1,6 @@
-import React from 'react';
-import { Section } from './types';
-import { dynamicChoiceButton } from './styles';
+import type React from "react";
+import { dynamicChoiceButton } from "../styles";
+import type { Section } from "../types";
 
 interface ChoiceButtonsProps {
   section: Section;

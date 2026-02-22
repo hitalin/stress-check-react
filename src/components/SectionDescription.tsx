@@ -1,6 +1,6 @@
 // SectionDescription.tsx
-import React from 'react';
-import { sectionDescriptionStyle } from './styles';
+import type React from "react";
+import { sectionDescriptionStyle } from "../styles";
 
 interface SectionDescriptionProps {
   description: string;

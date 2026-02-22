@@ -1,6 +1,6 @@
 // BackButtons.tsx
-import React from 'react';
-import { backButtonClass, emojiColor } from './styles';
+import type React from "react";
+import { backButtonClass, emojiColor } from "../styles";
 
 interface BackButtonsProps {
   onBack: () => void;
@@ -21,6 +21,6 @@ const BackButtons: React.FC<BackButtonsProps> = ({ onBack, onBackToTitle, showOn
       )}
     </div>
   );
-}
+};
 
 export default BackButtons;

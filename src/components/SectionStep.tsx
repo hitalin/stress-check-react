@@ -1,5 +1,5 @@
 // SectionStep.tsx
-import React from 'react';
+import type React from "react";
 
 interface SectionStepProps {
   sectionStep: number;
@@ -9,7 +9,9 @@ interface SectionStepProps {
 const SectionStep: React.FC<SectionStepProps> = ({ sectionStep, sectionName }) => {
   return (
     <div>
-      <p>STEP{sectionStep} {sectionName}</p>
+      <p>
+        STEP{sectionStep} {sectionName}
+      </p>
     </div>
   );
 };

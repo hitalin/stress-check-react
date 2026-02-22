@@ -1,9 +1,10 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import App from "./App";
 
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+describe("App", () => {
+  it("renders the app title", () => {
+    render(<App />);
+    expect(screen.getByText(/５分でできる職場のストレスセルフチェック/)).toBeInTheDocument();
+  });
 });

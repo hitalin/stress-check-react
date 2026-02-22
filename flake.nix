@@ -13,15 +13,12 @@
           inherit system;
           overlays = [];
         };
-        nodejs = pkgs.nodejs_20;
-        pnpm = pkgs.nodePackages.pnpm.override {
-          version = "8.14.3";
-          nodejs = nodejs;
-        };
+        nodejs = pkgs.nodejs_22;
       in {
         devShell = pkgs.mkShell {
-          buildInputs = [ nodejs pnpm ];
+          buildInputs = [ nodejs pkgs.corepack ];
           shellHook = ''
+            corepack enable
             pnpm install
           '';
         };

@@ -1,7 +1,7 @@
 // QuestionText.tsx
-import React from 'react';
-import { Section } from './types';
-import { dynamicQuestionColor } from './styles';
+import type React from "react";
+import { dynamicQuestionColor } from "../styles";
+import type { Section } from "../types";
 
 interface QuestionTextProps {
   section: Section;

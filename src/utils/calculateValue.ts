@@ -1,4 +1,4 @@
-import { Question, Factor } from './types';
+import type { Factor, Question } from "../types";
 
 /**
  * 指定された質問群とファクターに基づいて評価点を計算します。
@@ -11,7 +11,7 @@ import { Question, Factor } from './types';
 function calculateSubtractionPattern(questions: Question[]): number {
   const totalScore = calculateAdditionPattern(questions);
   // 質問の数に応じて動的に調整（例：足された問題数×5から合計スコアを引く）
-  return (questions.length * 5) - totalScore;
+  return questions.length * 5 - totalScore;
 }
 
 // 基本加算パターンの計算
@@ -30,18 +30,18 @@ function calculateComplexPattern(questions: Question[]): number {
 
 export function calculateValue(questions: Question[], factor: Factor): number {
   // 質問IDに基づいてフィルタリングされた質問のスコアを集計
-  const filteredQuestions = questions.filter(question => factor.items?.includes(question.id));
+  const filteredQuestions = questions.filter((question) => factor.items?.includes(question.id));
   let score = 0;
 
   // factor.typeに応じて計算パターンを適用
   switch (factor.type) {
-    case 'subtraction':
+    case "subtraction":
       score = calculateSubtractionPattern(filteredQuestions);
       break;
-    case 'addition':
+    case "addition":
       score = calculateAdditionPattern(filteredQuestions);
       break;
-    case 'complex':
+    case "complex":
       score = calculateComplexPattern(filteredQuestions);
       break;
     default:
@@ -50,6 +50,6 @@ export function calculateValue(questions: Question[], factor: Factor): number {
   }
 
   // 素点換算表（rates）を用いて評価点を算出
-  const rate = factor.rates?.find(rate => score >= rate.min && score <= rate.max) ?? null;
+  const rate = factor.rates?.find((rate) => score >= rate.min && score <= rate.max) ?? null;
   return rate ? rate.value : 0; // 該当するrateが見つからない場合は0を返す
 }
