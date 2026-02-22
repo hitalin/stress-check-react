@@ -11,18 +11,19 @@ import ProgressDots from "./components/ProgressDots";
 import QuestionText from "./components/QuestionText";
 import SectionDescription from "./components/SectionDescription";
 import SectionStep from "./components/SectionStep";
-import { sections } from "./data/loadSections";
+import { sections as initialSections } from "./data/loadSections";
 import styles from "./styles.module.css";
-import type { Employee } from "./types";
+import type { Employee, Section } from "./types";
 import { calculateScore } from "./utils/calculateScore";
 
 const App: React.FC = () => {
+  const [sectionsState, setSectionsState] = useState<Section[]>(() => structuredClone(initialSections));
   const [employee, setEmployee] = useState<Employee>({ gender: "", level: "" });
   const [currentSection, setCurrentSection] = useState<number>(0); // Initialize currentSection with 0
   const [currentQuestion, setCurrentQuestion] = useState<number>(0); // Initialize currentQuestion with 0
   const [startSection, setStartSection] = useState<boolean>(true);
   const [aggregated, setAggregated] = useState<boolean>(false);
-  const [scores, setScores] = useState<number[]>(new Array(sections.length).fill(0)); // Initialize scores with 0
+  const [scores, setScores] = useState<number[]>(new Array(initialSections.length).fill(0)); // Initialize scores with 0
   const [isAnimating, setIsAnimating] = useState(false);
   const [isGoingNext, setIsGoingNext] = useState(false);
   const [isGoingPrev, setIsGoingPrev] = useState(false);
@@ -41,22 +42,26 @@ const App: React.FC = () => {
   const handleChoiceSelect = (choice: string, questionIndex: number) => {
     if (isAnimating) return;
 
-    const choiceIndex = sections[currentSection]?.choices?.indexOf(choice) ?? 0;
+    const choiceIndex = sectionsState[currentSection]?.choices?.indexOf(choice) ?? 0;
     const choiceValue = choiceIndex >= 0 ? choiceIndex + 1 : 0; // Add 1 to the index to start the score at 1
 
-    // Update the score of the selected question
-    const currentQuestions = sections[currentSection]?.questions;
-    if (currentQuestions) {
-      currentQuestions[questionIndex].score = choiceValue;
-    }
+    // Create updated questions immutably
+    const updatedQuestions = sectionsState[currentSection]?.questions?.map((q, i) =>
+      i === questionIndex ? { ...q, score: choiceValue } : q,
+    );
+
+    // Update sections state immutably
+    setSectionsState((prev) =>
+      prev.map((section, i) => (i === currentSection ? { ...section, questions: updatedQuestions } : section)),
+    );
 
     // If the current section is 0 and the question ID is 1, set the selected choice as the employee's gender
-    if (currentSection === 0 && currentQuestions?.[questionIndex]?.id === 1) {
+    if (currentSection === 0 && updatedQuestions?.[questionIndex]?.id === 1) {
       setEmployee((prev) => ({ ...prev, gender: choice }));
     }
 
     // Calculate the score of the current section
-    const sectionScore = calculateScore(currentQuestions ?? []);
+    const sectionScore = calculateScore(updatedQuestions ?? []);
 
     // Update the scores state
     setScores((prevScores) => {
@@ -77,12 +82,12 @@ const App: React.FC = () => {
 
     setTimeout(() => {
       if (
-        currentSection === (sections?.length ?? 0) - 1 &&
-        currentQuestion === (sections[currentSection]?.questions?.length ?? 0) - 1
+        currentSection === (sectionsState?.length ?? 0) - 1 &&
+        currentQuestion === (sectionsState[currentSection]?.questions?.length ?? 0) - 1
       ) {
         // If we're at the last question of the last section, show the results
         setAggregated(true);
-      } else if (currentQuestion < (sections[currentSection]?.questions?.length ?? 0) - 1) {
+      } else if (currentQuestion < (sectionsState[currentSection]?.questions?.length ?? 0) - 1) {
         setCurrentQuestion(currentQuestion + 1);
       } else {
         setCurrentSection(currentSection + 1);
@@ -103,7 +108,7 @@ const App: React.FC = () => {
     setIsGoingPrev(false);
 
     setTimeout(() => {
-      if (currentSection === sections.length - 1) {
+      if (currentSection === sectionsState.length - 1) {
         setAggregated(true);
       } else {
         setStartSection(false);
@@ -130,7 +135,7 @@ const App: React.FC = () => {
       } else if (startSection && currentSection > 0) {
         const newSection = currentSection - 1;
         setCurrentSection(newSection);
-        setCurrentQuestion((sections[newSection]?.questions?.length ?? 0) - 1);
+        setCurrentQuestion((sectionsState[newSection]?.questions?.length ?? 0) - 1);
         setStartSection(false);
       }
       setIsAnimating(false);
@@ -168,13 +173,16 @@ const App: React.FC = () => {
         <div className={styles.titleAndProgress}>
           <div className={styles.appTitle}>
             <AppTitle />
-            {currentSection !== 0 && !aggregated && currentSection !== sections.length - 1 && (
+            {currentSection !== 0 && !aggregated && currentSection !== sectionsState.length - 1 && (
               <div className={styles.sectionTitle}>
-                <SectionStep sectionStep={sections[currentSection].step} sectionName={sections[currentSection].name} />
+                <SectionStep
+                  sectionStep={sectionsState[currentSection].step}
+                  sectionName={sectionsState[currentSection].name}
+                />
               </div>
             )}
           </div>
-          {aggregated && currentSection === sections.length - 1 && (
+          {aggregated && currentSection === sectionsState.length - 1 && (
             <div className={styles.aggregationDate}>
               <AggregationDate />
             </div>
@@ -183,14 +191,14 @@ const App: React.FC = () => {
             <div className={styles.progressDots}>
               <ProgressDots
                 questionIndex={currentQuestion}
-                totalQuestions={sections[currentSection]?.questions?.length ?? 0}
+                totalQuestions={sectionsState[currentSection]?.questions?.length ?? 0}
               />
             </div>
           )}
         </div>
-        {aggregated && currentSection === sections.length - 1 ? (
+        {aggregated && currentSection === sectionsState.length - 1 ? (
           <>
-            <AggregateResults employee={employee} setEmployee={setEmployee} sections={sections} scores={scores} />
+            <AggregateResults employee={employee} setEmployee={setEmployee} sections={sectionsState} scores={scores} />
             <div className={styles.backButtons}>
               <BackButtons onBackToTitle={handleBackToTitle} onBack={handleBack} showOnlyTitleButton={aggregated} />
             </div>
@@ -199,15 +207,15 @@ const App: React.FC = () => {
           <>
             <div className={getAnimationClass()} key={currentSection} onAnimationEnd={handleAnimationEnd}>
               <SectionDescription
-                description={sections[currentSection].description}
-                isLastSection={currentSection === sections.length - 1}
+                description={sectionsState[currentSection].description}
+                isLastSection={currentSection === sectionsState.length - 1}
               />
             </div>
             <div className={`${styles.nextButtonWrapper} ${getAnimationClass()}`}>
               <NextButton
                 onNext={handleNextButton}
-                nextText={sections[currentSection].next}
-                isLastSection={currentSection === sections.length - 1}
+                nextText={sectionsState[currentSection].next}
+                isLastSection={currentSection === sectionsState.length - 1}
               />
             </div>
             {currentSection !== 0 && (
@@ -223,11 +231,11 @@ const App: React.FC = () => {
               key={currentQuestion}
               onAnimationEnd={handleAnimationEnd}
             >
-              <QuestionText section={sections[currentSection]} questionIndex={currentQuestion} />
+              <QuestionText section={sectionsState[currentSection]} questionIndex={currentQuestion} />
             </div>
             <div className={`${styles.choiceButtons} ${getAnimationClass()}`}>
               <ChoiceButtons
-                section={sections[currentSection]}
+                section={sectionsState[currentSection]}
                 questionIndex={currentQuestion}
                 onChoiceSelect={(choice) => handleChoiceSelect(choice, currentQuestion)}
               />
