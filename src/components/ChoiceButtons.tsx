@@ -3,34 +3,39 @@ import styles from "../styles.module.css";
 import type { Section } from "../types";
 
 interface ChoiceButtonsProps {
-  section: Section;
-  questionIndex: number;
-  onChoiceSelect: (choice: string, questionIndex: number) => void;
+	section: Section;
+	questionIndex: number;
+	onChoiceSelect: (choice: string, questionIndex: number) => void;
 }
 
 // ChoiceButtons.tsx
-const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({ section, questionIndex, onChoiceSelect }) => {
-  const question = section.questions?.[questionIndex];
+const ChoiceButtons: React.FC<ChoiceButtonsProps> = ({
+	section,
+	questionIndex,
+	onChoiceSelect,
+}) => {
+	const question = section.questions?.[questionIndex];
 
-  if (!section.choices) {
-    return null;
-  }
+	if (!section.choices) {
+		return null;
+	}
 
-  return (
-    <div>
-      {section.choices.map((choice, index) => (
-        <button
-          key={`${question?.id}-${index}`}
-          type="button"
-          className={styles.choiceButton}
-          data-color={index % 4}
-          onClick={() => onChoiceSelect(choice, questionIndex)}
-        >
-          {choice}
-        </button>
-      ))}
-    </div>
-  );
+	return (
+		<div>
+			{section.choices.map((choice, index) => (
+				<button
+					// biome-ignore lint/suspicious/noArrayIndexKey: 選択肢は固定で、追加・並び替えがない
+					key={`${question?.id}-${index}`}
+					type="button"
+					className={styles.choiceButton}
+					data-color={index % 4}
+					onClick={() => onChoiceSelect(choice, questionIndex)}
+				>
+					{choice}
+				</button>
+			))}
+		</div>
+	);
 };
 
 export default ChoiceButtons;

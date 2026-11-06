@@ -6,9 +6,9 @@ import "./global.css";
 const root = document.getElementById("root");
 
 if (root !== null) {
-  createRoot(root).render(
-    <React.StrictMode>
-      <App />
-    </React.StrictMode>,
-  );
+	createRoot(root).render(
+		<React.StrictMode>
+			<App />
+		</React.StrictMode>,
+	);
 }

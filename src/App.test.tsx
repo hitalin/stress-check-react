@@ -3,8 +3,10 @@ import { describe, expect, it } from "vitest";
 import App from "./App";
 
 describe("App", () => {
-  it("renders the app title", () => {
-    render(<App />);
-    expect(screen.getByText(/５分でできる職場のストレスセルフチェック/)).toBeInTheDocument();
-  });
+	it("renders the app title", () => {
+		render(<App />);
+		expect(
+			screen.getByText(/５分でできる職場のストレスセルフチェック/),
+		).toBeInTheDocument();
+	});
 });

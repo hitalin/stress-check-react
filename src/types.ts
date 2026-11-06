@@ -1,37 +1,37 @@
 export type Employee = {
-  gender: string;
-  level: string;
+	gender: string;
+	level: string;
 };
 
 export type Section = {
-  step: number;
-  name: string;
-  description: string;
-  next: string;
-  questions?: Question[];
-  choices?: string[];
-  group?: string;
-  factors?: Factor[];
+	step: number;
+	name: string;
+	description: string;
+	next: string;
+	questions?: Question[];
+	choices?: string[];
+	group?: string;
+	factors?: Factor[];
 };
 
 export type Question = {
-  id: number;
-  text: string;
-  score: number;
-  reverse: boolean;
+	id: number;
+	text: string;
+	score: number;
+	reverse: boolean;
 };
 
 export type Factor = {
-  point: number;
-  scale: string;
-  value: number;
-  type: string;
-  rates?: Rate[];
-  items?: number[];
+	point: number;
+	scale: string;
+	value: number;
+	type: string;
+	rates?: Rate[];
+	items?: number[];
 };
 
 export type Rate = {
-  min: number;
-  max: number;
-  value: number;
+	min: number;
+	max: number;
+	value: number;
 };
